@@ -1,0 +1,271 @@
+/* MI CSS DE LO QUE YO HE IDO AñADIENDO */
+
+@font-face {
+    font-family: 'Metroidvenia';
+    src: url('/assets/fonts/metroidvenia.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Doctor Glitch';
+    src: url('/assets/fonts/Doctor Glitch.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+:root {
+    --neon-green: #00ff9d;
+    --neon-green-dim: rgba(0, 255, 157, 0.2);
+    --panel-bg: rgba(20, 25, 22, 0.85);
+    --panel-border: #2a3b32;
+}
+
+
+/*========= MIS FONDOS ============*/
+
+section.hero-section.py-5{
+    background-size: cover; !important;
+    background:  url('/assets/samusAran_Black.jpg');
+
+}
+
+/*=========================   NAVBAR    =================================================*/
+
+
+.nav-link{
+    font-family: 'Metroidvenia', monospace;
+}
+
+/*=========================  INDEX  =============================== */
+
+
+#tituloJuego{
+    font-family: Metroidvenia, monospace;
+    color: #000000;
+    text-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px #0fa,
+            0 0 82px #0fa,
+            0 0 92px #0fa,
+            0 0 102px #0fa,
+            0 0 151px #0fa;
+
+}
+
+#lema {
+    font-family: 'Metroidvenia' , monospace;
+    color: white;
+}
+
+
+/* =====El reloj de cuenta atrás============= */
+#clock-tittle{
+    color: #ffffff;
+    font-family:'Metroidvenia' , monospace;
+}
+.time-node {
+    font-family:'Doctor Glitch' , monospace;
+    /*background: rgba(0, 0, 0, 0.8);*/
+    color: #4af29f;
+    padding: 10px 15px;
+ }
+
+
+.separator{
+    color: #ffffff;
+    margin-bottom: 15px;
+
+}
+/*================= SECCIóN HERO====================*/
+
+/*---------IDEO PROMOCIONAL------- */
+
+.neon-wrapper {
+    position: relative;
+    padding: 4px;
+    background: #000;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 10px #ffffff, inset 0 0 5px #ffffff;
+
+
+    animation: neon-glow 2s infinite alternate;
+}
+
+@keyframes neon-glow {
+    0% {
+        box-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, inset 0 0 2px #ffffff;
+        border-color: #ffffff;
+    }
+    100% {
+        box-shadow: 0 0 15px #ffffff, 0 0 30px #ffffff, inset 0 0 8px #ffffff;
+        border-color: #ffffff;
+    }
+}
+
+
+.neon-wrapper video {
+    display: block;
+    border-radius: 6px;
+}
+
+
+/* ========= SECCIÓN DONACIÓN ============*/
+
+.fs-075 {
+    font-size: 0.75rem;
+}
+
+.fs-07{
+    font-size: 0.7rem;
+}
+
+
+.text-neon {
+    color: var(--neon-green);
+    text-shadow: 0 0 5px var(--neon-green-dim);
+}
+
+/* Paneles */
+.cyber-panel {
+    background-color: var(--panel-bg);
+    border: 2px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.8), 0 4px 10px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+/* Caja de cantidad recaudada */
+.cyber-amount-box {
+    border: 1px solid var(--neon-green);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    background: rgba(0, 255, 157, 0.05);
+    box-shadow: 0 0 8px var(--neon-green-dim);
+}
+
+/* Barra de progreso */
+.cyber-progress-bg {
+    width: 100%;
+    height: 12px;
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cyber-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #008f58 0%, var(--neon-green) 100%);
+    width: 0%; /* Se controla con JS */
+    transition: width 1s ease-in-out;
+    border-radius: 6px;
+    box-shadow: 0 0 10px var(--neon-green);
+}
+
+/*-------Sección de BACKERS --------------*/
+
+/* Caja de número de patrocinadores */
+.cyber-backers-box {
+    padding: 15px 10px;
+    transition: all 0.3s ease;
+}
+
+.cyber-backers-number {
+    font-family: Arial, monospace;
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.cyber-backers-text {
+    letter-spacing: 2px;
+    font-weight:550;
+}
+
+/*======== BOTON DE DONACIÓN =====================*/
+
+.cyber-btn {
+    background-color: var(--panel-bg);
+    border: 2px solid var(--neon-green);
+    border-radius: 8px;
+    padding: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px var(--neon-green-dim), inset 0 0 10px var(--neon-green-dim);
+}
+
+.cyber-btn:hover {
+    background-color: rgba(0, 255, 157, 0.1);
+    box-shadow: 0 0 20px var(--neon-green-dim), inset 0 0 20px var(--neon-green-dim);
+    transform: translateY(-2px);
+}
+
+/*=========================  SECCIÓN: TEXTO Y COMENTARIOS    ============================= */
+
+#desarrollo{
+    color: white;
+    background: rgb(107 133 117 / 71%);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.index-elem{
+    color: white;
+    background-color: transparent;
+}
+
+
+#call-Action{
+    background-color: var(--panel-bg);
+    font-family: 'Metroidvenia', monospace;
+}
+/*========================SECCIÓN: FAQ====================== */
+.accordion-button:not(.collapsed) {
+    background-color: #e7f1ff;
+    color: #007bff;
+    font-weight: bold;
+}
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0,0,0,.125);
+}
+.faq-container {
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+
+/*=========================SECCIÓN: ABOUT US=================== */
+.team-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.text-primary {
+    color: #007bff !important;
+}
+
+/*=========================SECCIÓN: DISQUS=================== */
+
+#disqus_thread{
+    background-color: white;
+}
