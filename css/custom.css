@@ -15,53 +15,61 @@
     font-style: normal;
     font-display: swap;
 }
+
+@font-face {
+    font-family: 'Zekton';
+    src: url('/assets/fonts/Zekton-Regular.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 :root {
-    --neon-green: #00ff9d;
-    --neon-green-dim: rgba(0, 255, 157, 0.2);
-    --panel-bg: rgba(20, 25, 22, 0.85);
-    --panel-border: #2a3b32;
+   --neon-pink: #eb00c2;
+   --neon-pink-dim: rgb(158, 2, 132);
+    --panel-bg: rgb(193, 66, 175);
+    --panel-border: #8e347c;
 }
 
 
-/*========= MIS FONDOS ============*/
-
-section.hero-section.py-5{
-    background-size: cover; !important;
-    background:  url('/assets/samusAran_Black.jpg');
-
+body{
+    background-color: #1e2125;
 }
-
 /*=========================   NAVBAR    =================================================*/
 
-
-.nav-link{
-    font-family: 'Metroidvenia', monospace;
+.navbar {
+    background-color: transparent !important;
+    font-weight: bold;
 }
 
-/*=========================  INDEX  =============================== */
-
-
-#tituloJuego{
-    font-family: Metroidvenia, monospace;
-    color: #000000;
-    text-shadow:
-            0 0 7px #fff,
-            0 0 10px #fff,
-            0 0 21px #fff,
-            0 0 42px #0fa,
-            0 0 82px #0fa,
-            0 0 92px #0fa,
-            0 0 102px #0fa,
-            0 0 151px #0fa;
-
+.navbar-nav {
+    border: 2px solid #ff00ff; /* Borde exterior rosa */
+    border-radius: 5px;       /* Bordes redondeados del marco */
 }
 
-#lema {
-    font-family: 'Metroidvenia' , monospace;
-    color: white;
+.navbar-nav .nav-item .nav-link {
+    font-family: 'Zekton', monospace;
+    padding: 5px 15px !important;
+    background-color: rgba(50, 49, 49, 0.7);
+    transition: all 0.3s ease;
+}
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: rgba(255, 0, 255, 0.2);
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
 }
 
+#reservar{
+    background-color:#ff00ff ;
+}
 
+/*================= SECCIóN HERO====================*/
+.hero-section {
+    min-height: 70vh;
+    width: 100%;
+    background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.1)), url('/assets/samusAzul.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+}
 /* =====El reloj de cuenta atrás============= */
 #clock-tittle{
     color: #ffffff;
@@ -70,9 +78,9 @@ section.hero-section.py-5{
 .time-node {
     font-family:'Doctor Glitch' , monospace;
     /*background: rgba(0, 0, 0, 0.8);*/
-    color: #4af29f;
+    color: #eb00c2;
     padding: 10px 15px;
- }
+}
 
 
 .separator{
@@ -80,8 +88,6 @@ section.hero-section.py-5{
     margin-bottom: 15px;
 
 }
-/*================= SECCIóN HERO====================*/
-
 /*---------IDEO PROMOCIONAL------- */
 
 .neon-wrapper {
@@ -131,8 +137,8 @@ section.hero-section.py-5{
 
 
 .text-neon {
-    color: var(--neon-green);
-    text-shadow: 0 0 5px var(--neon-green-dim);
+    color: var(--neon-pink);
+    text-shadow: 0 0 5px var(--neon-pink-dim);
 }
 
 /* Paneles */
@@ -147,13 +153,13 @@ section.hero-section.py-5{
 
 /* Caja de cantidad recaudada */
 .cyber-amount-box {
-    border: 1px solid var(--neon-green);
+    border: 1px solid var(--neon-pink);
     padding: 4px 8px;
     border-radius: 4px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     background: rgba(0, 255, 157, 0.05);
-    box-shadow: 0 0 8px var(--neon-green-dim);
+    box-shadow: 0 0 8px var(--neon-pink-dim);
 }
 
 /* Barra de progreso */
@@ -169,11 +175,11 @@ section.hero-section.py-5{
 
 .cyber-progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #008f58 0%, var(--neon-green) 100%);
+    background: linear-gradient(90deg, #008f58 0%, var(--neon-pink) 100%);
     width: 0%; /* Se controla con JS */
     transition: width 1s ease-in-out;
     border-radius: 6px;
-    box-shadow: 0 0 10px var(--neon-green);
+    box-shadow: 0 0 10px var(--neon-pink);
 }
 
 /*-------Sección de BACKERS --------------*/
@@ -201,16 +207,16 @@ section.hero-section.py-5{
 
 .cyber-btn {
     background-color: var(--panel-bg);
-    border: 2px solid var(--neon-green);
+    border: 2px solid var(--neon-pink);
     border-radius: 8px;
     padding: 12px;
     transition: all 0.3s ease;
-    box-shadow: 0 0 10px var(--neon-green-dim), inset 0 0 10px var(--neon-green-dim);
+    box-shadow: 0 0 10px var(--neon-pink-dim), inset 0 0 10px var(--neon-pink-dim);
 }
 
 .cyber-btn:hover {
     background-color: rgba(0, 255, 157, 0.1);
-    box-shadow: 0 0 20px var(--neon-green-dim), inset 0 0 20px var(--neon-green-dim);
+    box-shadow: 0 0 20px var(--neon-pink-dim), inset 0 0 20px var(--neon-pink-dim);
     transform: translateY(-2px);
 }
 
