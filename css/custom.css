@@ -41,6 +41,13 @@ body{
     font-weight: bold;
 }
 
+.navbar-brand img {
+    height: 100%;
+    max-height: 50px;
+    width: auto;
+    display: block;
+}
+
 .navbar-nav {
     border: 2px solid #ff00ff; /* Borde exterior rosa */
     border-radius: 5px;       /* Bordes redondeados del marco */
@@ -53,8 +60,7 @@ body{
     transition: all 0.3s ease;
 }
 .navbar-nav .nav-item .nav-link:hover {
-    background-color: rgba(255, 0, 255, 0.2);
-    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+    background-color: #ff00ff;
 }
 
 #reservar{
@@ -70,6 +76,12 @@ body{
     background-repeat: no-repeat;
     background-position: top;
 }
+
+.lema{
+    color: #eb00c2;
+    font-family:'Metroidvenia' , monospace;
+}
+
 /* =====El reloj de cuenta atrás============= */
 #clock-tittle{
     color: #ffffff;
@@ -82,13 +94,12 @@ body{
     padding: 10px 15px;
 }
 
-
 .separator{
     color: #ffffff;
     margin-bottom: 15px;
 
 }
-/*---------IDEO PROMOCIONAL------- */
+/*---------vIDEO PROMOCIONAL------- */
 
 .neon-wrapper {
     position: relative;
@@ -272,6 +283,6 @@ body{
 
 /*=========================SECCIÓN: DISQUS=================== */
 
-#disqus_thread{
+.disqus{
     background-color: white;
 }
