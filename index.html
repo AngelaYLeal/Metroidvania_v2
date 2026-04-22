@@ -1,35 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Cybernetik Einherjar</title>
-    <!-- Favicon-->
+    <meta name="description" content="Cybernetik Einherjar: Vive una experiencia ciberpunk de combate rítmico y hackeo. Apoya nuestra campaña de crowdfunding y evoluciona." />
+    <meta name="author" content="Cybernetik Einherjar Team" />
+    <title>Cybernetik Einherjar </title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
-    <!-- Mi CCS personalizado -->
     <link href="css/custom.css" rel="stylesheet" />
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 </head>
-<body class = "d-flex flex-column min-vh-100"  id="body">
+<body class="d-flex flex-column min-vh-100" id="body">
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg sticky-top" >
+<nav class="navbar navbar-expand-lg sticky-top">
     <div class="container-fluid px-5">
         <a class="navbar-brand text-white" href="index.html">
             <img src="assets/img/Logo_y_nombre.png" alt="Cybernetik Einherjar" class="d-none d-lg-inline-block">
-
             <img src="assets/img/Logo_sin_fondo.png" alt="Logo" class="d-lg-none" style="height: 40px; width: auto;">
         </a>
-
-
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-
-        <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="campaña.html">CAMPAÑA</a></li>
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="FAQ.html">FAQ</a></li>
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="comments.html">COMENTARIOS</a></li>
@@ -37,105 +30,64 @@
                 <li class="nav-item"><a class="nav-link text-black fw-normal" id="reservar" href="reservar.html">RESERVAR</a></li>
             </ul>
         </div>
-
     </div>
 </nav>
 
-<!-- Page Content-->
-
-    <!-- ===========================================  HERO ======================-->
-<section class="hero-section">
-    <div class="container-fluid h-100">
-        <div class="row h-100">
-
-            <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center p-4">
-                <div class="logo-wrapper mb-4 text-center">
-                    <img src="assets/img/Logotipo_sin_icono.png"
-                         alt="Cybernetik Einherjar"
-                         class="img-fluid w-75 w-md-50 w-lg-100"
-                         id="logoJuego">
-                </div>
-
-                <div class="lema text-center display-6">
-                    ¡Hackea tu paso a la salida!
-                </div>
-
-                <div class="countdown-section mt-5">
-                    <h4 id="clock-tittle" class="text-white text-center fw-bold">Sincronización final en:</h4>
-
-                    <div id="countdown" class="d-flex justify-content-center align-items-center gap-3 mt-3">
-
-                        <div class="time-node text-center">
-                            <span id="days" class="d-block fw-bold ">00</span>
-                            <div class="small">Días</div>
-                        </div>
-
-                        <span class="separator fw-bold align-self-start mt-2 ">:</span>
-
-                        <div class="time-node text-center">
-                            <span id="hours" class="d-block fw-bold ">00</span>
-                            <div class="small">Horas</div>
-                        </div>
-
-                        <span class="separator fw-bold align-self-start mt-2 ">:</span>
-
-                        <div class="time-node text-center">
-                            <span id="minutes" class="d-block fw-bold ">00</span>
-                            <div class="small">Min</div>
-                        </div>
-
-                        <span class="separator fw-bold align-self-start mt-2 ">:</span>
-
-                        <div class="time-node text-center">
-                            <span id="seconds" class="d-block fw-bold ">00</span>
-                            <div class="small">Seg</div>
+<main>
+    <section class="hero-section scroll-section" id="hero">
+        <div class="container-fluid h-100">
+            <div class="row h-100">
+                <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center p-4">
+                    <div class="logo-wrapper mb-4 text-center">
+                        <img src="assets/img/Logotipo_sin_icono.png" alt="Cybernetik Einherjar" class="img-fluid w-75 w-md-50 w-lg-100" id="logoJuego">
+                    </div>
+                    <h1 class="lema text-center display-6">¡Hackea tu paso a la salida!</h1>
+                    <div class="countdown-section mt-5">
+                        <h4 id="clock-tittle" class="text-white text-center fw-bold">Sincronización final en:</h4>
+                        <div id="countdown" class="d-flex justify-content-center align-items-center gap-3 mt-3">
+                            <div class="time-node text-center">
+                                <span id="days" class="d-block fw-bold">00</span>
+                                <div class="small">Días</div>
+                            </div>
+                            <span class="separator fw-bold align-self-start mt-2">:</span>
+                            <div class="time-node text-center">
+                                <span id="hours" class="d-block fw-bold">00</span>
+                                <div class="small">Horas</div>
+                            </div>
+                            <span class="separator fw-bold align-self-start mt-2">:</span>
+                            <div class="time-node text-center">
+                                <span id="minutes" class="d-block fw-bold">00</span>
+                                <div class="small">Min</div>
+                            </div>
+                            <span class="separator fw-bold align-self-start mt-2">:</span>
+                            <div class="time-node text-center">
+                                <span id="seconds" class="d-block fw-bold">00</span>
+                                <div class="small">Seg</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="col-lg-6"></div>
-    </div>
-</section>
-
-<!-- =========================================== SECCION DEL VIDEO Y CALL TO ACTION ======================-->
-
-<div class="container-fluid px-2  px-lg-5">
-         <div class="row gx-4 gx-lg-5 mx-1 my-5">
-
-            <!-- VIDEO PROMOCIONAL-->
+    <div class="container-fluid px-2 px-lg-5 scroll-section" id="video-content">
+        <div class="row gx-4 gx-lg-5 mx-1 my-5">
             <div class="col-lg-6">
                 <div class="neon-wrapper mb-4 mb-lg-0">
-                    <video class="w-100 rounded mb-4 mb-lg-0"
-                           controls
-                           preload="metadata"
-                           poster="assets/640x360image.jpg">
-
+                    <video class="w-100 rounded mb-4 mb-lg-0" controls preload="metadata" poster="assets/640x360image.jpg">
                         <source src="assets/videoprueba.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>
-
-            <!-- SECCION DE LA DERECHA DEL VIDEO -->
-            <div class=" col-lg-4  ">
+            <div class="col-lg-4">
                 <div class="cyber-panel mb-4">
                     <div class="d-flex justify-content-between align-items-end mb-2">
-                        <div class="text-white small fw-bold lh-1 text-uppercase align-self-start">
-                            Funding Progress<br>
-                            <span class="text-white-50 fs-075 " >Financiación del Proyecto</span>
-                        </div>
-                        <div class="cyber-amount-box text-neon">
-                            RECAUDADO: <span id="current-amount">3210.00</span> €
-                        </div>
+                        <div class="text-white small fw-bold lh-1 text-uppercase align-self-start">Funding Progress<br><span class="text-white-50 fs-075">Financiación del Proyecto</span></div>
+                        <div class="cyber-amount-box text-neon">RECAUDADO: <span id="current-amount">3210.00</span> €</div>
                     </div>
-
-                    <div class="cyber-progress-bg mt-2">
-                        <div class="cyber-progress-fill" id="funding-bar"></div>
-                        <div class="cyber-progress-glow" id="funding-glow"></div>
-                    </div>
-
-                    <div class="d-flex justify-content-between text-white-50 mt-1 small fs-07" >
+                    <div class="cyber-progress-bg mt-2"><div class="cyber-progress-fill" id="funding-bar"></div><div class="cyber-progress-glow" id="funding-glow"></div></div>
+                    <div class="d-flex justify-content-between text-white-50 mt-1 small fs-07">
                         <span>0€</span>
                         <span>1000€</span>
                         <span>2000€</span>
@@ -144,136 +96,73 @@
                         <span>5000€</span>
                     </div>
                 </div>
-
-                <!-- NUMERO DE BACKERS -->
                 <div class="cyber-backers-box mb-4 text-center">
-                    <div class="cyber-backers-number text-neon text-start " id="backers-count">124</div>
-                    <div class="cyber-backers-text text-white text-uppercase small text-start">personas nos respaldan</div></div>
-
-
-                <!-- boton de donación-->
+                    <div class="cyber-backers-number text-neon text-start" id="backers-count">124</div>
+                    <div class="cyber-backers-text text-white text-uppercase small text-start">personas nos respaldan</div>
+                </div>
                 <div class="mb-4">
                     <a href="campaña.html" class="cyber-btn w-100 d-block text-center text-decoration-none" onclick="increaseFill()">
                         <span class="d-block small text-white-50">¡QUIERO AYUDAR!</span>
                         <span class="d-block fw-bold fs-5 text-white">DONAR AHORA</span>
                     </a>
                 </div>
-
             </div>
         </div>
 
-        <!-- Call to Action-->
         <div class="card text-white my-3 py-4 text-center" id="call-Action">
             <div class="card-body"><p class="text-white m-0 h3">¡Lucha, explora y evoluciona: apoya Cybernetik Einherjar!</p></div>
         </div>
 
-    <!-- SECCIÓN DE CONTENIDO DEL JEUGO -->
-
-    <div class="row gx-4 gx-lg-5 my-3" id="desarrollo">
-
-        <div class="col-lg-3 d-none d-lg-block">
-            <div id="sticky-index" class="list-group fw-bold">
-                <a class="index-elem list-group-item list-group-item-action active" href="#historia">Historia</a>
-                <a class="index-elem list-group-item list-group-item-action" href="#mecanicas">Mecánicas de Juego</a>
-                <a class="index-elem list-group-item list-group-item-action" href="#recompensas">Recompensas</a>
-                <a class="index-elem list-group-item list-group-item-action" href="#equipo">El Equipo</a>
+        <div class="row gx-4 gx-lg-5 my-3" id="desarrollo">
+            <div class="col-lg-3 d-none d-lg-block">
+                <div id="sticky-index" class="list-group fw-bold">
+                    <a class="index-elem list-group-item list-group-item-action active" href="#historia">Historia</a>
+                    <a class="index-elem list-group-item list-group-item-action" href="#mecanicas">Mecánicas de Juego</a>
+                    <a class="index-elem list-group-item list-group-item-action" href="#recompensas">Recompensas</a>
+                    <a class="index-elem list-group-item list-group-item-action" href="#equipo">El Equipo</a>
+                </div>
             </div>
-        </div>
-
-        <div class="col-lg-9">
-            <div data-bs-spy="scroll" data-bs-target="#sticky-index" data-bs-offset="0" class="scrollspy-example pe-3" tabindex="0" style="max-height: 400px; overflow-y: auto;">
-
-                <section id="historia" class="mb-5">
-                    <h2 class="fw-bold">Historia</h2>
-                    <p>En el año 2099, los Einherjar han despertado... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut luctus nisl sed justo malesuada, in tincidunt nunc rutrum.</p>
-                </section>
-
-                <section id="mecanicas" class="mb-5">
-                    <h2 class="fw-bold">Mecánicas de Juego</h2>
-                    <p>Combate rítmico y hackeo en tiempo real. Nam enim nibh, luctus quis urna vitae, dictum tempus metus. Etiam tincidunt eu ligula a feugiat.</p>
-                </section>
-
-                <section id="recompensas" class="mb-5">
-                    <h2 class="fw-bold">Recompensas</h2>
-                    <p>Desde acceso anticipado hasta skins exclusivas. Nulla semper sed ante vitae rhoncus. Sed ipsum lacus, pellentesque sed viverra sit amet.</p>
-                </section>
-
-                <section id="equipo" class="mb-5">
-                    <h2 class="fw-bold">El Equipo</h2>
-                    <p>Un grupo de desarrolladores apasionados por el cyberpunk. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </section>
-            </div>
-        </div>
-    </div>
-
-    <!-- Comentarios de DISQUS -->
-    <section class="disqus py-4">
-        <div class="container-fluid px-4 px-lg-5 my-5">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-8">
-                    <div id="disqus_thread"></div>
+            <div class="col-lg-9">
+                <div data-bs-spy="scroll" data-bs-target="#sticky-index" data-bs-offset="0" class="scrollspy-example pe-3" tabindex="0" style="max-height: 400px; overflow-y: auto;">
+                    <section id="historia" class="mb-5"><h2>Historia</h2><p>En el año 2099, los Einherjar han despertado...</p></section>
+                    <section id="mecanicas" class="mb-5"><h2>Mecánicas de Juego</h2><p>Combate rítmico y hackeo en tiempo real.</p></section>
+                    <section id="recompensas" class="mb-5"><h2>Recompensas</h2><p>Desde acceso anticipado hasta skins exclusivas.</p></section>
+                    <section id="equipo" class="mb-5"><h2>El Equipo</h2><p>Un grupo de desarrolladores apasionados.</p></section>
                 </div>
             </div>
         </div>
-    </section>
-</div>
 
+        <section class="disqus py-4">
+            <div class="container-fluid px-4 px-lg-5 my-5">
+                <div class="row justify-content-center"><div class="col-12 col-lg-8"><div id="disqus_thread"></div></div></div>
+            </div>
+        </section>
+    </div>
+</main>
 
-
-<!-- Footer-->
 <footer class="py-5 bg-dark mt-auto">
-    <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white"> ATENCIÓN: Esta página simula la campaña de microfinanciación de un videojuego ficticio y no representa un producto real. Práctica de Multimedia, 1º GDDV- Curso 24/25 (Móstoles/Quintana), URJC. La URJC no se hace responsable del contenido expuesto por el autor.</p></div>
+    <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white"> ATENCIÓN: Esta página simula una campaña de crowdfunding ficticia. Práctica de Multimedia, 1º GDDV- Curso 24/25.</p></div>
 </footer>
 
-<!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="js/scripts.js"></script>
-
-<!-- Mi JS-->
 <script src="js/barra_de_progreso.js"></script>
 <script src="js/clock_counter.js"></script>
+<script src="js/animaciones.js"></script>
 
 <script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT
-     *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR
-     *  PLATFORM OR CMS.
-     *
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT:
-     *  https://disqus.com/admin/universalcode/#configuration-variables
-     */
-    /*
-    var disqus_config = function () {
-        // Replace PAGE_URL with your page's canonical URL variable
-        this.page.url = PAGE_URL;
-
-        // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        this.page.identifier = PAGE_IDENTIFIER;
-    };
-    */
     var disqus_config = function () {
         this.page.url = "https://cybernetikeinhearjar.disqus.com/demo";
         this.page.identifier = "pagina-demo";
     };
-
-    (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+    (function() {
         var d = document, s = d.createElement('script');
-
-        // IMPORTANT: Replace EXAMPLE with your forum shortname!
         s.src = 'https://cybernetikeinhearjar.disqus.com/embed.js';
-
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
 </script>
-
-<noscript>
-    Please enable JavaScript to view the
-    <a href="https://disqus.com/?ref_noscript" rel="nofollow">
-        comments powered by Disqus.
-    </a>
-</noscript>
-
 </body>
 </html>

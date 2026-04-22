@@ -32,8 +32,30 @@
 
 
 body{
-    background-color: #1e2125;
+    background-image: url('../assets/wallpapersden.com_planet-in-space-4k_4200x2280.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }
+
+
+.scroll-section {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+#personaje-flotante {
+    position: absolute; /* GSAP lo cambiará a fixed automáticamente al hacer scroll */
+    right: 0;
+    top: 10%;
+    height: 80vh;
+    z-index: 10;
+    pointer-events: none; /* Para que no bloquee clics en botones */
+}
+
+
 /*=========================   NAVBAR    =================================================*/
 
 .navbar {
@@ -71,10 +93,15 @@ body{
 .hero-section {
     min-height: 70vh;
     width: 100%;
-    background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.1)), url('/assets/samusAzul.png');
-    background-size: cover;
+    background-image: url('/assets/samusBody.png');
     background-repeat: no-repeat;
-    background-position: top;
+    background-position: right;
+}
+
+/* Ajuste para que el texto tenga espacio a la izquierda */
+.hero-section .row {
+    position: relative;
+    z-index: 20;
 }
 
 .lema{
