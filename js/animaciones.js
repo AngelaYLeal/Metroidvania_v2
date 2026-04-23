@@ -1,66 +1,42 @@
 gsap.registerPlugin(ScrollTrigger);
 
-// 1. Fijar el personaje mientras haces scroll en las secciones
-ScrollTrigger.create({
-    trigger: "#hero",
-    start: "top top",
-    endTrigger: "#desarrollo", // La imagen se deja de fijar al llegar al contenido
-    end: "bottom bottom",
-    pin: "#personaje-flotante",
-    pinSpacing: false
-});
-
-// 2. Animación de entrada del Lema
-gsap.from(".lema", {
+// Consolidamos todo en una sola línea de tiempo maestra para el Hero
+const tl = gsap.timeline({
     scrollTrigger: {
-        trigger: ".hero-section",
-        start: "top center",
-        toggleActions: "play none none reverse"
-    },
-    opacity: 0,
-    y: 50,
-    duration: 1
+        trigger: "#hero",
+        start: "top top",
+        end: "+=1200", // Controla la duración del "viaje" al hacer scroll
+        scrub: 1,      // Sincronización suave
+        pin: true,     // Mantiene el Hero estático mientras ocurre la magia
+        pinSpacing: true
+    }
 });
 
-// 3. Efecto de aparición en la sección de video
+// 1. Animación de Samus (Entrada desde la derecha)
+tl.fromTo("#personaje-flotante",
+    { x: 500, opacity: 0 },
+    { x: 0, opacity: 1, duration: 2 }, 0
+);
+
+// 2. Animación del Logo (Desaparece hacia arriba)
+tl.to(".logo-wrapper", { y: -100, opacity: 0, duration: 1 }, 0);
+
+// 3. Animación del Lema (Desaparece hacia arriba)
+tl.to(".lema", { y: -100, opacity: 0, duration: 1 }, 0);
+
+// 4. Animación del Reloj (Desaparece hacia abajo)
+tl.to(".countdown-section", { y: 100, opacity: 0, duration: 1 }, 0);
+
+// --- SECCIONES POSTERIORES (Fuera del Hero) ---
+
+// 5. Efecto de aparición en la sección de video (No necesita pinning)
 gsap.from("#video-content", {
     scrollTrigger: {
         trigger: "#video-content",
-        start: "top 80%"
+        start: "top 80%",
+        toggleActions: "play none none reverse"
     },
     opacity: 0,
     y: 100,
     duration: 1
 });
-
-const tl = gsap.timeline({
-    scrollTrigger: {
-        trigger: ".hero-section", // La sección donde empieza
-        start: "top top",
-        end: "+=1000", // Distancia que quieres que dure la animación
-        scrub: 1,      // El scroll controla la animación suavemente
-        pin: true      // Mantiene el hero fijo mientras ocurre el movimiento
-    }
-});
-
-// Movimiento de la imagen: de derecha (x: 500) al centro-izquierda (x: 0)
-tl.fromTo("#personaje-flotante",
-    { x: 500, opacity: 0 },
-    { x: 0, opacity: 1, duration: 2 }
-);
-
-// Opcional: El texto se desvanece mientras la imagen se mueve
-tl.to(".lema", { opacity: 0, y: -100 }, 0);
-
-tl.to(".countdown-section", {
-    y: 50,
-    opacity: 0,
-    duration: 1
-}, 0);
-
-// 4. El lema también desaparece
-tl.to(".lema", {
-    opacity: 0,
-    y: -50,
-    duration: 1
-}, 0);

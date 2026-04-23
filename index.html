@@ -9,8 +9,6 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <link href="css/styles.css" rel="stylesheet" />
     <link href="css/custom.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 </head>
 <body class="d-flex flex-column min-vh-100" id="body">
 
@@ -38,10 +36,12 @@
         <div class="container-fluid h-100">
             <div class="row h-100">
                 <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center p-4">
-                    <div class="logo-wrapper mb-4 text-center">
-                        <img src="assets/img/Logotipo_sin_icono.png" alt="Cybernetik Einherjar" class="img-fluid w-75 w-md-50 w-lg-100" id="logoJuego">
+                    <div class="logo-wrapper mb-4 text-center text-white fw-bold display-3">
+                        <p>Cybernetik</p>
+                        <p class="text-indent">Einhearjar</p>
                     </div>
                     <h1 class="lema text-center display-6">¡Hackea tu paso a la salida!</h1>
+
                     <div class="countdown-section mt-5">
                         <h4 id="clock-tittle" class="text-white text-center fw-bold">Sincronización final en:</h4>
                         <div id="countdown" class="d-flex justify-content-center align-items-center gap-3 mt-3">
@@ -75,7 +75,7 @@
         <div class="row gx-4 gx-lg-5 mx-1 my-5">
             <div class="col-lg-6">
                 <div class="neon-wrapper mb-4 mb-lg-0">
-                    <video class="w-100 rounded mb-4 mb-lg-0" controls preload="metadata" poster="assets/640x360image.jpg">
+                    <video class="w-60 rounded mb-4 mb-lg-0" controls preload="metadata" poster="assets/640x360image.jpg">
                         <source src="assets/videoprueba.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -123,7 +123,7 @@
                 </div>
             </div>
             <div class="col-lg-9">
-                <div data-bs-spy="scroll" data-bs-target="#sticky-index" data-bs-offset="0" class="scrollspy-example pe-3" tabindex="0" style="max-height: 400px; overflow-y: auto;">
+                <div data-bs-spy="scroll" data-bs-target="#sticky-index" data-bs-offset="0" class="scrollspy-example pe-3" tabindex="0" >
                     <section id="historia" class="mb-5"><h2>Historia</h2><p>En el año 2099, los Einherjar han despertado...</p></section>
                     <section id="mecanicas" class="mb-5"><h2>Mecánicas de Juego</h2><p>Combate rítmico y hackeo en tiempo real.</p></section>
                     <section id="recompensas" class="mb-5"><h2>Recompensas</h2><p>Desde acceso anticipado hasta skins exclusivas.</p></section>

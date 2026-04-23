@@ -24,15 +24,15 @@
     font-display: swap;
 }
 :root {
-   --neon-pink: #eb00c2;
+   --neon-pink: #ffffff;
    --neon-pink-dim: rgb(158, 2, 132);
-    --panel-bg: rgb(193, 66, 175);
+    --panel-bg: #1a1a1a;
     --panel-border: #8e347c;
 }
 
 
 body{
-    background-image: url('../assets/wallpapersden.com_planet-in-space-4k_4200x2280.jpg');
+    background-image: url('../assets/img    /bg/wallpapersden.com_planet-in-space-4k_4200x2280.jpg');
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
@@ -93,7 +93,7 @@ body{
 .hero-section {
     min-height: 70vh;
     width: 100%;
-    background-image: url('/assets/samusBody.png');
+    background-image: url('/assets/img/samus_img/samusBody.png');
     background-repeat: no-repeat;
     background-position: right;
 }
@@ -109,6 +109,14 @@ body{
     font-family:'Metroidvenia' , monospace;
 }
 
+.logo-wrapper{
+    font-family: 'Metroidvenia', monospace;
+
+}
+.text-indent{
+    text-indent: 4em;
+}
+
 /* =====El reloj de cuenta atrás============= */
 #clock-tittle{
     color: #ffffff;
@@ -121,27 +129,23 @@ body{
     padding: 10px 15px;
 }
 
-.separator{
+.separator {
     color: #ffffff;
     margin-bottom: 15px;
-
 }
+
 /*---------vIDEO PROMOCIONAL------- */
 
 .neon-wrapper {
     position: relative;
     padding: 4px;
     background: #000;
-    border-radius: 15px;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-
-
     border: 2px solid #ffffff;
     box-shadow: 0 0 10px #ffffff, inset 0 0 5px #ffffff;
-
-
     animation: neon-glow 2s infinite alternate;
 }
 

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cybernetik Einherjar</title>
+
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <link href="css/custom2.css" rel="stylesheet" />
+
+
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid px-5">
+        <a class="navbar-brand text-white" href="index.html">
+            <img src="assets/img/logos/Logo_y_nombre.png" alt="Cybernetik Einherjar" class="d-none d-lg-inline-block">
+            <img src="assets/img/logos/Logo_sin_fondo.png" alt="Logo" class="d-lg-none" style="height: 40px; width: auto;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link text-white fw-light" href="campaña.html">CAMPAÑA</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-light" href="FAQ.html">FAQ</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-light" href="comments.html">COMENTARIOS</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-light" href="about_us.html">SOBRE NOSOTROS</a></li>
+                <li class="nav-item"><a class="nav-link text-black fw-normal" id="reservar" href="reservar.html">RESERVAR</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <div id="pin-wrapper">
+        <!-- ================= HERO ================= -->
+        <section id="hero" class="scroll-section">
+            <div class="container-fluid h-100">
+                <div class="row h-100">
+
+                    <!-- TEXTO IZQUIERDA -->
+                    <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center text-white">
+
+                        <div class=" hero-text logo-wrapper display-3 text-center">
+                            <p>Cybernetik</p>
+                            <p class="text-indent">Einherjar</p>
+                        </div>
+
+                        <h1 class="lema text-center">¡Hackea tu paso a la salida!</h1>
+
+                        <!-- COUNTDOWN -->
+                        <div class="countdown-section mt-5">
+                            <h4 id="clock-tittle" class="text-white text-center fw-bold">Sincronización final en:</h4>
+                            <div id="countdown" class="d-flex justify-content-center align-items-center gap-3 mt-3">
+                                <div class="time-node text-center">
+                                    <span id="days" class="d-block fw-bold">00</span>
+                                    <div class="small">Días</div>
+                                </div>
+                                <span class="separator fw-bold align-self-start mt-2">:</span>
+                                <div class="time-node text-center">
+                                    <span id="hours" class="d-block fw-bold">00</span>
+                                    <div class="small">Horas</div>
+                                </div>
+                                <span class="separator fw-bold align-self-start mt-2">:</span>
+                                <div class="time-node text-center">
+                                    <span id="minutes" class="d-block fw-bold">00</span>
+                                    <div class="small">Min</div>
+                                </div>
+                                <span class="separator fw-bold align-self-start mt-2">:</span>
+                                <div class="time-node text-center">
+                                    <span id="seconds" class="d-block fw-bold">00</span>
+                                    <div class="small">Seg</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SAMUS -->
+            <img id="personaje-flotante" src="assets/img/samus_img/samusBody.png" alt="Samus">
+        </section>
+
+
+        <!-- ================= CTA  ================= -->
+        <section id="cta-video" class="scroll-section container-fluid d-flex align-items-center justify-content-end">
+
+            <div class="col-lg-5 me-5 d-flex flex-column justify-content-center">
+
+                <div class="text-white mb-4">
+                    <h2 class="display-4 fw-bold">Sobrevive. Hackea. Evoluciona.</h2>
+                    <p class="fs-4">Cyberpunk + combate rítmico.</p>
+                </div>
+
+                <div class="neon-wrapper" id="open-video">
+                    <img src="assets/videos/miniatura.jpg" alt="Miniatura" class="thumb-img">
+                    <img src="assets/img/icons/boton-de-play.png" alt="Play" class="play-icon">
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= VIDEO MODAL ================= -->
+        <div id="video-modal" class="video-modal neon-wrapper">
+            <span id="close-video">&times;</span>
+            <video controls id="video-player">
+                <source src="assets/videos/MetroidVideo.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <!-- ================= DONACIONES ================= -->
+        <section id="donation" class="scroll-section container-fluid text-white d-flex align-items-center">
+            <div class="row w-100 justify-content-center align-items-center px-lg-5">
+
+                <!-- SECCION DE BARRA DE DONACIONES IZQUIERDA--->
+                <div class="col-12 col-md-5 col-lg-4 mb-4 mb-lg-0 donation-left">
+                    <div class="cyber-panel p-4 rounded">
+                        <div class="d-flex justify-content-between align-items-end mb-3">
+                            <div class="text-white small fw-bold lh-1 text-uppercase">
+                                Funding Progress<br><span class="text-white-50">Financiación</span>
+                            </div>
+                            <div class="text-neon fw-bold">RECAUDADO: <span id="current-amount">3210.00</span> €</div>
+                        </div>
+
+                        <div class="bg-dark rounded-pill overflow-hidden" style="height: 1rem;">
+                            <div class="h-100 bg-info" id="funding-bar" style="width: 75%;"></div>
+                        </div>
+
+                        <div class="d-flex justify-content-between text-white-50 mt-2 small">
+                            <span>0€</span><span>1000€</span><span>2000€</span><span>3000€</span><span>4000€</span><span>5000€</span>
+                        </div>
+                    </div>
+
+                    <div class="my-4 text-center text-lg-start">
+                        <div class="display-6 text-neon" id="backers-count">124</div>
+                        <div class="text-white text-uppercase small">personas nos respaldan</div>
+                    </div>
+
+                    <a href="campaña.html" class="btn btn-outline-light w-100 py-3 text-uppercase fw-bold">
+                        Donar ahora
+                    </a>
+                </div>
+
+              <!-- seecion de campanna -->
+                <div class="col-12 col-md-5 col-lg-4 mb-4 mb-lg-0 donation-right    ">
+                    <div class="swiper my-slider " >
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide h-auto">
+                                <div class="card bg-dark text-white border-secondary h-100">
+                                    <img src="assets/img/rank_png/Bronze_3_Rank.png" class="card-img-top img-fluid" alt="Bronce">
+                                    <div class="card-body">
+                                        <h3 class="text-warning">BRONCE</h3>
+                                        <p class="card-text">Acceso anticipado y mención en Discord.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide h-auto">
+                                <div class="card bg-dark text-white border-secondary h-100">
+                                    <img src="assets/img/rank_png/Silver_3_Rank.png" class="card-img-top img-fluid" alt="Plata">
+                                    <div class="card-body">
+                                        <h3 class="text-secondary">PLATA</h3>
+                                        <p class="card-text">Skins personalizadas exclusivas.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide h-auto">
+                                <div class="card bg-dark text-white border-secondary h-100">
+                                    <img src="assets/img/rank_png/Gold_3_Rank.png" class="card-img-top img-fluid" alt="Oro">
+                                    <div class="card-body">
+                                        <h3 class="text-info">ORO</h3>
+                                        <p class="card-text">Acceso VIP, créditos y sesión de Q&A.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= HISTORIA ================= -->
+        <section id="game-info" class=" container text-white d-flex align-items-center">
+
+            <div class="row w-100 justify-content-center">
+
+                <!-- ÍNDICE -->
+                <div class="col-lg-3 d-none d-lg-block">
+                    <div id="sticky-index" class="list-group fw-bold    ">
+                        <a href="#historia" class="list-group-item">Historia</a>
+                        <a href="#mecanicas" class="list-group-item">Mecánicas</a>
+                        <a href="#recompensas" class="list-group-item">Recompensas</a>
+                        <a href="#equipo" class="list-group-item">Equipo</a>
+                    </div>
+                </div>
+
+                <!-- CONTENIDO -->
+                <div class="col-lg-9 scrollable-area">
+
+                    <div data-bs-spy="scroll" data-bs-target="#sticky-index" data-bs-offset="0" class="scrollspy-example pe-3" tabindex="0" >
+                        <section id="historia" class="mb-5"><h2>Historia</h2><p>En el año 2099, los Einherjar han despertado...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque suscipit ac sem sit amet lobortis. Aliquam sagittis, lorem eu dapibus dictum, nibh ipsum dignissim elit, at volutpat quam nulla ac elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum congue feugiat iaculis. Mauris scelerisque suscipit condimentum. Quisque ullamcorper sit amet nibh quis tristique. Vestibulum tristique nibh at tellus iaculis, non tempus sem varius. Suspendisse vestibulum nisi a ultrices malesuada. Maecenas feugiat fringilla ex, sed consequat turpis viverra ac. Mauris tortor metus, interdum eget aliquam vel, congue et lacus.</p></section>
+                        <section id="mecanicas" class="mb-5"><h2>Mecánicas de Juego</h2><p>Combate rítmico y hackeo en tiempo real. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque suscipit ac sem sit amet lobortis. Aliquam sagittis, lorem eu dapibus dictum, nibh ipsum dignissim elit, at volutpat quam nulla ac elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum congue feugiat iaculis. Mauris scelerisque suscipit condimentum. Quisque ullamcorper sit amet nibh quis tristique. Vestibulum tristique nibh at tellus iaculis, non tempus sem varius. Suspendisse vestibulum nisi a ultrices malesuada. Maecenas feugiat fringilla ex, sed consequat turpis viverra ac. Mauris tortor metus, interdum eget aliquam vel, congue et lacus.</p></section>
+                        <section id="recompensas" class="mb-5"><h2>Recompensas</h2><p>Desde acceso anticipado hasta skins exclusivas.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque suscipit ac sem sit amet lobortis. Aliquam sagittis, lorem eu dapibus dictum, nibh ipsum dignissim elit, at volutpat quam nulla ac elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum congue feugiat iaculis. Mauris scelerisque suscipit condimentum. Quisque ullamcorper sit amet nibh quis tristique. Vestibulum tristique nibh at tellus iaculis, non tempus sem varius. Suspendisse vestibulum nisi a ultrices malesuada. Maecenas feugiat fringilla ex, sed consequat turpis viverra ac. Mauris tortor metus, interdum eget aliquam vel, congue et lacus.</p></section>
+                        <section id="equipo" class="mb-5"><h2>El Equipo</h2><p>Un grupo de desarrolladores apasionados. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque suscipit ac sem sit amet lobortis. Aliquam sagittis, lorem eu dapibus dictum, nibh ipsum dignissim elit, at volutpat quam nulla ac elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum congue feugiat iaculis. Mauris scelerisque suscipit condimentum. Quisque ullamcorper sit amet nibh quis tristique. Vestibulum tristique nibh at tellus iaculis, non tempus sem varius. Suspendisse vestibulum nisi a ultrices malesuada. Maecenas feugiat fringilla ex, sed consequat turpis viverra ac. Mauris tortor metus, interdum eget aliquam vel, congue et lacus. </p></section>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- ================= disqus ================= -->
+        <section id="comments" class="disqus py-4 text-white">
+            <div class="container">
+                <div id="disqus_thread"></div>
+            </div>
+        </section>
+
+
+    </div>
+    <div style="height: 150px;"></div>
+    <!-- ================= DISQUS ================= -->
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT
+         *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR
+         *  PLATFORM OR CMS.
+         *
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT:
+         *  https://disqus.com/admin/universalcode/#configuration-variables
+         */
+
+        var disqus_config = function () {
+            this.page.url = "https://cybernetikeinhearjar.disqus.com/demo";
+            this.page.identifier = "pagina-demo";
+        };
+
+
+        (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+            var d = document, s = d.createElement('script');
+
+            // IMPORTANT: Replace EXAMPLE with your forum shortname!
+            s.src = 'https://cybernetikeinhearjar.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>
+        Please enable JavaScript to view the
+        <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+            comments powered by Disqus.
+        </a>
+    </noscript>
+
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="py-5 bg-dark mt-auto">
+    <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white"> ATENCIÓN: Esta página simula la campaña de microfinanciación de un videojuego ficticio y no representa un producto real. Práctica de Multimedia, 1º GDDV- Curso 24/25 (Móstoles/Quintana), URJC. La URJC no se hace responsable del contenido expuesto por el autor.</p></div>
+</footer>
+
+
+<!-- ================= JS ================= -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+<!-- MIS SCRIPTS -->
+<script src="js/scripts.js"></script>
+<script src="js/barra_de_progreso.js"></script>
+<script src="js/clock_counter.js"></script>
+<script src="js/animaciones2.js"></script>
+
+<!--DISQUS-->
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT
+     *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR
+     *  PLATFORM OR CMS.
+     *
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT:
+     *  https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_config = function () {
+        // La URL absoluta de la página actual
+        this.page.url = "<?php echo 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>";
+
+        // Un identificador único para esta página (puede ser el nombre del archivo o un ID de base de datos)
+        this.page.identifier = "<?php echo basename($_SERVER['PHP_SELF']); ?>";
+    };
+
+    (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+        var d = document, s = d.createElement('script');
+
+        // IMPORTANT: Replace EXAMPLE with your forum shortname!
+        s.src = 'https://cybernetikeinhearjar.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+        comments powered by Disqus.
+    </a>
+</noscript>
+</body>
+</html>

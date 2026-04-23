@@ -1,0 +1,606 @@
+
+/* ================= VARIABLES ================= */
+:root {
+    --neon-pink: #eb00c2;
+    --neon-pink-dim: rgb(158, 2, 132);
+    --panel-bg: #1a1a1a;
+    --panel-border: #8e347c;
+}
+
+
+/* ================= FUENTES ================= */
+@font-face {
+    font-family: 'Metroidvenia';
+    src: url('/assets/fonts/metroidvenia.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Doctor Glitch';
+    src: url('/assets/fonts/Doctor Glitch.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Zekton';
+    src: url('/assets/fonts/Zekton-Regular.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/*====================== NAVBAR =========================*/
+.navbar {
+    background-color: transparent !important;
+    font-weight: bold;
+}
+
+.navbar-brand img {
+    height: 100%;
+    max-height: 50px;
+    width: auto;
+    display: block;
+}
+
+.navbar-nav {
+    border: 2px solid #ff00ff;
+    border-radius: 5px;
+}
+
+.navbar-nav .nav-item .nav-link {
+    font-family: 'Zekton', monospace;
+    padding: 5px 15px !important;
+    background-color: rgba(50, 49, 49, 0.7);
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: #ff00ff;
+}
+
+.navbar-toggler{
+    color: #ff00ff !important;
+    background-color: #ff00ff;
+}
+#reservar {
+    background-color: #ff00ff;
+}
+
+
+/* ================= FONDO ================= */
+body {
+    background-image: url('../assets/img/bg/wallpapersden.com_planet-in-space-4k_4200x2280.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: -1;
+}
+
+
+
+/* ================= HERO CORE ================= */
+#hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-section {
+    min-height: 100vh;
+    height: auto;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+}
+
+/* Escenario para las animaciones */
+#pin-wrapper {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    perspective: 1500px; /* Vital para el efecto del cubo 3D */
+}
+
+
+/* Todas las secciones dentro comparten el mismo espacio */
+#pin-wrapper > section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden; /* Evita parpadeos en rotaciones 3D */
+    display: flex; /* Mantiene tu estructura centrada */
+    align-items: center;
+}
+
+/* Z-index para asegurar el orden de las capas */
+#hero { z-index: 10; }
+#cta-video { z-index: 20; pointer-events: auto; }
+#donation { z-index: 30; pointer-events: auto; }
+#game-info { z-index: 40; pointer-events: none; }
+
+
+/* ================= SAMUS ================= */
+#personaje-flotante {
+    position: absolute;
+    right: 10%;       /* INICIO: derecha */
+    top: 0%;
+    height: 140vh;
+    z-index: 5;
+    pointer-events: none;
+}
+
+
+/* ================= CTA BLOCK (CLAVE) ================= */
+#cta-block {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45%;
+    opacity: 0;        /* oculto al inicio */
+    pointer-events: none;
+    z-index: 4;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#cta-video {
+    /* Asegura que el contenedor ocupe toda la pantalla para poder alinear */
+    height: 100vh;
+    padding-right: 5%; /* Un poco de margen para que no toque el borde derecho */
+}
+
+/* Ajuste para móviles: si el texto es muy grande, apilamos todo */
+@media (max-width: 992px) {
+    #cta-video {
+        justify-content: center !important;
+        padding-right: 0;
+    }
+    .me-5 { margin-right: 0 !important; }
+}
+
+/* ================= TEXTOS ================= */
+.lema {
+    color: var(--neon-pink);
+}
+
+.text-neon {
+    color: var(--neon-pink);
+    text-shadow:
+            0 0 5px var(--neon-pink),
+            0 0 10px var(--neon-pink),
+            0 0 20px var(--neon-pink-dim);
+}
+
+
+/* ================= COUNTDOWN ================= */
+#clock-tittle {
+    color: #ffffff;
+    font-family: 'Metroidvenia', monospace;
+}
+
+.time-node {
+    font-family: 'Doctor Glitch', monospace;
+    color: #eb00c2;
+    padding: 10px 15px;
+}
+
+.separator {
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+
+/* ================= marco VIDEO ================= */
+.neon-wrapper {
+    border: 2px solid white;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.neon-wrapper:hover {
+    box-shadow: 0 0 20px white;
+}
+
+
+/* ================= VIDEO MODAL ================= */
+/* El contenedor que oscurece todo */
+.video-modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Oscurece el fondo */
+    z-index: 99999; /* Asegura que esté encima de todo */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Para mostrarlo cuando sea necesario */
+.video-modal.is-active {
+    display: flex !important;
+}
+
+/* Botón de cierre */
+#close-video {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+#open-video {
+    position: relative; /* Necesario para posicionar el icono encima */
+    overflow: hidden;   /* Para que al ampliar el icono no se salga del marco */
+    transition: transform 0.3s ease;
+}
+
+/* El icono centrado */
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;          /* Ajusta el tamaño según tu archivo */
+    height: auto;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+    pointer-events: none; /* Para que el clic pase a través del icono al contenedor */
+    opacity: 0.8;
+}
+
+
+
+#open-video:hover .play-icon {
+    transform: translate(-50%, -50%) scale(1.2); /* Amplía solo el icono */
+    opacity: 1;
+}
+
+/* Asegurar que la imagen de la miniatura se vea bien */
+.thumb-img {
+    width: 100%;
+    display: block;
+}
+
+/* ================= DONACIONES ================= */
+
+#donation {
+    display: flex; /* Activa Flexbox */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente */
+    min-height: 100vh; /* Asegura que la sección ocupe el alto disponible */
+    height: auto;
+    padding: 40px 20px;
+    gap: 20px; /* Espacio entre el panel y el slider */
+    overflow: visible; /* Evita que se corte el contenido */
+}
+
+/* Ajuste específico para el contenedor de columnas de Bootstrap */
+#donation .row {
+    justify-content: center; /* Centra el contenido si usas sistema de rejilla */
+    width: 100%;
+}
+.cyber-panel {
+    background-color: var(--panel-bg);
+    border: 2px solid var(--panel-border);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.cyber-progress-bg {
+    width: 100%;
+    height: 12px;
+    background: #111;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.cyber-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #00ff9d, var(--neon-pink));
+    transition: 1s;
+}
+
+.cyber-btn {
+    display: block;
+    padding: 12px;
+    border: 2px solid var(--neon-pink);
+    text-align: center;
+    color: white;
+    margin-top: 15px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.cyber-btn:hover {
+    background: rgba(255,0,255,0.2);
+}
+
+/* --- CONFIGURACIÓN DEL SWIPER --- */
+
+/* Las tarjetas del Swiper */
+#donation .row {
+    justify-content: center;
+    gap: 30px; /* móvil por defecto */
+    margin: 0 auto;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    #donation .row {
+        gap: 50px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+    #donation .row {
+        gap: 80px;
+    }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1200px) {
+    #donation .row {
+        gap: 10rem;
+    }
+}
+
+.donation-left{
+    background: rgba(163, 163, 163, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(50px);
+    padding: 50px;
+    border: 1px solid white;
+    border-radius: 15px;
+
+    box-shadow: 0 0 20px rgba(235, 0, 194, 0.3);
+}
+.campaign-card {
+    display: flex ;
+    flex-direction: row; /* Layout horizontal por defecto */
+    background: rgba(26, 26, 26, 0.95);
+    border: 1px solid #444;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img-top {
+    height: 60%;
+    object-fit: contain; /* Recorta la imagen para que no se deforme */
+    width: 100%;
+    object-position: center;
+    background-color: white;
+    padding: 1em;
+}
+
+.card-body {
+    flex: 1; /* El resto del espacio lo ocupa el texto */
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+/* Estilo de los botones de navegación de Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+    color: grey !important;
+    font-weight: bold;
+}
+/* ================= INDEX ================= */
+#sticky-index {
+    position: sticky;
+    top: 100px;
+}
+#sticky-index .list-group-item {
+    background-color: transparent !important; /* Quita el fondo */
+    border: none !important;                   /* Quita los bordes de los ítems */
+    color: #ffffff;                            /* Asegura que el texto sea visible */
+    padding: 10px 0;                           /* Espaciado limpio */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+/* Color al pasar el ratón (opcional) */
+#sticky-index .list-group-item:hover {
+    color: #eb00c2; /* Color neón */
+}
+
+/* 2. Añadir la línea divisoria vertical */
+/* Aplicamos el borde a la columna que contiene el índice */
+.col-lg-3 {
+    border-right: 1px solid #444; /* Línea gris divisoria */
+    padding-right: 20px;          /* Espacio entre la línea y el índice */
+}
+
+
+/* ================= CONTENIDO SOBRE EL VIDEOJUEGO ================= */
+#game-info {
+    position: relative !important;
+    max-height: 80vh;
+    background: rgba(181, 179, 179, 0.1);
+    backdrop-filter: blur(8px);
+    border-top: 2px solid rgba(200, 200, 200, 0.5);
+    border-bottom: 2px solid rgba(200, 200, 200, 0.5);;
+    border-radius: 15px;
+    box-shadow:
+            0 0 20px rgba(0, 0, 0, 0.4),
+            inset 0 0 10px rgba(255, 255, 255, 0.05);
+    overflow-y:auto ;
+    overscroll-behavior: contain;
+    margin-top: 15vh;
+}
+@media (max-width: 768px) {
+    #game-info {
+        padding: 25px 20px;
+        margin: 20px;
+    }
+}
+
+
+/* Altura dinámica para escritorio: ocupa el 60% de la altura de la pantalla */
+.scrollspy-example {
+    min-height: 200px;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 15px
+}
+
+/* Ajuste para tablets y móviles */
+@media (max-width: 991px) {
+    .scrollspy-example {
+        height: 40vh; /* Se vuelve más compacto en pantallas pequeñas */
+    }
+}
+
+/* Estilo del scrollbar para mantener la estética Cyberpunk */
+.scrollspy-example::-webkit-scrollbar {
+    width: 8px;
+}
+.scrollspy-example::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+.scrollspy-example::-webkit-scrollbar-thumb {
+    background: #eb00c2;
+    border-radius: 4px;
+}
+
+/* ================= DISQUS ================= */
+.disqus {
+    background: rgba(181, 179, 179, 0.1);
+    backdrop-filter: blur(8px);
+    color: white !important;
+}
+#comments {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    color: white !important;
+    opacity: 0;
+    transform: translateY(100%);
+    pointer-events: none;
+}
+
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ADAPTIVE*/
+
+ @media (max-width: 1023px) {
+
+     body {
+         background-image: url('../assets/img/bg/wallpapersden.com_planet-in-space-4k_4200x2280.jpg');
+         background-size: 400%;
+         background-position: center;
+         background-repeat: no-repeat;
+         background-attachment: fixed;
+
+     }
+
+     /* 1. Ocultar a Samus  */
+    #personaje-flotante {
+        align-content: center;
+        top: 20%;
+        right: -40%;
+        height: 160vh;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    /* 2. Resetear el contenedor principal [cite: 280, 281] */
+    #pin-wrapper {
+        height: auto !important;
+        perspective: none !important;
+        overflow: visible !important;
+    }
+
+    /* 3. Forzar que las secciones se comporten como bloques normales [cite: 282, 283] */
+    #pin-wrapper > section {
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        opacity: 1 !important; /* Anulamos el opacity: 0 de GSAP [cite: 254-257] */
+        transform: none !important; /* Eliminamos rotaciones de cubo o desplazamientos */
+        pointer-events: auto !important;
+        display: block !important;
+        margin-bottom: 2rem;
+    }
+
+     #cta-video {
+         position: relative !important;
+         display: block !important;
+         top: auto !important;
+         left: auto !important;
+         transform: none !important;
+         opacity: 1 !important;
+         height: auto !important;
+         min-height: 50vh; /* O el tamaño que desees */
+         margin: 20px 0;
+         visibility: visible !important;
+         pointer-events: auto !important;
+     }
+     #video-modal.is-active {
+         display: block !important; /* Cambiamos a block para flujo normal */
+         position: relative !important; /* Ya no es fixed, se queda en el flujo */
+         background: transparent !important;
+         padding: 10px;
+         margin-top: 20px;
+     }
+
+     /* El video se adapta al ancho de la pantalla */
+     #video-player {
+         width: 100% !important;
+         height: auto !important;
+         aspect-ratio: 16 / 9; /* Mantiene la proporción perfecta */
+         max-height: none !important;
+     }
+    /* 4. Ajustes específicos para secciones que GSAP oculta por defecto */
+    #cta-video, #donation, #game-info, #comments {
+        visibility: visible !important;
+        top: auto !important;
+        left: auto !important;
+    }
+
+    /* 5. Asegurar que el contenido de info sea legible sin scroll interno forzado */
+    #game-info {
+        max-height: none !important;
+        margin-top: 0 !important;
+    }
+}
+
