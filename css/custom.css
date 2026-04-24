@@ -32,13 +32,11 @@
 
 
 body{
-    background-image: url('../assets/img    /bg/wallpapersden.com_planet-in-space-4k_4200x2280.jpg');
+    background-image: url('../assets/img/bg/wallpapersden.com_planet-in-space-4k_4200x2280.jpg');
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-
 }
-
 
 .scroll-section {
     height: 100vh;
@@ -46,6 +44,7 @@ body{
     position: relative;
     overflow: hidden;
 }
+
 #personaje-flotante {
     position: absolute; /* GSAP lo cambiará a fixed automáticamente al hacer scroll */
     right: 0;

@@ -18,6 +18,14 @@
 }
 
 @font-face {
+    font-family: 'Metroidvenia Simple';
+    src: url('/assets/fonts/metroidvenia-normal.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'Doctor Glitch';
     src: url('/assets/fonts/Doctor Glitch.otf') format('opentype');
     font-weight: normal;
@@ -447,60 +455,102 @@ body::before {
 
 /* ================= CONTENIDO SOBRE EL VIDEOJUEGO ================= */
 #game-info {
-    position: relative !important;
-    max-height: 80vh;
-    background: rgba(181, 179, 179, 0.1);
-    backdrop-filter: blur(8px);
-    border-top: 2px solid rgba(200, 200, 200, 0.5);
-    border-bottom: 2px solid rgba(200, 200, 200, 0.5);;
-    border-radius: 15px;
-    box-shadow:
-            0 0 20px rgba(0, 0, 0, 0.4),
-            inset 0 0 10px rgba(255, 255, 255, 0.05);
-    overflow-y:auto ;
-    overscroll-behavior: contain;
-    margin-top: 15vh;
-}
-@media (max-width: 768px) {
-    #game-info {
-        padding: 25px 20px;
-        margin: 20px;
-    }
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
 }
 
+.game-info-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-/* Altura dinámica para escritorio: ocupa el 60% de la altura de la pantalla */
-.scrollspy-example {
-    min-height: 200px;
+.nav-tabs {
+    border-bottom: 2px solid rgba(235, 0, 194, 0.5);
+    gap: 0.5rem;
+}
+
+.nav-tabs .nav-link {
+    font-family: 'Zekton', monospace;
+    color: #ffffff;
+    background: rgba(179, 174, 174, 0.2);
+    border: 1px solid #444;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    padding: 0.6rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    background-color: var(--neon-pink-dim);
+    border-color: var(--neon-pink);
+}
+
+.nav-tabs .nav-link.active {
+    background-color: var(--neon-pink);
+    color: #000;
+    border-color: var(--neon-pink);
+    font-weight: bold;
+}
+
+.game-info-content {
+    background: rgba(179, 174, 174, 0.2);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(235, 0, 194);
+    border-bottom: 1px solid rgba(235, 0, 194);
     max-height: 70vh;
     overflow-y: auto;
-    padding-right: 15px
+    scrollbar-width: thin;
+}
+.img-opacity{
+    opacity: 1;
 }
 
-/* Ajuste para tablets y móviles */
-@media (max-width: 991px) {
-    .scrollspy-example {
-        height: 40vh; /* Se vuelve más compacto en pantallas pequeñas */
-    }
+
+/* Ocultar los botones (flechas) */
+.game-info-content::-webkit-scrollbar-button:no-button {
+           /* Elimina las flechas arriba/abajo */
 }
 
-/* Estilo del scrollbar para mantener la estética Cyberpunk */
-.scrollspy-example::-webkit-scrollbar {
-    width: 8px;
+/* Ocultar el track (fondo del scroll) */
+.game-info-content::-webkit-scrollbar-track {
+    background: transparent;        /* Track completamente transparente */
+    margin: 0;                      /* Sin márgenes */
 }
-.scrollspy-example::-webkit-scrollbar-track {
-    background: #1a1a1a;
+
+/* Personalizar el thumb (la barra que se arrastra) */
+.game-info-content::-webkit-scrollbar-thumb {
+    background: var(--neon-pink);   /* Color de la barra */
+    border-radius: 4px;             /* Bordes redondeados */
 }
-.scrollspy-example::-webkit-scrollbar-thumb {
-    background: #eb00c2;
-    border-radius: 4px;
+
+/* Al pasar el ratón por encima, puedes cambiar el color del thumb (opcional) */
+#gameTabsContent::-webkit-scrollbar-thumb:hover {
+    background: #ff44dd;
+}
+
+/* Tipografía dentro del contenido */
+.game-info-content h2 {
+    color: white;
+    font-family: 'Metroidvenia', monospace;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--neon-pink);
+    padding-left: 15px;
+}
+
+.game-info-content p {
+    line-height: 1.6;
+    color: #f0f0f0;
 }
 
 /* ================= DISQUS ================= */
 .disqus {
-    background: rgba(181, 179, 179, 0.1);
+    background: rgba(255, 255, 255);
     backdrop-filter: blur(8px);
-    color: white !important;
+
 }
 #comments {
     position: absolute;
@@ -508,7 +558,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100vh;
-    color: white !important;
+    color: #000000 !important;
     opacity: 0;
     transform: translateY(100%);
     pointer-events: none;
@@ -531,6 +581,22 @@ footer {
          background-repeat: no-repeat;
          background-attachment: fixed;
 
+     }
+
+     .nav-tabs {
+         flex-wrap: nowrap !important; /* Evita que se bajen a la siguiente línea */
+         overflow-x: auto;            /* Permite scroll horizontal si no caben */
+         overflow-y: hidden;
+         white-space: nowrap;         /* Mantiene los botones en una sola fila */
+         padding-bottom: 10px;
+     }
+
+     /* Opcional: mejora el scroll en móviles */
+     .nav-tabs::-webkit-scrollbar {
+         height: 4px;
+     }
+     .nav-tabs::-webkit-scrollbar-thumb {
+         background: #00ffcc;
      }
 
      /* 1. Ocultar a Samus  */

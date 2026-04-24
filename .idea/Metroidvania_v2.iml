@@ -8,5 +8,8 @@
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="tiny-slider" level="application" />
     <orderEntry type="library" name="swiper" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="swiper" level="application" />
+    <orderEntry type="library" name="gsap" level="application" />
   </component>
 </module>
