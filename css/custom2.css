@@ -44,6 +44,7 @@
 
 /*====================== NAVBAR =========================*/
 .navbar {
+    font-family: 'Metroidvenia Simple', serif;
     background-color: transparent !important;
     font-weight: bold;
 }
@@ -61,7 +62,7 @@
 }
 
 .navbar-nav .nav-item .nav-link {
-    font-family: 'Zekton', monospace;
+
     padding: 5px 15px !important;
     background-color: rgba(50, 49, 49, 0.7);
     transition: all 0.3s ease;
@@ -82,6 +83,7 @@
 
 /* ================= FONDO ================= */
 body {
+    font-family: 'Metroidvenia Simple', serif;
     background-image: url('../assets/img/bg/wallpapersden.com_planet-in-space-4k_4200x2280.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -105,7 +107,7 @@ body::before {
     overflow: hidden;
 }
 
-.scroll-section {
+    .scroll-section {
     min-height: 100vh;
     height: auto;
 }
@@ -349,6 +351,27 @@ body::before {
     background: rgba(255,0,255,0.2);
 }
 
+
+
+/*----------------EL SLIDER CON NOMBRES ------------------*/
+
+#donation-sidebar .splide {
+    margin-top: 20px; /* Separación con el contenido de arriba */
+    padding: 10px;
+    border-top: 1px solid #444;
+    border-bottom: 1px solid #444;
+}
+#donation-sidebar .splide__slide {
+    font-size: 2rem;
+    text-align: center;
+    white-space: nowrap;
+}
+
+#donation-sidebar .splide__arrows {
+    display: none;
+}
+
+
 /* --- CONFIGURACIÓN DEL SWIPER --- */
 
 /* Las tarjetas del Swiper */
@@ -464,7 +487,7 @@ body::before {
 }
 
 .game-info-wrapper {
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
 }
 
@@ -503,33 +526,33 @@ body::before {
     border-bottom: 1px solid rgba(235, 0, 194);
     max-height: 70vh;
     overflow-y: auto;
-    scrollbar-width: thin;
 }
 .img-opacity{
     opacity: 1;
 }
 
 
-/* Ocultar los botones (flechas) */
-.game-info-content::-webkit-scrollbar-button:no-button {
-           /* Elimina las flechas arriba/abajo */
+.game-info-content::-webkit-scrollbar {
+    background-color: transparent;
+    width: 7px;
 }
 
-/* Ocultar el track (fondo del scroll) */
 .game-info-content::-webkit-scrollbar-track {
-    background: transparent;        /* Track completamente transparente */
-    margin: 0;                      /* Sin márgenes */
+    background: transparent;
+    border-radius: 12px;
+    margin: 0;
+
 }
 
 /* Personalizar el thumb (la barra que se arrastra) */
 .game-info-content::-webkit-scrollbar-thumb {
-    background: var(--neon-pink);   /* Color de la barra */
-    border-radius: 4px;             /* Bordes redondeados */
+    background: rgba(179, 174, 174, 0.2);
+    border-radius: 12px;
 }
 
 /* Al pasar el ratón por encima, puedes cambiar el color del thumb (opcional) */
 #gameTabsContent::-webkit-scrollbar-thumb:hover {
-    background: #ff44dd;
+    background: rgba(204, 198, 198, 0.81);
 }
 
 /* Tipografía dentro del contenido */

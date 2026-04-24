@@ -11,5 +11,7 @@
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="swiper" level="application" />
     <orderEntry type="library" name="gsap" level="application" />
+    <orderEntry type="library" name="@splidejs/splide" level="application" />
+    <orderEntry type="library" name="@splidejs/splide-extension-auto-scroll" level="application" />
   </component>
 </module>

@@ -28,3 +28,18 @@ modal.addEventListener("click", (e) => {
         cerrarModal();
     }
 });
+
+
+//SLIDER DE DONACIONES
+
+document.addEventListener( 'DOMContentLoaded', function () {
+    new Splide( '#donation-sidebar .splide', { // Selector específico para el sidebar
+        type   : 'loop',
+        drag   : 'free',
+        perPage: 1,            // 1 nombre a la vez para que se lea bien en la barra
+        autoScroll: {
+            speed: 0.0001,          // Un poco más lento para que sea elegante
+            pauseOnHover: true,  // Se detiene si el usuario quiere leer un nombre
+        },
+    }).mount( window.splide.Extensions );
+});
