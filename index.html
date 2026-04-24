@@ -5,30 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cybernetik Einherjar</title>
 
-    <link href="../css/styles.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
     <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
-    <link href="../css/custom2.css" rel="stylesheet" />
+    <link href="css/custom2.css" rel="stylesheet" />
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-
+    <div id="loader-wrapper">
+        <div class="loader-content">
+            <div class="glitch-text">INICIALIZANDO SISTEMA...</div>
+            <div class="spinner"></div>
+        </div>
+    </div>
 <!-- ================= NAVBAR ================= -->
 <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container-fluid px-5">
         <a class="navbar-brand text-white" href="index.html">
-            <img src="../assets/img/logos/Logo_y_nombre.png" alt="Cybernetik Einherjar" class="d-none d-lg-inline-block">
-            <img src="../assets/img/logos/Logo_sin_fondo.png" alt="Logo" class="d-lg-none" style="height: 40px; width: auto;">
+            <img src="assets/img/logos/Logo_y_nombre.png" alt="Cybernetik Einherjar" class="d-none d-lg-inline-block">
+            <img src="assets/img/logos/Logo_sin_fondo.png" alt="Logo" class="d-lg-none" style="height: 40px; width: auto;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="index.html">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link text-white fw-light" href="Campaña.html">CAMPAÑA</a></li>
-                <li class="nav-item"><a class="nav-link text-white fw-light" href="FAQ.html">FAQ</a></li>
-                <li class="nav-item"><a class="nav-link text-white fw-light" href="Comments.html">COMENTARIOS</a></li>
-                <li class="nav-item"><a class="nav-link text-white fw-light" href="AboutUs.html">SOBRE NOSOTROS</a></li>
-                <li class="nav-item"><a class="nav-link text-black fw-normal" id="reservar" href="Reserve.html">RESERVAR</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-light" href="html/Campaña.html">CAMPAÑA</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-light" href="html/FAQ.html">FAQ</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-light" href="html/Comments.html">COMENTARIOS</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-light" href="html/AboutUs.html">SOBRE NOSOTROS</a></li>
+                <li class="nav-item"><a class="nav-link text-black fw-normal" id="reservar" href="html/Reserve.html">RESERVAR</a></li>
             </ul>
         </div>
     </div>
@@ -83,7 +88,7 @@
             </div>
 
             <!-- SAMUS -->
-            <img id="personaje-flotante" src="../assets/img/samus_img/samusBody.png" alt="Samus">
+            <img id="personaje-flotante" src="assets/img/samus_img/samusBody.png" alt="Samus">
         </section>
 
 
@@ -98,8 +103,8 @@
                 </div>
 
                 <div class="neon-wrapper" id="open-video">
-                    <img src="../assets/videos/miniatura.jpg" alt="Miniatura" class="thumb-img">
-                    <img src="../assets/img/icons/boton-de-play.png" alt="Play" class="play-icon">
+                    <img src="assets/videos/miniatura.jpg" alt="Miniatura" class="thumb-img">
+                    <img src="assets/img/icons/boton-de-play.png" alt="Play" class="play-icon">
                 </div>
 
             </div>
@@ -109,7 +114,7 @@
         <div id="video-modal" class="video-modal neon-wrapper">
             <span id="close-video">&times;</span>
             <video width="320" height="240" controls id="video-player" >
-                <source src="../assets/videos/MetroidVideo.mp4" type="video/mp4">
+                <source src="assets/videos/MetroidVideo.mp4" type="video/mp4">
             </video>
         </div>
 
@@ -141,7 +146,7 @@
                         <div class="text-white text-uppercase small">personas nos respaldan</div>
                     </div>
 
-                    <a href="Campaña.html" class="btn btn-outline-light w-100 py-3 text-uppercase fw-bold">
+                    <a href="html/Campaña.html" class="btn btn-outline-light w-100 py-3 text-uppercase fw-bold">
                         Donar ahora
                     </a>
 
@@ -170,7 +175,7 @@
 
                             <div class="swiper-slide h-auto">
                                 <div class="card bg-dark text-white border-secondary h-100">
-                                    <img src="../assets/img/rank_png/Bronze_3_Rank.png" class="card-img-top img-fluid" alt="Bronce">
+                                    <img src="assets/img/rank_png/Bronze_3_Rank.png" class="card-img-top img-fluid" alt="Bronce">
                                     <div class="card-body">
                                         <h3 class="text-warning">BRONCE</h3>
                                         <p class="card-text">Acceso anticipado y mención en Discord.</p>
@@ -180,7 +185,7 @@
 
                             <div class="swiper-slide h-auto">
                                 <div class="card bg-dark text-white border-secondary h-100">
-                                    <img src="../assets/img/rank_png/Silver_3_Rank.png" class="card-img-top img-fluid" alt="Plata">
+                                    <img src="assets/img/rank_png/Silver_3_Rank.png" class="card-img-top img-fluid" alt="Plata">
                                     <div class="card-body">
                                         <h3 class="text-secondary">PLATA</h3>
                                         <p class="card-text">Skins personalizadas exclusivas.</p>
@@ -190,7 +195,7 @@
 
                             <div class="swiper-slide h-auto">
                                 <div class="card bg-dark text-white border-secondary h-100">
-                                    <img src="../assets/img/rank_png/Gold_3_Rank.png" class="card-img-top img-fluid" alt="Oro">
+                                    <img src="assets/img/rank_png/Gold_3_Rank.png" class="card-img-top img-fluid" alt="Oro">
                                     <div class="card-body">
                                         <h3 class="text-info">ORO</h3>
                                         <p class="card-text">Acceso VIP, créditos y sesión de Q&A.</p>
@@ -231,7 +236,7 @@
                         <div class="tab-content game-info-content p-4" id="gameTabsContent">
                             <div class="tab-pane fade show active" id="historia" role="tabpanel" aria-labelledby="historia-tab">
                                 <h2>Historia</h2>
-                                <img class="img-fluid img-opacity" src="../assets/img/game-info/botanical-bamboo-leaves.jpg" alt="Bamboo">
+                                <img class="img-fluid img-opacity" src="assets/img/game-info/botanical-bamboo-leaves.jpg" alt="Bamboo">
                                 <p>En el año 2099, los Einherjar han despertado...</p>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum tempus sagittis. Suspendisse at tortor placerat, vehicula purus eget, vulputate turpis. Vestibulum vel sem in nibh auctor interdum vitae vitae libero.</p>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum tempus sagittis. Suspendisse at tortor placerat, vehicula purus eget, vulputate turpis. Vestibulum vel sem in nibh auctor interdum vitae vitae libero.</p>
@@ -239,17 +244,17 @@
                             </div>
                             <div class="tab-pane fade" id="mecanicas" role="tabpanel" aria-labelledby="mecanicas-tab">
                                 <h2>Mecánicas de Juego</h2>
-                                <img class="img-fluid img-opacity" src="../assets/img/game-info/botanical-bamboo-leaves.jpg" alt="Bamboo">
+                                <img class="img-fluid img-opacity" src="assets/img/game-info/botanical-bamboo-leaves.jpg" alt="Bamboo">
                                 <p>Combate rítmico y hackeo en tiempo real. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             </div>
                             <div class="tab-pane fade" id="recompensas" role="tabpanel" aria-labelledby="recompensas-tab">
                                 <h2>Recompensas</h2>
-                                <img class="img-fluid img-opacity" src="../assets/img/game-info/botanical-bamboo-leaves.jpg" alt="Bamboo">
+                                <img class="img-fluid img-opacity" src="assets/img/game-info/botanical-bamboo-leaves.jpg" alt="Bamboo">
                                 <p>Desde acceso anticipado hasta skins exclusivas. Descubre todos los niveles de apoyo y sus ventajas.</p>
                             </div>
                             <div class="tab-pane fade" id="equipo" role="tabpanel" aria-labelledby="equipo-tab">
                                 <h2>El Equipo</h2>
-                                <img class="img-fluid img-opacity" src="../assets/img/game-info/botanical-bamboo-leaves.jpg" alt="Bamboo">
+                                <img class="img-fluid img-opacity" src="assets/img/game-info/botanical-bamboo-leaves.jpg" alt="Bamboo">
                                 <p>Un grupo de desarrolladores apasionados por el cyberpunk y los juegos de ritmo. Conoce a las mentes detrás del proyecto.</p>
                             </div>
                         </div>
@@ -323,10 +328,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
 
     <!-- MIS SCRIPTS -->
-    <script src="../js/scripts.js"></script>
-    <script src="../js/barra_de_progreso.js"></script>
-    <script src="../js/clock_counter.js"></script>
-    <script src="../js/animaciones_iNDEX.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/barra_de_progreso.js"></script>
+    <script src="js/clock_counter.js"></script>
+    <script src="js/animaciones_iNDEX.js"></script>
 
 </body>
 </html>

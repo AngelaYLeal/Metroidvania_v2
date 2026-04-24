@@ -41,6 +41,42 @@
     font-display: swap;
 }
 
+/*====================== LOADER =========================*/
+
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* Fondo negro puro */
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #333;
+    border-top: 5px solid #00ffcc; /* Tu color neón */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-top: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Clase para ocultar el loader */
+.loader-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
 
 /*====================== NAVBAR =========================*/
 .navbar {
@@ -692,4 +728,5 @@ footer {
         margin-top: 0 !important;
     }
 }
+
 
