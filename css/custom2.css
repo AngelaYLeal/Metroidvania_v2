@@ -49,7 +49,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #000; /* Fondo negro puro */
+    background: #000;
     z-index: 9999;
     display: flex;
     justify-content: center;
@@ -57,14 +57,23 @@
     transition: opacity 0.5s ease;
 }
 
+.loader-content {
+    /* Esto es clave para que los hijos se alineen al centro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .spinner {
     width: 50px;
     height: 50px;
     border: 5px solid #333;
-    border-top: 5px solid #00ffcc; /* Tu color neón */
+    border-top: 5px solid #00ffcc;
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin-top: 20px;
+    /* Ya no necesita margen izquierdo, el flexbox lo centra */
 }
 
 @keyframes spin {
@@ -120,7 +129,7 @@
 /* ================= FONDO ================= */
 body {
     font-family: 'Metroidvenia Simple', serif;
-    background-image: url('../assets/img/bg/wallpapersden.com_planet-in-space-4k_4200x2280.jpg');
+    background-image: url('../assets/img/bg/background-vignette-large-up.1a45baa6.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -135,6 +144,9 @@ body::before {
     z-index: -1;
 }
 
+main {
+    min-height: 100vh;
+}
 
 
 /* ================= HERO CORE ================= */
@@ -623,9 +635,62 @@ body::before {
     pointer-events: none;
 }
 
-footer {
+
+
+
+/* =============================    FOOTER   ================================ */
+.footer .col-lg-3{
+    border: none;
+}
+/*** Footer ***/
+.footer .btn.btn-link {
+    display: block;
+    margin-bottom: 10px;
+    padding: 0;
+    text-align: left;
+    color: rgba(255,255,255,.5);
+    font-weight: normal;
+    transition: .3s;
+}
+
+.footer .btn.btn-link:hover {
+    color: var(--bs-white);
+    letter-spacing: 1px;
+    box-shadow: none;
+}
+
+.footer .btn.btn-link::before {
     position: relative;
-    z-index: 1;
+    content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 10px;
+}
+
+.footer .copyright {
+    padding: 25px 0;
+    font-size: 14px;
+    border-top: 1px solid rgba(256, 256, 256, .1);
+}
+
+.footer .copyright a {
+    color: rgba(255,255,255,.5);
+}
+
+.footer .copyright a:hover {
+    color: var(--bs-white);
+}
+
+.footer .footer-menu a {
+    margin-right: 15px;
+    padding-right: 15px;
+    border-right: 1px solid rgba(255, 255, 255, .1);
+}
+
+.footer .footer-menu a:last-child {
+    margin-right: 0;
+    padding-right: 0;
+    border-right: none;
 }
 
 

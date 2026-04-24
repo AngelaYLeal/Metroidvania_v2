@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cybernetik Einherjar</title>
 
+    <script src="https://kit.fontawesome.com/818fee26fe.js" crossorigin="anonymous"></script>
+
     <link href="css/styles.css" rel="stylesheet" />
     <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
@@ -12,9 +14,11 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+
+<!-- ================================LOADER======================= -->
     <div id="loader-wrapper">
         <div class="loader-content">
-            <div class="glitch-text">INICIALIZANDO SISTEMA...</div>
+            <div class="glitch-text text-center text-white">CARGANDO SISTEMA...</div>
             <div class="spinner"></div>
         </div>
     </div>
@@ -29,11 +33,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="index.html">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link text-white fw-light" href="html/Campaña.html">CAMPAÑA</a></li>
-                <li class="nav-item"><a class="nav-link text-white fw-light" href="html/FAQ.html">FAQ</a></li>
-                <li class="nav-item"><a class="nav-link text-white fw-light" href="html/Comments.html">COMENTARIOS</a></li>
-                <li class="nav-item"><a class="nav-link text-white fw-light" href="html/AboutUs.html">SOBRE NOSOTROS</a></li>
-                <li class="nav-item"><a class="nav-link text-black fw-normal" id="reservar" href="html/Reserve.html">RESERVAR</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-light" href="Campaña.html">CAMPAÑA</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-light" href="FAQ.html">FAQ</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-light" href="Comments.html">COMENTARIOS</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-light" href="AboutUs.html">SOBRE NOSOTROS</a></li>
+                <li class="nav-item"><a class="nav-link text-black fw-normal" id="reservar" href="Reserve.html">RESERVAR</a></li>
             </ul>
         </div>
     </div>
@@ -146,7 +150,7 @@
                         <div class="text-white text-uppercase small">personas nos respaldan</div>
                     </div>
 
-                    <a href="html/Campaña.html" class="btn btn-outline-light w-100 py-3 text-uppercase fw-bold">
+                    <a href="Campaña.html" class="btn btn-outline-light w-100 py-3 text-uppercase fw-bold">
                         Donar ahora
                     </a>
 
@@ -271,9 +275,8 @@
                 <div id="disqus_thread"></div>
             </div>
         </section>
-
-
     </div>
+
     <!-- ================= DISQUS js================= -->
     <script>
         /**
@@ -311,12 +314,59 @@
 
 </main>
 
-
-    <!-- ================= FOOTER ================= -->
-    <footer class="py-5 bg-dark mt-auto">
-        <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white"> ATENCIÓN: Esta página simula la campaña de microfinanciación de un videojuego ficticio y no representa un producto real. Práctica de Multimedia, 1º GDDV- Curso 24/25 (Móstoles/Quintana), URJC. La URJC no se hace responsable del contenido expuesto por el autor.</p></div>
-    </footer>
-
+<!-- ================= FOOTER ================= -->
+<footer>
+    <div class="container-fluid bg-dark text-white-50 footer pt-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                    <a href="index.html" class="d-inline-block mb-3">
+                        <h1 class="text-white">C+I Studio</h1>
+                    </a>
+                    <p class="mb-0">Creamos mundos digitales donde la narrativa y la jugabilidad convergen. Desarrollado con pasión, diseñado para el jugador.</p></div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                    <h5 class="text-white mb-4">Contáctanos</h5>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>Calle 123, Móstoles, España</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>+34 600 000 000</p>
+                    <p><i class="fa fa-envelope me-3"></i>ci.studio.contacto@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
+                                class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
+                                class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="https://github.com/AngelaYLeal/Metroidvania_v2.git"><i
+                                class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
+                    <h5 class="text-white mb-4">Échale un ojo</h5>
+                    <a class="btn btn-link" href="AboutUs.html">Sobre nosotros</a>
+                    <a class="btn btn-link" href="privacidad.html">Política de Privacidad</a>
+                    <a class="btn btn-link" href="condiciones.html">Términos y Condiciones</a>
+                    <a class="btn btn-link" href="creditos.html">Créditos y autorías externas</a>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                    <h5 class="text-white mb-4">Cybernetik Einhearjar</h5>
+                    <a class="btn btn-link" href="Campaña.html">Campaña</a>
+                    <a class="btn btn-link" href="Comments.html">Commentarios</a>
+                    <a class="btn btn-link" href="FAQ.html">FAQ</a>
+                    <a class="btn btn-link" href="Reserve.html">Reserva</a>
+                </div>
+            </div>
+        </div>
+        <div class="container wow fadeIn" data-wow-delay="0.1s">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-12 text-center  mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="AboutUs.html">C+I Studio</a>, All Right Reserved.
+                        <br><br>
+                        ATENCIÓN: Esta página simula la campaña de microfinanciación de un videojuego ficticio y no representa un producto real. Práctica de Multimedia, 1º GDDV- Curso 24/25 (Móstoles/Quintana),URJC. La URJC no se hace responsable del contenido expuesto por el autor.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
     <!-- ================= JS ================= -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -332,6 +382,9 @@
     <script src="js/barra_de_progreso.js"></script>
     <script src="js/clock_counter.js"></script>
     <script src="js/animaciones_iNDEX.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/loader.js"></script>
+
 
 </body>
 </html>

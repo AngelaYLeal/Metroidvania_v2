@@ -13,5 +13,6 @@
     <orderEntry type="library" name="gsap" level="application" />
     <orderEntry type="library" name="@splidejs/splide" level="application" />
     <orderEntry type="library" name="@splidejs/splide-extension-auto-scroll" level="application" />
+    <orderEntry type="library" name="818fee26fe" level="application" />
   </component>
 </module>

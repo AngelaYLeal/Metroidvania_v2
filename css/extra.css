@@ -30,17 +30,25 @@
     font-display: swap;
 }
 
+body{
+    font-family: 'Arial', sans-serif;
+    background-color:white !important;
+    background-image: none;
+    color: #000000;
+}
+
+body::before {
+    background-color:white !important;
+}
+
 
 /*----------ABOUT US -----------------------*/
 
-#about-us{
-    color: white;
-}
 
 #about-us .team-card{
-    background-color: rgba(145, 140, 140, 0.7);
+    background-color:#f8f9fa;
     border-radius: 15px;
-    border: 3px solid rgba(255, 255, 255, 0.7);
+    border: 3px solid #adb5bd;
 }
 #about-us .team-card:hover{
     transform: scale(1.1);
@@ -53,14 +61,12 @@
 #about-us .separator{
   margin-left: auto;
   margin-right: auto;
-  border: 5px solid rgba(255, 255, 255,0.7);
-    border-radius: 15px;
-  width: 200px;
+  border: 1px solid rgb(0 0 0 / 29%);
+  border-radius: 15px;
   opacity: 1;
 }
 
 /*----------FFAQ -----------------------*/
-
-.faq-container{
-    font-family: 'Metroidvenia', monospace;
+.faq-container h2 button{
+    font-weight: bold;
 }
