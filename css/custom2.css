@@ -11,7 +11,7 @@
 /* ================= FUENTES ================= */
 @font-face {
     font-family: 'Metroidvenia';
-    src: url('/assets/fonts/metroidvenia.ttf') format('truetype');
+    src: url('/assets/fonts/metroidvenia.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -19,7 +19,7 @@
 
 @font-face {
     font-family: 'Metroidvenia Simple';
-    src: url('/assets/fonts/metroidvenia-normal.ttf') format('truetype');
+    src: url('/assets/fonts/metroidvenia-normal.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -35,7 +35,7 @@
 
 @font-face {
     font-family: 'Zekton';
-    src: url('/assets/fonts/Zekton-Regular.otf') format('truetype');
+    src: url('/assets/fonts/Zekton-Regular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;

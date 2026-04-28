@@ -10,12 +10,14 @@ mm.add("(min-width: 992px)", () => {
     gsap.set("#donation", { rotationX: -90, transformOrigin: "50% 100%", opacity: 0 });
     gsap.set("#game-info", { x: "100%", opacity: 0 });
     gsap.set("#comments", { y: "100%", opacity: 0, pointerEvents: "none" });
+    gsap.set("#core-loop", {y: "100%", opacity: 0 });
+    gsap.set("#core-loop .col-lg-4", { opacity: 0, scale: 0.8 });
 
     const masterTl = gsap.timeline({
         scrollTrigger: {
             trigger: "#pin-wrapper",
             start: "top top",
-            end: "+=4000",
+            end: "+=5000",
             scrub: 1,
             pin: true,
             anticipatePin: 1,
@@ -23,13 +25,32 @@ mm.add("(min-width: 992px)", () => {
         }
     });
 
-    masterTl.to(".logo-wrapper, .lema, .countdown-section", { opacity: 0, x: -100, duration: 1 }, "step1")
-        .to("#personaje-flotante", { x: "-50vw", duration: 1 }, "step1")
+    masterTl
+        // STEP 1: Hero sale, Video entra
+        .to(".logo-wrapper, .lema, .countdown-section", { opacity: 0, x: -100, duration: 1 }, "step1")
+        .to("#personaje-flotante", { x: "-50vw", duration: 1, opacity:1 }, "step1")
         .to("#cta-video", { y: "0%", opacity: 1, pointerEvents: "auto", duration: 1 }, "step1")
-        .to(["#hero", "#cta-video"], { y: "-50vh", rotationX: 90, opacity: 0, duration: 1.5 }, "step2")
+
+        // NUEVO STEP: Video sale, CORE LOOP entra y se "virtualiza"
+        .to("#cta-video", { y: "-100%", opacity: 0, duration: 2 }, "step-core")
+        .to("#personaje-flotante", { opacity: 0,x:"-80vw",scale:0.8, duration: 1, ease: "power1.inOut" }, "step-core")
+        .to("#core-loop", { y: "0%", opacity: 1, duration: 1 }, "step-core")
+        .to("#core-loop .col-lg-4", {
+            opacity: 1,
+            scale: 1,
+            stagger: 0.5, // Aparecen de uno en uno
+            duration: 1.5
+        }, "step-core+=0.5")
+
+        // STEP 2: CORE LOOP sale (modificado), Donaciones entra
+        .to("#core-loop", { y: "-50vh", rotationX: 90, opacity: 0, duration: 1 }, "step2")
         .to("#donation", { rotationX: 0, opacity: 1, pointerEvents: "auto", duration: 1.5 }, "step2")
+
+        // STEP 3: Donaciones sale, Info entra
         .to("#donation", { x: "-100%", opacity: 0, duration: 1 }, "step3")
         .to("#game-info", { x: "0%", opacity: 1, pointerEvents: "auto", duration: 1 }, "step3")
+
+        // STEP 4: Info sale, Comentarios entra
         .to("#game-info", { opacity: 0, duration: 1 }, "step4")
         .to("#comments", { y: "0%", opacity: 1, pointerEvents: "auto", duration: 1.2 }, "step4");
 
