@@ -14,50 +14,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
   <link href="css/custom2.css" rel="stylesheet" />
+  <link href="css/campanna.css" rel="stylesheet" />
 
-  <style>
-    /* FUENTE ORIGINAL / MODIFICADA */
-    @font-face {
-      font-family: 'CyberEinherjar';
-      /* Suponiendo que has modificado una fuente, la cargas aquí. */
-      src: local('Impact'); /* Placeholder: Cambia la ruta a tu fuente real ej: url('assets/fonts/MiFuente.woff2') */
-    }
 
-    .font-original {
-      font-family: 'CyberEinherjar', sans-serif;
-      letter-spacing: 2px;
-      text-shadow: 2px 2px 0px #ff00ff;
-    }
-
-    /* TÍTULO ORNAMENTADO */
-    .ornamented-title {
-      background: linear-gradient(90deg, rgba(255,0,255,0.3) 0%, rgba(0,0,0,0.8) 100%), url('assets/img/bg/pattern.png');
-      border-left: 8px solid #ff00ff;
-      border-right: 2px solid #00ffff;
-      padding: 15px 25px;
-      margin-top: 50px;
-      margin-bottom: 30px;
-      color: white;
-      text-transform: uppercase;
-      box-shadow: 0 4px 15px rgba(255, 0, 255, 0.2);
-    }
-
-    /* ESTILOS EXTRA PARA LA CAMPAÑA */
-    .stretch-goal {
-      border: 1px solid #444;
-      background: rgba(20, 20, 20, 0.8);
-      padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      transition: all 0.3s;
-    }
-    .stretch-goal.achieved {
-      border-color: #00ffff;
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
-    }
-    .text-neon-pink { color: #ff00ff; }
-    .text-neon-cyan { color: #00ffff; }
-  </style>
 </head>
 
 <body class="d-flex flex-column min-vh-100 bg-dark text-white">
@@ -102,8 +61,8 @@
       <div class="col-lg-8 mb-4">
         <h3 class="font-original text-neon-pink mb-3">Tráiler Promocional</h3>
         <div class="ratio ratio-16x9 bg-black border border-secondary">
-          <video controls poster="assets/img/bg/video-poster.jpg">
-            <source src="assets/video/trailer.mp4" type="video/mp4">
+          <video controls poster="assets/videos/miniatura.jpg">
+            <source src="assets/videos/MetroidVideo.mp4" type="video/mp4">
             Tu navegador no soporta el elemento de video.
           </video>
         </div>
@@ -111,13 +70,34 @@
 
       <div class="col-lg-4 mb-4 d-flex flex-column justify-content-center">
         <h3 class="font-original text-neon-cyan mb-3">Banda Sonora Original</h3>
-        <p class="text-secondary small">Escucha un adelanto del tema principal del juego, compuesto exclusivamente para nuestra campaña.</p>
-        <div class="p-3 bg-dark border border-secondary rounded">
-          <audio controls class="w-100">
-            <source src="assets/audio/ost_theme.mp3" type="audio/mpeg">
-            Tu navegador no soporta el elemento de audio.
-          </audio>
+        <p class="text-secondary small">Escucha las pistas oficiales compuestas para la campaña.</p>
+
+        <div class="p-3 bg-dark border border-secondary rounded mb-3" style="background-color: rgba(20,20,20,0.9) !important;">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div>
+              <h5 class="text-neon-cyan mb-0" style="font-family: 'Zekton', sans-serif;">Cybernetik Awakening</h5>
+              <small class="text-secondary">Compositor: <strong>Lele</strong></small>
+            </div>
+            <button id="btn-play-1" class="btn btn-outline-info rounded-circle" style="width: 45px; height: 45px;">
+              <i class="fa-solid fa-play" id="icon-play-1"></i>
+            </button>
+          </div>
+          <div id="waveform-1" class="w-100"></div>
         </div>
+
+        <div class="p-3 bg-dark border border-secondary rounded" style="background-color: rgba(20,20,20,0.9) !important;">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div>
+              <h5 class="text-neon-pink mb-0" style="font-family: 'Zekton', sans-serif;">Neon Blood (Combat)</h5>
+              <small class="text-secondary">Compositor: <strong>Lele</strong></small>
+            </div>
+            <button id="btn-play-2" class="btn btn-outline-danger rounded-circle" style="width: 45px; height: 45px; border-color: #ff00ff; color: #ff00ff;">
+              <i class="fa-solid fa-play" id="icon-play-2"></i>
+            </button>
+          </div>
+          <div id="waveform-2" class="w-100"></div>
+        </div>
+
       </div>
     </div>
 
@@ -210,7 +190,7 @@
           <div class="card-body">
             <h2 class="card-title" style="color: #ffd700;">Einherjar Supremo</h2>
             <h4 class="text-white mb-3">120€</h4>
-            <p class="card-text">Todo lo anterior + Edición Física Coleccionista + Figura de resina de 15cm de Aron + Diseñaremos contigo un NPC menor que aparecerá en el Bar del Sector 4.</p>
+            <p class="card-text">Todo lo anterior + Edición Física de Coleccionista + Figura de resina de 15cm de Aron + Diseñaremos contigo un NPC menor que aparecerá en el Bar del Sector 4.</p>
             <hr class="border-secondary">
             <p class="small text-secondary mb-0"><i class="fa-regular fa-calendar"></i> <strong>Entrega aprox:</strong> Marzo 2026</p>
           </div>
@@ -314,6 +294,9 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+
+<!-- WAVE SURFER JS -->
+<script src="https://unpkg.com/wavesurfer.js@7"></script>
 
 <script src="js/scripts.js"></script>
 <script src="js/barra_de_progreso.js"></script>

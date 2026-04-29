@@ -14,5 +14,6 @@
     <orderEntry type="library" name="@splidejs/splide" level="application" />
     <orderEntry type="library" name="@splidejs/splide-extension-auto-scroll" level="application" />
     <orderEntry type="library" name="818fee26fe" level="application" />
+    <orderEntry type="library" name="wavesurfer.js" level="application" />
   </component>
 </module>

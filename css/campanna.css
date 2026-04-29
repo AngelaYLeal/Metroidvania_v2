@@ -1,0 +1,69 @@
+@font-face {
+    font-family: 'Metroidvenia';
+    src: url('/assets/fonts/metroidvenia.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Metroidvenia Simple';
+    src: url('/assets/fonts/metroidvenia-normal.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Doctor Glitch';
+    src: url('/assets/fonts/Doctor Glitch.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Zekton';
+    src: url('/assets/fonts/Zekton-Regular.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/*---------------------- CAMPANNA -------------------*/
+/* FUENTE ORIGINAL / MODIFICADA */
+
+.font-original {
+    font-family: 'Metroidvenia', sans-serif;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px #ff00ff;
+}
+
+/* TÍTULO ORNAMENTADO */
+.ornamented-title {
+    background: linear-gradient(90deg, rgba(255,0,255,0.3) 0%, rgba(0,0,0,0.8) 100%), url('assets/img/bg/pattern.png');
+    border-left: 8px solid #ff00ff;
+    border-right: 2px solid #00ffff;
+    padding: 15px 25px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    color: white;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(255, 0, 255, 0.2);
+}
+
+/* ESTILOS EXTRA PARA LA CAMPAÑA */
+.stretch-goal {
+    border: 1px solid #444;
+    background: rgba(20, 20, 20, 0.8);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+.stretch-goal.achieved {
+    border-color: #00ffff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+.text-neon-pink { color: #ff00ff; }
+.text-neon-cyan { color: #00ffff; }
