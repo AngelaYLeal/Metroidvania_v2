@@ -1,4 +1,5 @@
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
 let mm = gsap.matchMedia();
 
 // ==========================================
@@ -27,7 +28,7 @@ mm.add("(min-width: 992px)", () => {
 
     masterTl
         // STEP 1: Hero sale, Video entra
-        .to(".logo-wrapper, .lema, .countdown-section", { opacity: 0, x: -100, duration: 1 }, "step1")
+        .to(".logo-wrapper, .lema, .description, .countdown-section", { opacity: 0, x: -100, duration: 1 }, "step1")
         .to("#personaje-flotante", { x: "-50vw", duration: 1, opacity:1 }, "step1")
         .to("#cta-video", { y: "0%", opacity: 1, pointerEvents: "auto", duration: 1 }, "step1")
 
@@ -35,13 +36,21 @@ mm.add("(min-width: 992px)", () => {
         .to("#cta-video", { y: "-100%", opacity: 0, duration: 2 }, "step-core")
         .to("#personaje-flotante", { opacity: 0,x:"-80vw",scale:0.8, duration: 1, ease: "power1.inOut" }, "step-core")
         .to("#core-loop", { y: "0%", opacity: 1, duration: 1 }, "step-core")
-        .to("#core-loop .col-lg-4", {
-            opacity: 1,
-            scale: 1,
-            stagger: 0.5, // Aparecen de uno en uno
-            duration: 1.5
+        .to({}, {
+            duration: 0.1, // No ocupa casi espacio en el scroll
+            onStart: () => {
+                // Hacia adelante: Animación por TIEMPO (1 segundo de separación)
+                gsap.fromTo("#core-loop .col-lg-4",
+                    { opacity: 0, scale: 0.8 },
+                    { opacity: 1, scale: 1, duration: 0.5, stagger: 0.25, overwrite: "auto", ease: "power2.out" }
+                );
+            },
+            onReverseComplete: () => {
+                // Hacia atrás: Si el usuario vuelve a subir, ocultamos las tarjetas
+                // para que la animación vuelva a funcionar si baja de nuevo.
+                gsap.to("#core-loop .col-lg-4", { opacity: 0, scale: 0.8, duration: 0.3, overwrite: "auto" });
+            }
         }, "step-core+=0.5")
-
         // STEP 2: CORE LOOP sale (modificado), Donaciones entra
         .to("#core-loop", { y: "-50vh", rotationX: 90, opacity: 0, duration: 1 }, "step2")
         .to("#donation", { rotationX: 0, opacity: 1, pointerEvents: "auto", duration: 1.5 }, "step2")
@@ -86,3 +95,26 @@ const swiper = new Swiper('.my-slider', {
     autoHeight: false,
 });
 
+
+// btn top
+
+ScrollTrigger.create({
+    trigger: "body",
+    start: "500px top",
+    onEnter: () => gsap.to("#back-to-top", { opacity: 1, visibility: "visible", duration: 0.3 }),
+    onLeaveBack: () => gsap.to("#back-to-top", { opacity: 0, visibility: "hidden", duration: 0.3 })
+});
+
+document.querySelector("#back-to-top").addEventListener("click", (e) => {
+    e.preventDefault(); // Evitamos recargas indeseadas
+
+    gsap.to(window, {
+        scrollTo: {
+            y: 0,
+            autoKill: false
+        },
+        duration: 0.6,
+        ease: "power3.inOut",
+        overwrite: "auto"
+    });
+});

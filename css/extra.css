@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Metroidvenia';
-    src: url('/assets/fonts/metroidvenia.ttf') format('truetype');
+    src: url('/assets/fonts/metroidvenia.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
