@@ -30,9 +30,58 @@
     font-display: swap;
 }
 
-/*---------------------- CAMPANNA -------------------*/
-/* FUENTE ORIGINAL / MODIFICADA */
 
+
+/*---------------------- CAMPANNA -------------------*/
+.ost-card{
+    background-color: rgba(20,20,20,0.9)
+}
+
+.ost-tittle{
+    font-family: 'Zekton', sans-serif;
+}
+
+#btn-play-1{
+    width: 45px;
+    height: 45px;
+}
+
+#btn-play-2{
+    width: 45px;
+    height: 45px;
+    border-color: #ff00ff;
+    color: #ff00ff;
+}
+
+.progress{
+    height: 25px;
+    background-color: #222;
+    border: 1px solid #555;
+}
+
+.btn-outline-basic{
+    border-color: #ff00ff;
+}
+
+.btn-outline-basic:hover{
+    background-color:  #ff00ff;
+}
+.progress-bar{
+    width: 65%;
+}
+
+.card:hover {
+    background-color: #111 !important; /* El color que pediste */
+    transform: translateY(-5px);
+}
+
+
+
+.badge {
+    top: 10px;
+    right: 10px;
+}
+/* FUENTE ORIGINAL / MODIFICADA */
 .font-original {
     font-family: 'Metroidvenia', sans-serif;
     letter-spacing: 2px;
@@ -41,7 +90,7 @@
 
 /* TÍTULO ORNAMENTADO */
 .ornamented-title {
-    background: linear-gradient(90deg, rgba(255,0,255,0.3) 0%, rgba(0,0,0,0.8) 100%), url('assets/img/bg/pattern.png');
+    background: linear-gradient(90deg, rgba(255,0,255,0.3) 0%, rgba(0,0,0,0.8) 100%);
     border-left: 8px solid #ff00ff;
     border-right: 2px solid #00ffff;
     padding: 15px 25px;
@@ -66,4 +115,4 @@
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
 }
 .text-neon-pink { color: #ff00ff; }
-.text-neon-cyan { color: #00ffff; }
+.text-neon-cyan { color: #00ffff !important; }
