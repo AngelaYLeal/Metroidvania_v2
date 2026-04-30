@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{818fee26fe, @splidejs/splide, @splidejs/splide-extension-auto-scroll, bootstrap, gsap, jquery-3.6.1, swiper, wavesurfer.js}" />
+    <file url="PROJECT" libraries="{818fee26fe, @splidejs/splide, @splidejs/splide-extension-auto-scroll, @supabase, bootstrap, gsap, jquery-3.6.1, swiper, wavesurfer.js}" />
   </component>
 </project>

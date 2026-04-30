@@ -16,5 +16,6 @@
     <orderEntry type="library" name="818fee26fe" level="application" />
     <orderEntry type="library" name="wavesurfer.js" level="application" />
     <orderEntry type="library" name="jquery-3.6.1" level="application" />
+    <orderEntry type="library" name="@supabase" level="application" />
   </component>
 </module>
