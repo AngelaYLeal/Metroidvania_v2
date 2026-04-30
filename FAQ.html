@@ -7,6 +7,10 @@
     <meta name="author" content="" />
     <title>FAQ</title>
     <script src="https://kit.fontawesome.com/818fee26fe.js" crossorigin="anonymous"></script>
+    <!-- SDK DE SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/database.js"></script>
+    <script src="js/navbar.js" ></script>
     <link rel="icon" type="image/svg+xml" href="assets/img/logos/Logo_sin_fondo.png" />
 
     <link href="css/styles.css" rel="stylesheet" />
@@ -27,18 +31,30 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container-fluid px-5">
+        <!-- Logo Izquierda -->
         <a class="navbar-brand text-white" href="index.html">
             <img src="assets/img/logos/Logo_y_nombre.png" alt="Cybernetik Einherjar" class="d-none d-lg-inline-block">
             <img src="assets/img/logos/Logo_sin_fondo.png" alt="Logo" class="d-lg-none" style="height: 40px; width: auto;">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <!-- SECCIONES DEL CENTRO -->
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="index.html">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link text-white fw-light" href="Campaña.html">CAMPAÑA</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-light" href="campaña.html">CAMPAÑA</a></li>
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="FAQ.html">FAQ</a></li>
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="comments.html">COMENTARIOS</a></li>
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="AboutUs.html">SOBRE NOSOTROS</a></li>
+            </ul>
+
+            <!-- SECCIONES DE LA DERECHA (DINÁMICAS) -->
+            <ul class="navbar-nav ms-auto align-items-center mb-2 mb-lg-0" id="nav-right-actions">
+                <!-- Esto se rellena con JavaScript -->
+                <li class="nav-item"><a class="nav-link text-white fw-light me-3" href="log_in.html">LOGIN</a></li>
                 <li class="nav-item"><a class="nav-link text-black fw-normal" id="reservar" href="Reserve.html">RESERVAR</a></li>
             </ul>
         </div>
@@ -162,7 +178,7 @@
             </div>
             <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                 <h5 class="text-white mb-4">Cybernetik Einhearjar</h5>
-                <a class="btn btn-link" href="Campaña.html">Campaña</a>
+                <a class="btn btn-link" href="campaña.html">Campaña</a>
                 <a class="btn btn-link" href="comments.html">Commentarios</a>
                 <a class="btn btn-link" href="FAQ.html">FAQ</a>
                 <a class="btn btn-link" href="Reserve.html">Reserva</a>

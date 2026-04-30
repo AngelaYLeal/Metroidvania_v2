@@ -10,7 +10,7 @@
 
     <script src="js/database.js"></script>
     <link rel="icon" type="image/svg+xml" href="assets/img/logos/Logo_sin_fondo.png" />
-
+    <script src="js/navbar.js" ></script>
     <link href="css/styles.css" rel="stylesheet" />
     <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
@@ -29,23 +29,37 @@
 <!-- ================= NAVBAR ================= -->
 <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container-fluid px-5">
+        <!-- Logo Izquierda -->
         <a class="navbar-brand text-white" href="index.html">
             <img src="assets/img/logos/Logo_y_nombre.png" alt="Cybernetik Einherjar" class="d-none d-lg-inline-block">
             <img src="assets/img/logos/Logo_sin_fondo.png" alt="Logo" class="d-lg-none" style="height: 40px; width: auto;">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <!-- SECCIONES DEL CENTRO -->
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="index.html">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link text-white fw-light" href="Campaña.html">CAMPAÑA</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-light" href="campaña.html">CAMPAÑA</a></li>
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="FAQ.html">FAQ</a></li>
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="comments.html">COMENTARIOS</a></li>
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="AboutUs.html">SOBRE NOSOTROS</a></li>
+            </ul>
+
+            <!-- SECCIONES DE LA DERECHA (DINÁMICAS) -->
+            <ul class="navbar-nav ms-auto align-items-center mb-2 mb-lg-0" id="nav-right-actions">
+                <!-- Esto se rellena con JavaScript -->
+                <li class="nav-item"><a class="nav-link text-white fw-light me-3" href="log_in.html">LOGIN</a></li>
                 <li class="nav-item"><a class="nav-link text-black fw-normal" id="reservar" href="Reserve.html">RESERVAR</a></li>
             </ul>
         </div>
     </div>
 </nav>
+
+
 <main class="flex-grow-1">
     <div class="container mt-5">
         <div class="row">
@@ -101,6 +115,39 @@
                             </div>
                         </div>
 
+                        <div class="container my-5">
+                            <h1 class="font-original text-neon-cyan mb-4">Registro de Operador</h1>
+
+                            <div class="row">
+                                <!-- Resumen Total -->
+                                <div class="col-md-4 mb-4">
+                                    <div class="p-4 bg-black border border-info rounded text-center shadow-lg">
+                                        <h4 class="text-white">Total Contribuido</h4>
+                                        <h2 class="text-neon-cyan"><span id="user-total-donated">0.00</span> €</h2>
+                                    </div>
+                                </div>
+
+                                <!-- Tabla de Historial -->
+                                <div class="col-md-8">
+                                    <h3 class="text-white border-bottom border-secondary pb-2">Historial de Sincronizaciones</h3>
+                                    <div class="table-responsive mt-3">
+                                        <table class="table table-dark table-striped table-hover border-secondary">
+                                            <thead>
+                                            <tr class="text-info">
+                                                <th>Fecha</th>
+                                                <th>Medalla</th>
+                                                <th>Nivel (Tier)</th>
+                                                <th>Cantidad</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="donations-table-body">
+                                            <tr><td colspan="3" class="text-center text-secondary">Cargando datos...</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <hr class="border-secondary">
 
                         <div class="d-flex justify-content-between align-items-center">
@@ -149,7 +196,7 @@
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                     <h5 class="text-white mb-4">Cybernetik Einhearjar</h5>
-                    <a class="btn btn-link" href="Campaña.html">Campaña</a>
+                    <a class="btn btn-link" href="campaña.html">Campaña</a>
                     <a class="btn btn-link" href="comments.html">Commentarios</a>
                     <a class="btn btn-link" href="FAQ.html">FAQ</a>
                     <a class="btn btn-link" href="Reserve.html">Reserva</a>
@@ -176,18 +223,19 @@
     let userSession = null;
 
     window.onload = async () => {
-        // 1. Verificar sesión
         userSession = await checkSession();
 
-        // Si no hay sesión, expulsar al login
         if (!userSession) {
             window.location.href = 'log_in.html';
             return;
         }
 
-        // 2. Cargar datos del perfil desde la tabla SQL
         cargarDatosPerfil();
+
+        cargarHistorialDonaciones();
     };
+
+    // --- LÓGICA DE PERFIL (Avatar, Nombre, Email) ---
 
     async function cargarDatosPerfil() {
         try {
@@ -199,13 +247,13 @@
 
             if (error) throw error;
 
-            // Inyectar datos en el HTML
-            document.getElementById('profile-username').innerText = perfil.username || "Sin nombre";
-            document.getElementById('profile-email').innerText = userSession.email;
-            document.getElementById('profile-uid').innerText = userSession.id;
-
-            if (perfil.avatar_url) {
-                document.getElementById('profile-avatar').src = perfil.avatar_url;
+            if (perfil) {
+                document.getElementById('edit-username').value = perfil.username || "";
+                document.getElementById('edit-email').value = userSession.email;
+                document.getElementById('profile-uid').innerText = "ID: " + userSession.id;
+                if (perfil.avatar_url) {
+                    document.getElementById('profile-avatar').src = perfil.avatar_url;
+                }
             }
         } catch (err) {
             console.error("Error cargando perfil:", err.message);
@@ -219,12 +267,9 @@
 
         const imgElement = document.getElementById('profile-avatar');
         const oldSrc = imgElement.src;
-
-        // Feedback visual (opcional)
         imgElement.style.opacity = "0.5";
 
         try {
-            // 1. Subir al Storage (Carpeta con el ID del usuario)
             const filePath = `${userSession.id}/avatar_${Date.now()}.jpg`;
             const { error: uploadError } = await supabaseClient.storage
                 .from('avatars')
@@ -232,12 +277,10 @@
 
             if (uploadError) throw uploadError;
 
-            // 2. Obtener URL pública
             const { data: { publicUrl } } = supabaseClient.storage
                 .from('avatars')
                 .getPublicUrl(filePath);
 
-            // 3. Actualizar tabla 'perfiles' en SQL
             const { error: updateError } = await supabaseClient
                 .from('perfiles')
                 .update({ avatar_url: publicUrl })
@@ -245,19 +288,17 @@
 
             if (updateError) throw updateError;
 
-            // 4. Actualizar imagen en la web
             imgElement.src = publicUrl;
-            alert("Sincronización de avatar completada.");
+            alert("Avatar actualizado en el sistema.");
 
         } catch (err) {
-            alert("Error en la subida: " + err.message);
+            alert("Error: " + err.message);
             imgElement.src = oldSrc;
         } finally {
             imgElement.style.opacity = "1";
         }
     }
 
-    // 1. ACTUALIZAR NOMBRE (En la tabla 'perfiles')
     async function actualizarNombre() {
         const nuevoNombre = document.getElementById('edit-username').value;
         if (!nuevoNombre) return alert("El nombre no puede estar vacío.");
@@ -268,53 +309,101 @@
             .eq('id', userSession.id);
 
         if (error) alert("Error: " + error.message);
-        else alert("Nombre de usuario actualizado en la red.");
+        else alert("Nombre de usuario actualizado.");
     }
 
-    // 2. ACTUALIZAR CORREO (En el sistema Auth de Supabase)
     async function actualizarEmail() {
         const nuevoEmail = document.getElementById('edit-email').value;
-        if (!nuevoEmail) return;
-
-        const { data, error } = await supabaseClient.auth.updateUser({ email: nuevoEmail });
-
-        if (error) {
-            alert("Error: " + error.message);
-        } else {
-            alert("Se ha enviado un mensaje de confirmación a ambos correos (el antiguo y el nuevo). El cambio no será efectivo hasta que confirmes ambos.");
-        }
+        const { error } = await supabaseClient.auth.updateUser({ email: nuevoEmail });
+        if (error) alert("Error: " + error.message);
+        else alert("Confirma el cambio en ambos correos.");
     }
 
-    // 3. ACTUALIZAR CONTRASEÑA
     async function actualizarPassword() {
         const nuevaPass = document.getElementById('edit-password').value;
-        if (nuevaPass.length < 6) return alert("La contraseña debe tener al menos 6 caracteres.");
-
-        const { data, error } = await supabaseClient.auth.updateUser({ password: nuevaPass });
-
-        if (error) {
-            alert("Error: " + error.message);
-        } else {
-            alert("Contraseña actualizada con éxito.");
-            document.getElementById('edit-password').value = ""; // Limpiar campo
+        if (nuevaPass.length < 6) return alert("Mínimo 6 caracteres.");
+        const { error } = await supabaseClient.auth.updateUser({ password: nuevaPass });
+        if (error) alert("Error: " + error.message);
+        else {
+            alert("Contraseña actualizada.");
+            document.getElementById('edit-password').value = "";
         }
     }
 
-    // MODIFICACIÓN EN cargarDatosPerfil PARA RELLENAR LOS INPUTS
-    async function cargarDatosPerfil() {
-        const { data: perfil } = await supabaseClient
-            .from('perfiles')
-            .select('*')
-            .eq('id', userSession.id)
-            .single();
+    // --- LÓGICA DE DONACIONES (Historial) ---
+    async function cargarHistorialDonaciones() {
+        const tableBody = document.getElementById('donations-table-body');
+        const totalElement = document.getElementById('user-total-donated');
 
-        if (perfil) {
-            document.getElementById('edit-username').value = perfil.username || "";
-            document.getElementById('edit-email').value = userSession.email;
-            document.getElementById('profile-uid').innerText = "ID: " + userSession.id;
-            if (perfil.avatar_url) document.getElementById('profile-avatar').src = perfil.avatar_url;
+        try {
+            const { data: donations, error } = await supabaseClient
+                .from('donations')
+                .select('*')
+                .eq('user_id', userSession.id)
+                .order('created_at', { ascending: false });
+
+            if (error) throw error;
+
+            if (!donations || donations.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="4" class="text-center text-secondary">Aún no has realizado ninguna sincronización de fondos.</td></tr>';
+                totalElement.innerText = "0.00";
+                return;
+            }
+
+            let totalAcumulado = 0;
+            tableBody.innerHTML = "";
+
+            donations.forEach(don => {
+                totalAcumulado += parseFloat(don.amount);
+                const fecha = new Date(don.created_at).toLocaleDateString('es-ES', {
+                    year: 'numeric', month: 'short', day: 'numeric'
+                });
+
+                // Obtener la imagen del diccionario o una por defecto
+                const badgeSrc = BADGE_IMAGES[don.tier_name] || "assets/img/logos/Logo_sin_fondo.png";
+
+                // Estilo visual del texto
+                let tierBadgeClass = "text-white";
+                if(don.tier_name.includes("Soldado")) tierBadgeClass = "text-neon-pink";
+                if(don.tier_name.includes("Hacker")) tierBadgeClass = "text-info";
+                if(don.tier_name.includes("Supremo")) tierBadgeClass = "text-success";
+                if(don.tier_name.includes("Comandante")) tierBadgeClass = "text-danger";
+
+                tableBody.innerHTML += `
+                    <tr>
+                        <td class="font-monospace small align-middle">${fecha}</td>
+                        <td class="align-middle text-center">
+                            <img src="${badgeSrc}" alt="${don.tier_name}"
+                                 style="width: 40px; height: 40px; object-fit: contain;"
+                                 title="${don.tier_name}"
+                                 onerror="this.src='assets/img/logos/Logo_sin_fondo.png'">
+                        </td>
+                        <td class="${tierBadgeClass} align-middle fw-bold">${don.tier_name}</td>
+                        <td class="fw-bold text-white align-middle">${parseFloat(don.amount).toFixed(2)} €</td>
+                    </tr>
+                `;
+            });
+
+            totalElement.innerText = totalAcumulado.toFixed(2);
+
+        } catch (err) {
+            console.error("Error cargando donaciones:", err.message);
+            tableBody.innerHTML = '<tr><td colspan="4" class="text-center text-danger">Error al conectar con el servidor de pagos.</td></tr>';
         }
     }
+    async function logout() {
+        await supabaseClient.auth.signOut();
+        window.location.href = 'index.html';
+    }
+
+    const BADGE_IMAGES = {
+        "Soldado Raso": "assets/img/badges/soldado.png",
+        "Hacker de Élite": "assets/img/badges/hacker.png",
+        "Einherjar Supremo": "assets/img/badges/supremo.png",
+        "Explorador de Datos": "assets/img/badges/explorador.png",
+        "Comandante de Flota": "assets/img/badges/comandante.png",
+        "Apoyo Altruista": "assets/img/badges/apoyo.png"
+    };
 </script>
 
 

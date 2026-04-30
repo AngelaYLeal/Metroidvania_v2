@@ -73,7 +73,6 @@
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin-top: 20px;
-    /* Ya no necesita margen izquierdo, el flexbox lo centra */
 }
 
 @keyframes spin {
@@ -87,44 +86,114 @@
     pointer-events: none;
 }
 
-/*====================== NAVBAR =========================*/
 .navbar {
     font-family: 'Zekton', serif;
-    background-color: transparent !important;
-    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.8) !important; /* Fondo oscuro semitransparente */
+    backdrop-filter: blur(10px); /* Efecto desenfoque moderno */
+    border-bottom: 1px solid rgba(255, 0, 255, 0.3); /* Línea sutil magenta abajo */
+    padding: 10px 0;
 }
 
 .navbar-brand img {
-    height: 100%;
-    max-height: 50px;
+    height: 50px;
     width: auto;
+    filter: drop-shadow(0 0 5px rgba(13, 202, 240, 0.5)); /* Brillo sutil al logo */
+}
+
+/* Contenedores de navegación (Centro y Derecha) */
+.navbar-nav {
+    border: none; /* Quitamos el borde grueso que encerraba todo */
+    gap: 5px;
+}
+
+/* Enlaces individuales */
+.navbar-nav .nav-link {
+    color: #fff !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    padding: 8px 15px !important;
+    border-radius: 4px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto hover con subrayado animado */
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #ff00ff;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 0, 255, 0.1);
+    color: #ff00ff !important;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 70%;
+}
+
+/* Botón Reservar Especial (Cyan Neón) */
+#reservar {
+    background-color: #0dcaf0 !important;
+    color: #000 !important;
+    font-weight: 800;
+    border: none;
+    box-shadow: 0 0 10px rgba(13, 202, 240, 0.4);
+    border-radius: 5px;
+    padding: 8px 20px !important;
+    margin-left: 10px;
+}
+
+#reservar:hover {
+    background-color: #fff !important;
+    box-shadow: 0 0 20px rgba(13, 202, 240, 0.8);
+    transform: translateY(-2px);
+}
+
+/* Avatar y Marco */
+/* Contenedor del marco (El círculo exterior) */
+.avatar-frame {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid #0dcaf0;
+    margin-left: 15px;
+    padding: 0;
+    background: #575757;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(13, 202, 240, 0.3);
+    flex-shrink: 0;
+}
+
+/* La imagen dentro del marco */
+.nav-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
-.navbar-nav {
-    border: 2px solid #ff00ff;
-    border-radius: 5px;
+/* Toggler (Hamburguesa para móvil) */
+.navbar-toggler {
+    border: 1px solid #ff00ff;
+    padding: 5px;
 }
 
-.navbar-nav .nav-item .nav-link {
-
-    padding: 5px 15px !important;
-    background-color: rgba(50, 49, 49, 0.7);
-    transition: all 0.3s ease;
+.navbar-toggler-icon {
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(280deg); /* Hace el icono magenta */
 }
-
-.navbar-nav .nav-item .nav-link:hover {
-    background-color: #ff00ff;
-}
-
-.navbar-toggler{
-    color: #ff00ff !important;
-    background-color: #ff00ff;
-}
-#reservar {
-    background-color: #ff00ff;
-}
-
 
 /* ================= FONDO ================= */
 body {
@@ -279,6 +348,7 @@ main {
             0 0 20px var(--neon-pink-dim);
 }
 
+.text-neon-cyan { color: #00ffff !important; }
 
 /* ================= COUNTDOWN ================= */
 #clock-tittle {
@@ -409,6 +479,24 @@ main {
 
 
 /* ================= DONACIONES ================= */
+/* Estilos para Badges de Contribución en los Comentarios */
+.badge-tier {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0.25em 0.5em;
+    border-radius: 4px;
+    vertical-align: middle;
+    box-shadow: 0 0 8px currentColor;
+    background: transparent;
+}
+
+.tier-Soldado { color: #ff007f; border: 1px solid #ff007f; }
+.tier-Hacker { color: #00d2ff; border: 1px solid #00d2ff; }
+.tier-Einherjar { color: #198754; border: 1px solid #198754; }
+.tier-Explorador { color: #ffc107; border: 1px solid #ffc107; }
+.tier-Comandante { color: #dc3545; border: 1px solid #dc3545; }
+.tier-Apoyo { color: #adb5bd; border: 1px solid #adb5bd; }
 
 #donation {
     display: flex; /* Activa Flexbox */

@@ -88,6 +88,37 @@
     text-shadow: 2px 2px 0px #ff00ff;
 }
 
+.bg-neon-custom {
+    /* CAPA 1: Rayas (encima) | CAPA 2: Azul (debajo) */
+    background-image:
+            linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent),
+            linear-gradient(90deg, #007bff, #00d2ff) !important;
+
+    /* IMPORTANTE: El primer valor (1rem 1rem) debe coincidir con el estándar de animación de Bootstrap */
+    background-size: 1rem 1rem, 100% 100% !important;
+    background-repeat: repeat, no-repeat !important;
+
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.5) !important;
+    border: none !important;
+}
+
+/* Forzamos la animación para que no tenga saltos */
+.progress-bar-animated {
+    animation: progress-bar-stripes 1s linear infinite !important;
+}
+
+/* Definición de la animación por si Bootstrap tiene algún conflicto */
+@keyframes progress-bar-stripes {
+    0% { background-position: 1rem 0, 0 0; }
+    100% { background-position: 0 0, 0 0; }
+}
+
+
+#percentage-label{
+    font-size: 1.1rem;
+    z-index: 10;
+}
+
 /* TÍTULO ORNAMENTADO */
 .ornamented-title {
     background: linear-gradient(90deg, rgba(255,0,255,0.3) 0%, rgba(0,0,0,0.8) 100%);
@@ -113,6 +144,14 @@
 .stretch-goal.achieved {
     border-color: #00ffff;
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+
+.contribucion{
+    border-width: 3px !important;
+}
+.border-dashed{
+    border:dashed;
 }
 .text-neon-pink { color: #ff00ff; }
 .text-neon-cyan { color: #00ffff !important; }

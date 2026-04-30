@@ -7,7 +7,11 @@
   <meta name="author" content="Angela Leal" />
   <title>Campaña - Cybernetik Einherjar</title>
   <link rel="icon" type="image/svg+xml" href="assets/img/logos/Logo_sin_fondo.png" />
+  <!-- SDK DE SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/database.js"></script>
 
+  <script src="js/navbar.js" ></script>
   <script src="https://kit.fontawesome.com/818fee26fe.js" crossorigin="anonymous"></script>
   <!-- WAVE SURFER JS -->
   <script src="https://unpkg.com/wavesurfer.js@7"></script>
@@ -31,20 +35,31 @@
   </div>
 </div>
 
-<nav class="navbar navbar-expand-lg sticky-top" >
+<nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid px-5">
+    <!-- Logo Izquierda -->
     <a class="navbar-brand text-white" href="index.html">
       <img src="assets/img/logos/Logo_y_nombre.png" alt="Cybernetik Einherjar" class="d-none d-lg-inline-block">
       <img src="assets/img/logos/Logo_sin_fondo.png" alt="Logo" class="d-lg-none" style="height: 40px; width: auto;">
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <!-- SECCIONES DEL CENTRO -->
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link text-white fw-light" href="index.html">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link text-white fw-light" href="Campaña.html">CAMPAÑA</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-light" href="campaña.html">CAMPAÑA</a></li>
         <li class="nav-item"><a class="nav-link text-white fw-light" href="FAQ.html">FAQ</a></li>
         <li class="nav-item"><a class="nav-link text-white fw-light" href="comments.html">COMENTARIOS</a></li>
         <li class="nav-item"><a class="nav-link text-white fw-light" href="AboutUs.html">SOBRE NOSOTROS</a></li>
+      </ul>
+
+      <!-- SECCIONES DE LA DERECHA (DINÁMICAS) -->
+      <ul class="navbar-nav ms-auto align-items-center mb-2 mb-lg-0" id="nav-right-actions">
+        <li class="nav-item"><a class="nav-link text-white fw-light me-3" href="log_in.html">LOGIN</a></li>
         <li class="nav-item"><a class="nav-link text-black fw-normal" id="reservar" href="Reserve.html">RESERVAR</a></li>
       </ul>
     </div>
@@ -59,7 +74,7 @@
       <h1 class="display-4 font-original">CAMPAÑA DE FINANCIACIÓN</h1>
       <p class="lead text-secondary">Ayúdanos a hacer realidad el universo de Cybernetik Einherjar.</p>
     </div>
-
+    <!-- ============ TRAILER ======= --->
 
     <div class="container mb-5">
       <div class="row justify-content-center">
@@ -75,6 +90,8 @@
       </div>
     </div>
 
+
+    <!-- ============ BANDA SONORA ======= --->
     <div class="container mb-5">
       <div class="row">
         <div class="col-12">
@@ -115,9 +132,9 @@
       </div>
   </div>
 
+    <!-- ======================= INFORMACION ADICIONAL - DESCRIPCION  ==================-->
     <div class="row mb-5">
 
-      <!-- ======================= INFORMACION ADICIONAL - DESCRIPCION  ==================-->
       <div class="col-12">
 
         <h2 class="ornamented-title font-original">El Proyecto</h2>
@@ -140,27 +157,55 @@
       <div class="col-12">
         <h2 class="ornamented-title font-original">Objetivos (Stretch Goals)</h2>
 
-        <div class="progress mb-4" >
-          <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65% Financiado</div>
+        <div class="cyber-panel p-4 mb-5 shadow-lg bg-dark border border-secondary">
+          <div class="d-flex justify-content-between align-items-end mb-3">
+            <div class="text-white fw-bold lh-sm text-uppercase">
+              <!-- Texto más grande como pediste -->
+              <span style="font-size: 1.4rem;">Founding Progress</span><br>
+              <span class="text-white-50" style="font-size: 1.1rem;">Financiación Actual</span>
+            </div>
+            <div class="text-neon-cyan fw-bold h3 mb-0">
+              RECAUDADO: <span id="current-amount">5.000,00</span> €
+            </div>
+          </div>
+
+          <!-- Barra -->
+          <div class="bg-black border border-secondary rounded-pill overflow-hidden" style="height: 2.5rem;">
+            <div id="funding-bar"
+                 class="h-100 progress-bar progress-bar-striped progress-bar-animated bg-neon-custom d-flex align-items-center justify-content-center"
+                 role="progressbar"
+                 style="width: 0%; transition: width 2s cubic-bezier(0.22, 1, 0.36, 1);">
+              <!-- Texto dentro de la barra -->
+              <span id="percentage-label" class="text-black text-white fw-bold">0%</span>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between text-white-50 mt-2 fw-bold" style="font-size: 1rem;">
+            <span>0€</span>
+            <span>5.000€</span>
+            <span>10.000€</span>
+            <span>15.000€</span>
+            <span>20.000€</span>
+          </div>
         </div>
 
         <div class="stretch-goal achieved">
-          <h4 class="text-success"><i class="fa-solid fa-check-circle"></i> Meta Base: 15.000€ (Juego Financiado)</h4>
+          <h4 class="text-success"><i class="fa-solid fa-check-circle"></i> Meta Base: 5.000€ (Juego Financiado)</h4>
           <p class="mb-0 text-secondary">Desarrollo completo del juego base para PC, con 5 biomas principales y banda sonora original.</p>
         </div>
 
         <div class="stretch-goal">
-          <h4 class="text-neon-cyan"><i class="fa-solid fa-lock"></i> Objetivo 1: 30.000€</h4>
+          <h4 class="text-neon-cyan"><i class="fa-solid fa-lock"></i> Objetivo 1: 10.000€</h4>
           <p class="mb-0 text-secondary"><strong>Nuevo Modo "Boss Rush":</strong> Se añadirá un modo arena donde podrás enfrentarte a todos los jefes del juego de forma consecutiva con un temporizador online.</p>
         </div>
 
         <div class="stretch-goal">
-          <h4 class="text-neon-cyan"><i class="fa-solid fa-lock"></i> Objetivo 2: 50.000€</h4>
+          <h4 class="text-neon-cyan"><i class="fa-solid fa-lock"></i> Objetivo 2: 15.000€</h4>
           <p class="mb-0 text-secondary"><strong>Expansión "Niflheim Suburbs":</strong> Un bioma completamente nuevo con mecánicas de congelación criogénica, 3 nuevos tipos de enemigos y un jefe oculto.</p>
         </div>
 
         <div class="stretch-goal">
-          <h4 class="text-neon-cyan"><i class="fa-solid fa-lock"></i> Objetivo 3: 100.000€</h4>
+          <h4 class="text-neon-cyan"><i class="fa-solid fa-lock"></i> Objetivo 3: 20.000€</h4>
           <p class="mb-0 text-secondary"><strong>Ports para Consolas:</strong> Desarrollo y optimización para lanzar el juego simultáneamente en Nintendo Switch, PlayStation 5 y Xbox Series X/S.</p>
         </div>
       </div>
@@ -173,54 +218,114 @@
       </div>
 
       <div class="col-md-4 mb-5">
-        <div class="card h-100 bg-dark border-secondary text-white">
+        <div class="card contribucion h-100 bg-dark border-secondary text-white">
 
           <!-- --------- BASICO ---------->
-          <div class="card-body">
+          <div class="card-body ">
             <h2 class="card-title text-neon-pink">Soldado Raso</h2>
-            <h4 class="text-white mb-3">15€</h4>
+            <h4 class="text-white mb-3 fw-bold">5€</h4>
             <p class="card-text">Una copia digital de Cybernetik Einherjar para Steam (PC). Tu nombre aparecerá en los créditos finales del juego como patrocinador de nivel base.</p>
             <hr class="border-secondary">
             <p class="small text-secondary mb-0"><i class="fa-regular fa-calendar"></i> <strong>Entrega aprox:</strong> Diciembre 2025</p>
           </div>
           <div class="card-footer bg-transparent border-top-0">
-            <a class="btn btn-outline-basic text-neon-pink w-100" href="#!">Patrocinar</a>
+            <a class="btn btn-outline-basic text-neon-pink w-100" onclick="initiateDonation('Soldado Raso',5)" href="#!">Patrocinar</a>
           </div>
         </div>
       </div>
 
       <!-- --------- MEDIO ---------->
       <div class="col-md-4 mb-5">
-        <div class="bg-dark card h-100 border-info text-white" >
+        <div class="bg-dark contribucion card h-100 border-info text-white" >
           <div class="card-body">
             <div class="badge bg-info text-dark position-absolute" >MÁS POPULAR</div>
             <h2 class="card-title text-info">Hacker de Élite</h2>
-            <h4 class="text-white mb-3">35€</h4>
+            <h4 class="text-white mb-3 fw-bold">10€</h4>
             <p class="card-text">Copia digital del juego + Acceso a la Beta Cerrada + Artbook Digital de 100 páginas en PDF con bocetos descartados + Banda Sonora original en FLAC.</p>
             <hr class="border-secondary">
             <p class="small text-secondary mb-0"><i class="fa-regular fa-calendar"></i> <strong>Entrega aprox:</strong> Septiembre 2025 (Beta)</p>
           </div>
           <div class="card-footer bg-transparent border-top-0">
-            <a class="btn btn-info w-100" href="#!">Patrocinar</a>
+            <a class="btn btn-info w-100" onclick="initiateDonation('Hacker de Élite', 10)" href="#!">Patrocinar</a>
           </div>
         </div>
       </div>
 
       <!-- --------- TOP TIER ---------->
       <div class="col-md-4 mb-5">
-        <div class="card h-100 bg-dark border-secondary text-white">
+        <div class="card contribucion h-100 bg-dark border-success text-white">
           <div class="card-body">
-            <h2 class="card-title text-warning">Einherjar Supremo</h2>
-            <h4 class="text-white mb-3">120€</h4>
+            <h2 class="card-title text-success">Einherjar Supremo</h2>
+            <h4 class="text-white mb-3 fw-bold">20€</h4>
             <p class="card-text">Todo lo anterior + Edición Física de Coleccionista + Figura de resina de 15cm de Aron + Diseñaremos contigo un NPC menor que aparecerá en el Bar del Sector 4.</p>
             <hr class="border-secondary">
             <p class="small text-secondary mb-0"><i class="fa-regular fa-calendar"></i> <strong>Entrega aprox:</strong> Marzo 2026</p>
           </div>
           <div class="card-footer bg-transparent border-top-0">
-            <a class="btn btn-outline-warning w-100" href="#!">Patrocinar</a>
+            <a class="btn btn-outline-success w-100" onclick="initiateDonation('Einherjar Supremo', 35)" href="#!">Patrocinar</a>
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="row gx-4 gx-lg-5">
+
+      <!-- --------- TIER 50€ ---------->
+      <div class="col-md-4 mb-5">
+        <div class="card contribucion h-100 bg-dark border-warning text-white shadow-info">
+          <div class="card-body">
+            <h2 class="card-title text-warning text-info">Explorador de Datos</h2>
+            <h4 class="text-white mb-3">50€</h4>
+            <p class="card-text">Todo lo del nivel Hacker + Tu nombre tallado en un monumento conmemorativo dentro del Nexo Central del juego + Acceso al canal exclusivo de desarrollo en Discord.</p>
+            <hr class="border-secondary">
+            <p class="small text-secondary mb-0"><i class="fa-regular fa-calendar"></i> <strong>Entrega aprox:</strong> Diciembre 2025</p>
+          </div>
+          <div class="card-footer bg-transparent border-top-0">
+            <a class="btn btn-outline-warning w-100 fw-bold" onclick="initiateDonation('Explorador de Datos', 50)" href="#!">Patrocinar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- --------- TIER 100€ ---------->
+      <div class="col-md-4 mb-5">
+        <div class="card contribucion h-100 bg-dark border-danger border-5 text-white">
+          <div class="card-body">
+            <h2 class="card-title text-danger">Comandante de Flota</h2>
+            <h4 class="text-white mb-3">100€</h4>
+            <p class="card-text">Todo lo anterior + Camiseta exclusiva de C+I Studio + Póster digital en alta resolución firmado por el equipo de arte + Tu avatar digitalizado como un holograma decorativo.</p>
+            <hr class="border-secondary">
+            <p class="small text-secondary mb-0"><i class="fa-regular fa-calendar"></i> <strong>Entrega aprox:</strong> Marzo 2026</p>
+          </div>
+          <div class="card-footer bg-transparent border-top-0">
+            <a class="btn btn-outline-danger w-100 fw-bold" onclick="initiateDonation('Comandante de Flota', 100)" href="#!">Patrocinar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- --------- APORTACIÓN LIBRE (SIN RECOMPENSA) ---------->
+      <div class="col-md-4 mb-5">
+        <div class="card contribucion h-100 bg-dark border-secondary text-white border-dashed">
+          <div class="card-body text-center d-flex flex-column justify-content-center">
+            <h3 class="card-title text-white">Apoyo Altruista</h3>
+            <p class="small text-secondary text-white">Apoya porque crees en el proyecto.</p>
+
+            <div class="input-group mb-3 px-4">
+              <span class="input-group-text bg-transparent border-secondary text-white">€</span>
+              <input type="number" id="custom-donation-amount" class="form-control bg-dark border-secondary text-white text-center" placeholder="Pledge amount" min="1">
+            </div>
+
+            <p class="card-text x-small text-white">Apoya el proyecto sin esperar nada a cambio, simplemente porque te resulta interesante.</p>
+            <hr class="border-secondary">
+            <p class="small text-secondary mb-0"><i class="fa-solid fa-heart"></i> <strong>Muchas gracias por tu aportación</strong></p>
+          </div>
+          <div class="card-footer bg-transparent border-top-0">
+            <a class="btn btn-outline-secondary w-100 text-white"
+               onclick="initiateDonation('Apoyo Altruista', document.getElementById('custom-donation-amount').value)"
+               href="#!">Donar ahora</a>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- ======================= EUIPO ==================-->
@@ -293,6 +398,39 @@
   </div>
 </main>
 
+<!-- MODAL: OPCIONES DE DONACIÓN (Login o Anónimo) -->
+<div class="modal fade" id="donationAuthModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark border-info text-white">
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title text-neon-cyan font-original">Verificación Requerida</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p class="text-white-50">Para registrar tu contribución en tu perfil, necesitas iniciar sesión. También puedes donar de forma anónima (tu progreso no se guardará en tu cuenta).</p>
+        <div class="d-grid gap-3 mt-4">
+          <a href="log_in.html" class="btn btn-info fw-bold text-uppercase">Iniciar Sesión / Registro</a>
+          <button id="btn-anon-donate" class="btn btn-outline-secondary fw-bold text-uppercase">Donar Anónimamente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: AGRADECIMIENTO -->
+<div class="modal fade" id="thankYouModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark border-success text-white">
+      <div class="modal-body text-center py-5">
+        <i class="fa-solid fa-circle-check display-1 text-success mb-3 shadow-neon-success"></i>
+        <h2 class="font-original text-white">¡Sincronización Completa!</h2>
+        <p class="text-white-50">Gracias por tu apoyo al proyecto Cybernetik Einherjar.</p>
+        <button type="button" class="btn btn-success px-5 mt-3" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="container-fluid bg-dark text-white-50 footer pt-5 border-top border-secondary">
     <div class="container py-5">
@@ -322,7 +460,7 @@
         </div>
         <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
           <h5 class="text-white mb-4">Cybernetik Einhearjar</h5>
-          <a class="btn btn-link" href="Campaña.html">Campaña</a>
+          <a class="btn btn-link" href="campaña.html">Campaña</a>
           <a class="btn btn-link" href="comments.html">Commentarios</a>
           <a class="btn btn-link" href="FAQ.html">FAQ</a>
           <a class="btn btn-link" href="Reserve.html">Reserva</a>
@@ -342,6 +480,8 @@
     </div>
   </div>
 </footer>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
