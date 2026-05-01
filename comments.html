@@ -172,11 +172,31 @@
 <script>
     let currentUser = null;
 
-    window.onload = async () => {
-        currentUser = await checkSession();
-        gestionarInterfazUsuario();
-        cargarComentarios();
+    // Diccionario de imágenes de insignias
+    const BADGE_IMAGES = {
+        "Soldado Raso": "assets/img/badges/soldado.png",
+        "Hacker de Élite": "assets/img/badges/hacker.png",
+        "Einherjar Supremo": "assets/img/badges/supremo.png",
+        "Explorador de Datos": "assets/img/badges/explorador.png",
+        "Comandante de Flota": "assets/img/badges/comandante.png",
+        "Apoyo Altruista": "assets/img/badges/apoyo.png"
     };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            // 1. Verificamos la identidad en la base de datos
+            currentUser = await checkSession();
+        } catch (error) {
+            console.error("Error de sincronización con el servidor:", error);
+            currentUser = null;
+        }
+
+        // 2. Actualizamos la interfaz (mostrar form o pedir login)
+        gestionarInterfazUsuario();
+
+        // 3. Descargamos las transmisiones (comentarios)
+        cargarComentarios();
+    });
 
     function gestionarInterfazUsuario() {
         const actionsNav = document.getElementById('nav-user-actions');
@@ -197,40 +217,63 @@
         }
     }
 
-    // --- NUEVA FUNCIÓN PARA OBTENER LA MEDALLA ---
-    async function getUserBadgeHTML(userId) {
+    // --- NUEVA LÓGICA UNIFICADA DE INSIGNIAS ---
+    async function renderBadgesHTML(userId) {
         if (!userId) return '';
 
-        const { data, error } = await supabaseClient // Usamos supabaseClient para ser consistentes
-            .from('donations')
-            .select('tier_name')
-            .eq('user_id', userId)
-            .order('created_at', { ascending: false })
-            .limit(1);
+        try {
+            // Consultamos categoría y donaciones en paralelo para mayor velocidad
+            const [perfilRes, donacionRes] = await Promise.all([
+                supabaseClient.from('perfiles').select('categoria').eq('id', userId).single(),
+                supabaseClient.from('donations').select('tier_name').eq('user_id', userId).order('created_at', { ascending: false }).limit(1)
+            ]);
 
-        if (error || !data || data.length === 0) return '';
+            const categoria = perfilRes.data?.categoria || 'usuario';
+            const tier = (donacionRes.data && donacionRes.data.length > 0) ? donacionRes.data[0].tier_name : null;
 
-        const tier = data[0].tier_name;
-        let cssClass = 'tier-Apoyo';
+            let html = '';
 
-        if (tier.includes('Soldado')) cssClass = 'tier-Soldado';
-        else if (tier.includes('Hacker')) cssClass = 'tier-Hacker';
-        else if (tier.includes('Einherjar')) cssClass = 'tier-Einherjar';
-        else if (tier.includes('Explorador')) cssClass = 'tier-Explorador';
-        else if (tier.includes('Comandante')) cssClass = 'tier-Comandante';
+            // 1. Badge de Desarrollador (Rojo Neón)
+            if (categoria === 'developer') {
+                html += `
+                <span class="badge bg-danger border border-light shadow-neon-red me-1" style="font-size: 0.6rem;">
+                    <i class="fa-solid fa-code me-1"></i>DEV
+                </span>`;
+            }
 
-        return `<span class="badge badge-tier ${cssClass} ms-2" style="font-size: 0.6rem;"><i class="fa-solid fa-medal me-1"></i>${tier}</span>`;
+            // 2. Badge de Contribuidor (Con imagen según Tier)
+            if (tier) {
+                const imgSrc = BADGE_IMAGES[tier] || "assets/img/logos/Logo_sin_fondo.png";
+                html += `
+                <span class="badge border border-info text-info me-1 bg-black" style="font-size: 0.6rem;">
+                    <img src="${imgSrc}" style="width:12px; margin-right:4px; vertical-align: middle;"> ${tier}
+                </span>`;
+            }
+
+            // 3. Badge de Infiltrado (Gente que no ha donado ni es dev)
+            if (categoria === 'usuario' && !tier) {
+                html += `
+                <span class="badge border border-secondary text-secondary opacity-75" style="font-size: 0.55rem;">
+                    <i class="fa-solid fa-user-secret me-1"></i>Infiltrado
+                </span>`;
+            }
+
+            return html;
+        } catch (err) {
+            console.error("Error renderizando insignias:", err);
+            return '';
+        }
     }
 
-    // --- FUNCIÓN GENERAR HTML ---
+    // --- FUNCIÓN GENERAR HTML DE COMENTARIO ---
     async function generarHTMLComentario(comentario, todosLosComentarios, nivel = 0) {
         const fecha = new Date(comentario.created_at).toLocaleString('es-ES', {
             day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'
         });
         const fotoUrl = comentario.perfiles?.avatar_url || 'assets/img/logos/Logo_sin_fondo.png';
 
-        // Obtenemos la medalla
-        const badgeHTML = await getUserBadgeHTML(comentario.usuario_id);
+        // Inyectamos las nuevas insignias según el rango y donación
+        const badgeHTML = await renderBadgesHTML(comentario.usuario_id);
 
         const hijos = todosLosComentarios.filter(c => c.parent_id === comentario.id);
         hijos.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
@@ -238,7 +281,6 @@
         const indentClass = nivel > 0 ? 'ms-4 ms-md-5 border-start border-info ps-3 mt-3' : 'mb-4';
         const cardClass = nivel > 0 ? 'bg-black border-secondary' : 'bg-dark border-secondary';
 
-        // Generamos el HTML de los hijos esperando a que cada uno termine (Promise.all)
         const hijosHTMLArray = await Promise.all(hijos.map(hijo => generarHTMLComentario(hijo, todosLosComentarios, nivel + 1)));
         const hijosHTML = hijosHTMLArray.join('');
 
@@ -249,7 +291,7 @@
                         <div class="d-flex align-items-center flex-wrap">
                             <img src="${fotoUrl}" class="rounded-circle border border-info me-2" style="width: ${nivel === 0 ? '30px' : '22px'}; height: ${nivel === 0 ? '30px' : '22px'}; object-fit: cover;">
                             <strong class="text-white small" style="font-size: 0.8rem;">${comentario.usuario}</strong>
-                            ${badgeHTML} <!-- INYECCIÓN DE LA MEDALLA -->
+                            <div class="ms-1 d-inline-flex align-items-center">${badgeHTML}</div>
                         </div>
                         <span class="text-secondary" style="font-size: 0.65rem;">${fecha}</span>
                     </div>
@@ -277,29 +319,26 @@
         `;
     }
 
-        async function cargarComentarios() {
-            const listaHTML = document.getElementById('comments-list');
-
-            const { data, error } = await supabaseClient
-                .from('comentarios')
-                .select(`
+    async function cargarComentarios() {
+        const listaHTML = document.getElementById('comments-list');
+        const { data, error } = await supabaseClient
+            .from('comentarios')
+            .select(`
                 id, usuario, contenido, created_at, parent_id, usuario_id,
                 perfiles (avatar_url)
             `)
-                .order('created_at', { ascending: false });
+            .order('created_at', { ascending: false });
 
-            if (error) { console.error("Error:", error); return; }
-            if (!data || data.length === 0) {
-                listaHTML.innerHTML = `<div class="text-center text-secondary py-4">No hay transmisiones archivadas.</div>`;
-                return;
-            }
-
-            const raices = data.filter(c => !c.parent_id);
-
-            // Procesamos todas las raíces asíncronamente
-            const listaCompletaHTML = await Promise.all(raices.map(comentario => generarHTMLComentario(comentario, data)));
-            listaHTML.innerHTML = listaCompletaHTML.join('');
+        if (error) { console.error("Error:", error); return; }
+        if (!data || data.length === 0) {
+            listaHTML.innerHTML = `<div class="text-center text-secondary py-4">No hay transmisiones archivadas.</div>`;
+            return;
         }
+
+        const raices = data.filter(c => !c.parent_id);
+        const listaCompletaHTML = await Promise.all(raices.map(comentario => generarHTMLComentario(comentario, data)));
+        listaHTML.innerHTML = listaCompletaHTML.join('');
+    }
 
     async function publicarComentario() {
         const mensajeInput = document.getElementById('comentario-input');
@@ -307,7 +346,6 @@
         const btn = document.querySelector('#comment-form-container button');
 
         if (!mensaje) return;
-
         btn.disabled = true;
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Transmitiendo...';
 
@@ -327,7 +365,6 @@
                 }]);
 
             if (error) throw error;
-
             mensajeInput.value = '';
             await cargarComentarios();
         } catch (error) {
@@ -358,7 +395,6 @@
                 .eq('id', currentUser.id)
                 .single();
 
-            // CORRECCIÓN: Usar .insert en lugar de .select
             const { error } = await supabaseClient
                 .from('comentarios')
                 .insert([{
@@ -369,7 +405,6 @@
                 }]);
 
             if (error) throw error;
-
             await cargarComentarios();
         } catch (error) {
             alert("Error al responder: " + error.message);

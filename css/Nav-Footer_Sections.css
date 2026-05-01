@@ -48,16 +48,16 @@ h1{
 
 
 #about-us .team-card{
-    background-color:#e5d8d8d9;
+    background-color:#dee2e6;
     border-radius: 15px;
-    border: 3px solid #adb5bd;
+    border: 3px solid rgba(13, 202, 240, 0.73);
 }
 #about-us .team-card:hover{
     transform: scale(1.1);
 }
 
 #about-us .text-primary{
-    color: #084298 !important;
+    color: #0d6efd !important;
 }
 
 #about-us .separator{
@@ -147,4 +147,13 @@ h1{
     box-shadow: 0 0 10px #00f2ff;
 }
 
-/* ============= SIGN UP ======================*/
+/* ============= CRÉDITOS Y AUTORÍAS ======================*/
+
+#credits td{
+    background-color: white ;
+    color: #000000;
+}
+
+#credits tr:hover{
+    background-color: rgb(188, 4, 156);
+}

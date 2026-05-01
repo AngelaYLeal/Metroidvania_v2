@@ -44,3 +44,31 @@ async function insertarComentario(nuevoNombre, nuevoMensaje) {
         location.reload();
     }
 }
+
+
+// --- FUNCIONES DE RANGO Y ESTADO ---
+
+async function getUserFullStatus(userId) {
+    if (!userId) return null;
+
+    // Obtener categoría del perfil
+    const { data: perfil } = await supabaseClient
+        .from('perfiles')
+        .select('categoria, username')
+        .eq('id', userId)
+        .single();
+
+    // Obtener última donación
+    const { data: donaciones } = await supabaseClient
+        .from('donations')
+        .select('tier_name')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false })
+        .limit(1);
+
+    return {
+        categoria: perfil?.categoria || 'usuario',
+        tier: (donaciones && donaciones.length > 0) ? donaciones[0].tier_name : null,
+        username: perfil?.username || 'Sujeto Anónimo'
+    };
+}
