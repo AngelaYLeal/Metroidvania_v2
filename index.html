@@ -44,7 +44,7 @@
             <!-- SECCIONES DEL CENTRO -->
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="index.html">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link text-white fw-light" href="campaña.html">CAMPAÑA</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-light" href="campanna.html">CAMPAÑA</a></li>
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="FAQ.html">FAQ</a></li>
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="comments.html">COMENTARIOS</a></li>
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="AboutUs.html">SOBRE NOSOTROS</a></li>
@@ -54,6 +54,7 @@
             <ul class="navbar-nav ms-auto align-items-center mb-2 mb-lg-0" id="nav-right-actions">
                 <!-- Esto se rellena con JavaScript -->
                 <li class="nav-item"><a class="nav-link text-white fw-light me-3" href="log_in.html">LOGIN</a></li>
+                <li class="nav-item>"><a href="sign_up.html" class="nav-link text-white fw-light me-3">SIGN UP</a></li>
                 <li class="nav-item"><a class="nav-link text-black fw-normal" id="reservar" href="Reserve.html">RESERVAR</a></li>
             </ul>
         </div>
@@ -207,12 +208,18 @@
 
                 <!-- SECCION DE BARRA DE DONACIONES IZQUIERDA--->
                 <div class="col-12 col-md-5 col-lg-4 mb-4 mb-lg-0 donation-left">
+
+                    <div class=" text-center mb-4 ">
+                        <div class="text-white h5">¡Ayúdanos a desarrollar nuestro videojuego y recibe recompensas a cambio!</div>
+                    </div>
+
                     <div class="cyber-panel p-4 rounded">
+
                         <div class="d-flex justify-content-between align-items-end mb-3">
                             <div class="text-white small fw-bold lh-1 text-uppercase">
-                                Funding Progress<br><span class="text-white-50">Financiación</span>
+                                Funding Progress<br>
                             </div>
-                            <div class="text-neon fw-bold">RECAUDADO: <span id="current-amount">3210.00</span> €</div>
+                            <div class="text-neon-pink fw-bold">RECAUDADO: <span id="current-amount">3210.00</span> €</div>
                         </div>
 
                         <div class="bg-dark rounded-pill overflow-hidden" style="height: 1rem;">
@@ -229,68 +236,131 @@
                     </div>
 
                     <div class="my-4 text-center text-lg-start">
-                        <div class="display-6 text-neon" id="backers-count">64</div>
+                        <div class="display-6 text-neon-pink " id="backers-count">64</div>
                         <div class="text-white text-uppercase small">personas nos respaldan</div>
                     </div>
 
-                    <a href="campaña.html" class="btn btn-outline-light w-100 py-3 text-uppercase fw-bold">
+                    <a href="campanna.html" class="btn btn-outline-light w-100 py-3 text-uppercase fw-bold">
                         Donar ahora
                     </a>
-
-                    <aside id="donation-sidebar">
-                        <div class="splide" aria-label="Nombres de equipo">
-                            <div class="splide__track">
-                                <ul class="splide__list">
-                                    <li class="splide__slide">NeonValkyrie_99</li>
-                                    <li class="splide__slide">ByteBaron_X</li>
-                                    <li class="splide__slide">CyberNomad_42</li>
-                                    <li class="splide__slide">GlitchWitch_88</li>
-                                    <li class="splide__slide">EchoRunner_77</li>
-                                    <li class="splide__slide">CircuitSamurai</li>
-                                    <li class="splide__slide">ZeroCool_H4x0r</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </aside>
-
                 </div>
 
-                <!-- seecion de campanna -->
-                <div class="col-12 col-md-5 col-lg-4 mb-4 mb-lg-0 donation-right    ">
-                    <div class="swiper my-slider " >
+                <!-- sección de campaña- CONTRICUCIONES -->
+                <div class="col-12 col-md-5 col-lg-4 mb-4 mb-lg-0 donation-right">
+                    <div class="swiper my-slider shadow-lg rounded">
                         <div class="swiper-wrapper">
 
+                            <!-- NIVEL 1: SOLDADO RASO -->
                             <div class="swiper-slide h-auto">
-                                <div class="card bg-dark text-white border-secondary h-100">
-                                    <img src="assets/img/rank_png/Bronze_3_Rank.png" class="card-img-top img-fluid" alt="Bronce">
-                                    <div class="card-body">
-                                        <h3 class="text-warning">BRONCE</h3>
-                                        <p class="card-text">Acceso anticipado y mención en Discord.</p>
+                                <div class="card card-cyberpunk h-100 tier-Soldado">
+                                    <div class="rank-icon-container">
+                                        <img src="assets/img/badges/soldado.png" class="rank-icon" alt="Soldado Raso">
+                                    </div>
+                                    <div class="card-body d-flex flex-column pt-0">
+                                        <h2 class="text-white font-original mb-1 text-center">SOLDADO RASO</h2>
+                                        <h4 class="text-white h2 mb-3 text-center">5<span class="small">€</span></h4>
+                                        <p class="card-text text-secondary small flex-grow-1 text-center">
+                                            Una copia digital de Cybernetik Einherjar para Steam (PC). Tu nombre aparecerá en los créditos finales como patrocinador de nivel base.
+                                        </p>
+                                        <div class="mt-3 p-2 bg-black-75 rounded-1 border-left-soldado">
+                                            <small class=" font-monospace d-block text-center" style="font-size: 0.75rem;">SISTEMA: ENTREGA DIC 2025</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
+                            <!-- NIVEL 2: HACKER DE ÉLITE (MÁS POPULAR) -->
                             <div class="swiper-slide h-auto">
-                                <div class="card bg-dark text-white border-secondary h-100">
-                                    <img src="assets/img/rank_png/Silver_3_Rank.png" class="card-img-top img-fluid" alt="Plata">
-                                    <div class="card-body">
-                                        <h3 class="text-secondary">PLATA</h3>
-                                        <p class="card-text">Skins personalizadas exclusivas.</p>
+                                <div class="card card-cyberpunk h-100 tier-Hacker position-relative overflow-hidden">
+                                    <!-- Cinta de popularidad -->
+                                    <div class="popular-ribbon">MÁS POPULAR</div>
+
+                                    <div class="rank-icon-container">
+                                        <img src="assets/img/badges/hacker.png" class="rank-icon" alt="Hacker de Élite">
+                                    </div>
+                                    <div class="card-body d-flex flex-column pt-0">
+                                        <h2 class="text-white font-original mb-1 text-center">HACKER DE ÉLITE</h2>
+                                        <h4 class="text-white h2 mb-3 text-center">10<span class="small">€</span></h4>
+                                        <p class="card-text text-secondary small flex-grow-1 text-center">
+                                            Copia digital + <strong>Acceso a Beta Cerrada</strong> + Artbook Digital (100 págs) + Banda Sonora original en calidad FLAC.
+                                        </p>
+                                        <div class="mt-3 p-2 bg-black-75 rounded-1 border-left-info">
+                                            <small class="font-monospace d-block text-center" style="font-size: 0.75rem;">SISTEMA: SEPT 2025 (BETA)</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
+                            <!-- NIVEL 3: EINHERJAR SUPREMO -->
                             <div class="swiper-slide h-auto">
-                                <div class="card bg-dark text-white border-secondary h-100">
-                                    <img src="assets/img/rank_png/Gold_3_Rank.png" class="card-img-top img-fluid" alt="Oro">
-                                    <div class="card-body">
-                                        <h3 class="text-info">ORO</h3>
-                                        <p class="card-text">Acceso VIP, créditos y sesión de Q&A.</p>
+                                <div class="card card-cyberpunk h-100 tier-Einherjar">
+                                    <div class="rank-icon-container">
+                                        <img src="assets/img/badges/supremo.png" class="rank-icon" alt="Einherjar Supremo">
+                                    </div>
+                                    <div class="card-body d-flex flex-column pt-0">
+                                        <h2 class="font-original text-white mb-1 text-center">EINHERJAR SUPREMO</h2>
+                                        <h4 class="text-white h2 mb-3 text-center">20<span class="small">€</span></h4>
+                                        <p class="card-text text-secondary small flex-grow-1 text-center">
+                                            Todo lo anterior + <strong>Edición Física</strong> + Figura de resina (15cm) de Aron + Diseño de un NPC menor en el Bar del Sector 4.
+                                        </p>
+                                        <div class="mt-3 p-2 bg-black-75 rounded-1 border-left-success">
+                                            <small class="font-monospace d-block text-center" style="font-size: 0.75rem;">SISTEMA: MARZO 2026</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- NIVEL 4: EXPLORADOR DE DATOS -->
+                            <div class="swiper-slide h-auto">
+                                <div class="card card-cyberpunk h-100 tier-Explorador">
+                                    <div class="rank-icon-container">
+                                        <img src="assets/img/badges/explorador.png" class="rank-icon" alt="Explorador de Datos">
+                                    </div>
+                                    <div class="card-body d-flex flex-column pt-0">
+                                        <h2 class="text-white font-original mb-1 text-center">EXPLORADOR DE DATOS</h2>
+                                        <h4 class="text-white h2 mb-3 text-center">50<span class="small">€</span></h4>
+                                        <p class="card-text text-secondary small flex-grow-1 text-center">
+                                            Nivel Hacker + Tu nombre tallado en un <strong>monumento conmemorativo</strong> en el Nexo Central + Acceso a canal exclusivo Discord.
+                                        </p>
+                                        <div class="mt-3 p-2 bg-black-75 rounded-1 border-left-warning">
+                                            <small class="font-monospace d-block text-center" style="font-size: 0.75rem;">SISTEMA: DIC 2025</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- NIVEL 5: COMANDANTE DE FLOTA -->
+                            <div class="swiper-slide h-auto">
+                                <div class="card card-cyberpunk h-100 tier-Comandante border-2">
+                                    <div class="rank-icon-container">
+                                        <img src="assets/img/badges/comandante.png" class="rank-icon" alt="Comandante de Flota">
+                                    </div>
+                                    <div class="card-body d-flex flex-column pt-0">
+                                        <h2 class="text-white font-original  mb-1 text-center">COMANDANTE</h2>
+                                        <h4 class="text-white h2 mb-3 text-center">100<span class="small">€</span></h4>
+                                        <p class="card-text text-secondary small flex-grow-1 text-center">
+                                            Todo lo anterior + Camiseta + Póster firmado + <strong>Tu avatar digitalizado</strong> como un holograma decorativo in-game.
+                                        </p>
+                                        <div class="mt-3 p-2 bg-black-75 rounded-1 border-left-danger">
+                                            <small class="font-monospace d-block text-center" style="font-size: 0.75rem;">SISTEMA: MARZO 2026</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- NIVEL 6: APOYO ALTRUISTA -->
+                            <div class="swiper-slide h-auto">
+                                <div class="card card-cyberpunk h-100 border-secondary border-dashed">
+                                    <div class="card-body d-flex flex-column justify-content-center align-items-center p-4">
+                                        <i class="fa-solid fa-heart text-danger mb-3" style="font-size: 5.5rem;"></i>
+                                        <h2 class="text-white font-original mb-2 text-center">APOYO ALTRUISTA</h2>
+                                        <p class="card-text text-secondary small text-center mb-4">Apoya porque crees en el proyecto sin esperar nada a cambio. ¡Gracias!</p>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
+                        <!-- Botones de navegación -->
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-button-next"></div>
                     </div>
@@ -350,12 +420,75 @@
             </div>
         </section>
 
-        <!-- ================= disqus ================= -->
-        <section id="comments" class="disqus py-4 text-white">
-            <div class="container">
-                <h2 class="text-center fw-bold">Déjanos un comentario con tu opinión. ¡Estamos encantados de leeros!</h2>
-                <br>
-                <div id="disqus_thread"></div>
+        <!-- ================= comentarios ================= -->
+        <section id="comments" class=" py-4 text-white">
+            <div class="container position-relative mt-lg-5">
+
+                <!-- Encabezado de Agradecimiento -->
+                <div class="text-center mt-lg-5 mb-5 wow fadeIn">
+                    <h2 class="text-neon-pink fw-bold text-uppercase display-5">Muchas gracias por leernos</h2>
+                    <p class="lead font-monospace text-info">
+                        Vuestro apoyo es la energía que mantiene vivo este proyecto.
+                    </p>
+                </div>
+
+                <!-- Call To Action -->
+                <div class="row justify-content-center mb-5">
+                    <div class="col-md-8 text-center bg-black border border-secondary p-4 rounded shadow-lg">
+                        <h4 class="mb-3">¿Tienes datos que aportar?</h4>
+                        <p class=" text-white-50 small mb-4">
+                            Buscamos personas dispuestas a dar feedback honesto para optimizar la experiencia de Cybernetik Einhearjar.
+                            Cada transmisión nos ayuda a forjar un mejor videojuego.
+                        </p>
+                        <a href="comments.html" class="btn btn-lg btn-cyber-terminal px-5 py-3 text-uppercase fw-bold shadow-neon-blue">
+                            <i class="fa-solid fa-comments me-2"></i>Ir a la terminal de feedback
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tarjetas de Comentarios Destacados -->
+                <h5 class="text-center mb-4 font-monospace ">>> TRANSMISIONES RECIENTES DE USUARIOS</h5>
+                <div class="row g-4" id="featured-comments">
+                    <!-- Tarjeta 1 -->
+                    <div class="col-md-4">
+                        <div class="card bg-dark border-info border-opacity-25 h-100 p-3 hover-glow">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="assets/img/logos/Logo_sin_fondo.png" width="35" class="rounded-circle border border-info me-2">
+                                <div>
+                                    <div class="fw-bold text-white small">User_Alpha</div>
+                                    <div class="text-info x-small" style="font-size: 0.6rem;">Hacker de Élite</div>
+                                </div>
+                            </div>
+                            <p class="card-text small fst-italic text-light">"La narrativa me tiene enganchado. No puedo esperar a ver cómo evoluciona el sistema de combate."</p>
+                        </div>
+                    </div>
+                    <!-- Tarjeta 2 -->
+                    <div class="col-md-4">
+                        <div class="card bg-dark border-info border-opacity-25 h-100 p-3 hover-glow">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="assets/img/logos/Logo_sin_fondo.png" width="35" class="rounded-circle border border-info me-2">
+                                <div>
+                                    <div class="fw-bold text-white small">Cyber_Valkyrie</div>
+                                    <div class="text-info x-small" style="font-size: 0.6rem;">Soldado Raso</div>
+                                </div>
+                            </div>
+                            <p class="card-text small fst-italic text-light">"El diseño artístico es de otro planeta. Definitivamente merece la pena el apoyo a la campaña."</p>
+                        </div>
+                    </div>
+                    <!-- Tarjeta 3 -->
+                    <div class="col-md-4">
+                        <div class="card bg-dark border-info border-opacity-25 h-100 p-3 hover-glow">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="assets/img/logos/Logo_sin_fondo.png" width="35" class="rounded-circle border border-info me-2">
+                                <div>
+                                    <div class="fw-bold text-white small">Ronin_Coder</div>
+                                    <div class="text-info x-small" style="font-size: 0.6rem;">Apoyo Altruista</div>
+                                </div>
+                            </div>
+                            <p class="card-text small fst-italic text-light">"¡Seguid así! Necesitamos más juegos con esta personalidad y riesgo visual."</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
@@ -402,7 +535,7 @@
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                     <h5 class="text-white mb-4">Cybernetik Einhearjar</h5>
-                    <a class="btn btn-link" href="campaña.html">Campaña</a>
+                    <a class="btn btn-link" href="campanna.html">Campaña</a>
                     <a class="btn btn-link" href="comments.html">Commentarios</a>
                     <a class="btn btn-link" href="FAQ.html">FAQ</a>
                     <a class="btn btn-link" href="Reserve.html">Reserva</a>
@@ -430,8 +563,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollToPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+
 
     <!-- MIS SCRIPTS -->
     <script src="js/scripts.js"></script>

@@ -31,22 +31,24 @@
 }
 
 body{
-    font-family: 'Arial', sans-serif;
-    background-color:white !important;
-    background-image: none;
-    color: #000000;
+    color: white;
 }
 
-body::before {
-    background-color:white !important;
+h1{
+    font-family: 'Metroidvenia', sans-serif;
 }
 
+.font-original {
+    font-family: 'Metroidvenia', sans-serif;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px #ff00ff;
+}
 
 /*----------ABOUT US -----------------------*/
 
 
 #about-us .team-card{
-    background-color:#f8f9fa;
+    background-color:#e5d8d8d9;
     border-radius: 15px;
     border: 3px solid #adb5bd;
 }
@@ -55,20 +57,94 @@ body::before {
 }
 
 #about-us .text-primary{
-    color: #0916ff !important;
+    color: #084298 !important;
 }
 
 #about-us .separator{
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid rgb(0 0 0 / 29%);
+  border: 1px solid rgba(115, 110, 110, 0.76);
   border-radius: 15px;
   opacity: 1;
 }
+
+#about-us h3{
+    color: black;
+}
+
 
 /*----------FFAQ -----------------------*/
 .faq-container h2 button{
     font-weight: bold;
 }
 
+.faq-container {
+    padding: 2rem;
 
+}
+
+.accordion-item {
+    background-color: #0a0a0a !important;
+    border: 1px solid #333 !important;
+    margin-bottom: 1rem;
+    border-radius: 0 !important; /* Bordes rectos para estilo más industrial */
+    transition: all 0.3s ease;
+}
+
+.accordion-item:hover {
+    border-color: #00f2ff !important;
+    box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+}
+
+
+.accordion-button {
+    background-color: #0a0a0a !important;
+    color: #ffffff !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 1.5rem;
+}
+
+
+.accordion-button:not(.collapsed) {
+    color: #00f2ff !important;
+    background-color: #111 !important;
+    border-bottom: 1px solid #00f2ff;
+}
+
+
+.accordion-button::after {
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(175deg); /* Cambia la flecha a color cian */
+}
+
+
+.accordion-body {
+    background-color: #050505;
+    color: #cccccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    border-top: 1px solid rgba(0, 210, 255, 0.1);
+}
+
+
+.accordion-body strong {
+    color: #ff007f;
+    text-shadow: 0 0 5px rgba(255, 0, 127, 0.3);
+}
+
+
+.accordion-item:has(.show) {
+    border-left: 4px solid #00f2ff !important;
+}
+
+.faq-container::-webkit-scrollbar {
+    width: 5px;
+}
+.faq-container::-webkit-scrollbar-thumb {
+    background: #00f2ff;
+    box-shadow: 0 0 10px #00f2ff;
+}
+
+/* ============= SIGN UP ======================*/

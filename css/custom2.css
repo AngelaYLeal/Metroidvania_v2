@@ -41,6 +41,16 @@
     font-display: swap;
 }
 
+
+.font-original {
+    font-family: 'Metroidvenia', sans-serif;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px #ff00ff;
+}
+
+.text-neon-pink{
+    color: var(--neon-pink);
+}
 /*====================== LOADER =========================*/
 
 #loader-wrapper {
@@ -97,7 +107,6 @@
 .navbar-brand img {
     height: 50px;
     width: auto;
-    filter: drop-shadow(0 0 5px rgba(13, 202, 240, 0.5)); /* Brillo sutil al logo */
 }
 
 /* Contenedores de navegación (Centro y Derecha) */
@@ -140,6 +149,13 @@
 .navbar-nav .nav-link:hover::after {
     width: 70%;
 }
+
+/* Mantiene el estilo cuando la clase .active está presente */
+.navbar-nav .nav-link.active {
+    background-color: rgba(255, 0, 255, 0.1);
+    color: #ff00ff !important;
+}
+
 
 /* Botón Reservar Especial (Cyan Neón) */
 #reservar {
@@ -487,31 +503,30 @@ main {
     padding: 0.25em 0.5em;
     border-radius: 4px;
     vertical-align: middle;
-    box-shadow: 0 0 8px currentColor;
     background: transparent;
 }
 
-.tier-Soldado { color: #ff007f; border: 1px solid #ff007f; }
-.tier-Hacker { color: #00d2ff; border: 1px solid #00d2ff; }
-.tier-Einherjar { color: #198754; border: 1px solid #198754; }
-.tier-Explorador { color: #ffc107; border: 1px solid #ffc107; }
-.tier-Comandante { color: #dc3545; border: 1px solid #dc3545; }
-.tier-Apoyo { color: #adb5bd; border: 1px solid #adb5bd; }
+.tier-Soldado { color: #bc049c; border: 2px solid #bc049c; }
+.tier-Hacker { color: #00d2ff; border: 2px solid #00d2ff; }
+.tier-Einherjar { color: #198754; border: 2px solid #198754; }
+.tier-Explorador { color: #ffc107; border: 2px solid #ffc107; }
+.tier-Comandante { color: #dc3545; border: 2px solid #dc3545; }
+.tier-Apoyo { color: #adb5bd; border: 2px solid #adb5bd; }
 
 #donation {
-    display: flex; /* Activa Flexbox */
-    justify-content: center; /* Centra horizontalmente el contenido */
-    align-items: center; /* Centra verticalmente */
-    min-height: 100vh; /* Asegura que la sección ocupe el alto disponible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     height: auto;
     padding: 40px 20px;
-    gap: 20px; /* Espacio entre el panel y el slider */
-    overflow: visible; /* Evita que se corte el contenido */
+    gap: 20px;
+    overflow: visible;
 }
 
 /* Ajuste específico para el contenedor de columnas de Bootstrap */
 #donation .row {
-    justify-content: center; /* Centra el contenido si usas sistema de rejilla */
+    justify-content: center;
     width: 100%;
 }
 .cyber-panel {
@@ -575,6 +590,94 @@ main {
 
 /* --- CONFIGURACIÓN DEL SWIPER --- */
 
+
+.donation-left{
+    background: rgba(163, 163, 163, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(50px);
+    padding: 50px;
+    border: 1px solid white;
+    border-radius: 15px;
+
+    box-shadow: 0 0 20px rgba(235, 0, 194, 0.3);
+}
+.campaign-card {
+    display: flex ;
+    flex-direction: row;
+    background: rgba(26, 26, 26, 0.95);
+    border: 1px solid #444;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img-top {
+    height: 60%;
+    object-fit: contain;
+    width: 100%;
+    object-position: center;
+    background-color: white;
+    padding: 1em;
+}
+
+.card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.card-cyberpunk {
+    background-color: #0b0b0b !important;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.rank-icon-container {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+.rank-icon {
+    max-width: 200px;
+    height: auto;
+}
+.popular-ribbon {
+    position: absolute;
+    top: 35px;
+    right: -35px;
+    background: #0dcaf0;
+    color: #000;
+    font-size: 0.65rem;
+    font-weight: bold;
+    padding: 4px 40px;
+    transform: rotate(45deg);
+    z-index: 10;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(13, 202, 240, 0.4);
+}
+
+.bg-black-75 { background-color: rgba(0, 0, 0, 0.75); }
+.border-left-soldado { border-left: 3px solid #bc049c; }
+.border-left-info { border-left: 3px solid #0dcaf0; }
+.border-left-warning { border-left: 3px solid #ffc107; }
+.border-left-success { border-left: 3px solid #2cd85f; }
+.border-left-secondary { border-left: 3px solid #6c757d; }
+.border-left-danger { border-left: 3px solid #dc3545; }
+.border-dashed { border-style: dashed !important; }
+
+/* Estilo de los botones de navegación de Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+    color: grey !important;
+    font-weight: bold;
+}
+
+
+
 /* Las tarjetas del Swiper */
 #donation .row {
     justify-content: center;
@@ -602,78 +705,29 @@ main {
         gap: 10rem;
     }
 }
-
-.donation-left{
-    background: rgba(163, 163, 163, 0.1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(50px);
-    padding: 50px;
-    border: 1px solid white;
-    border-radius: 15px;
-
-    box-shadow: 0 0 20px rgba(235, 0, 194, 0.3);
-}
-.campaign-card {
-    display: flex ;
-    flex-direction: row; /* Layout horizontal por defecto */
-    background: rgba(26, 26, 26, 0.95);
-    border: 1px solid #444;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-
-.card {
-    display: flex;
-    flex-direction: column;
-}
-
-.card-img-top {
-    height: 60%;
-    object-fit: contain; /* Recorta la imagen para que no se deforme */
-    width: 100%;
-    object-position: center;
-    background-color: white;
-    padding: 1em;
-}
-
-.card-body {
-    flex: 1; /* El resto del espacio lo ocupa el texto */
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-}
-
-/* Estilo de los botones de navegación de Swiper */
-.swiper-button-next,
-.swiper-button-prev {
-    color: grey !important;
-    font-weight: bold;
-}
 /* ================= INDEX ================= */
 #sticky-index {
     position: sticky;
     top: 100px;
 }
 #sticky-index .list-group-item {
-    background-color: transparent !important; /* Quita el fondo */
-    border: none !important;                   /* Quita los bordes de los ítems */
-    color: #ffffff;                            /* Asegura que el texto sea visible */
-    padding: 10px 0;                           /* Espaciado limpio */
+    background-color: transparent !important;
+    border: none !important;
+    color: #ffffff;
+    padding: 10px 0;
     text-decoration: none;
     transition: color 0.3s;
 }
 
-/* Color al pasar el ratón (opcional) */
+
 #sticky-index .list-group-item:hover {
     color: #eb00c2; /* Color neón */
 }
 
-/* 2. Añadir la línea divisoria vertical */
-/* Aplicamos el borde a la columna que contiene el índice */
+
 .col-lg-3 {
-    border-right: 1px solid #444; /* Línea gris divisoria */
-    padding-right: 20px;          /* Espacio entre la línea y el índice */
+    border-right: 1px solid #444;
+    padding-right: 20px;
 }
 
 
@@ -730,6 +784,7 @@ main {
 }
 .img-opacity{
     opacity: 1;
+    pointer-events: none;
 }
 
 
@@ -751,7 +806,7 @@ main {
     border-radius: 12px;
 }
 
-/* Al pasar el ratón por encima, puedes cambiar el color del thumb (opcional) */
+/* Al pasar el ratón por encima */
 #gameTabsContent::-webkit-scrollbar-thumb:hover {
     background: rgba(204, 198, 198, 0.81);
 }
@@ -771,26 +826,98 @@ main {
     color: #f0f0f0;
 }
 
-/* ================= DISQUS ================= */
-.disqus {
-    background: rgba(255, 255, 255);
-    backdrop-filter: blur(8px);
+/* ================ AGRADECIMIENTOS Y FEEDBACK ================== */
 
+#comments{
+    position: relative;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0);
 }
-#comments {
+
+.btn-cyber-terminal {
+    background-color: transparent;
+    color: #00f2ff;
+    border: 2px solid #00f2ff;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-shadow: 0 0 5px rgba(0, 242, 255, 0.5);
+}
+
+
+.btn-cyber-terminal:hover {
+    background-color: #00f2ff;
+    color: #000;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00f2ff,
+    0 0 40px rgba(0, 242, 255, 0.4),
+    inset 0 0 10px rgba(0, 0, 0, 0.2);
+    text-shadow: none;
+}
+
+.btn-cyber-terminal::before {
+    content: "";
     position: absolute;
     top: 0;
-    left: 0;
+    left: -100%;
     width: 100%;
-    height: 100vh;
-    color: #000000 !important;
-    opacity: 0;
-    transform: translateY(100%);
-    pointer-events: none;
+    height: 100%;
+    background: linear-gradient(
+            120deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent
+    );
+    transition: all 0.6s;
+}
+
+.btn-cyber-terminal:hover::before {
+    left: 100%;
 }
 
 
 
+
+
+
+
+
+
+/* ==========================================================
+   ==  APARTADOS DEL NAVBAR DE PROFILE , LOGIN Y SIGN UP   ==
+   ==========================================================
+ */
+
+
+/* ================= seccion SIGN UP  ================= */
+#sign_up .card-header{
+    border-bottom: 1px solid var(--neon-pink);
+}
+
+#sign_up .input-group-text{
+    color: white;
+}
+
+/* ================= seccion LOGIN  ================= */
+
+#login .card-header{
+    border-bottom: 1px solid var(--neon-pink);
+}
+
+/* ================= seccion PROFILE  ================= */
+
+#donations-table-body img {
+    filter: drop-shadow(0 0 5px rgba(0, 210, 255, 0.5));
+    transition: transform 0.3s ease;
+}
+
+#donations-table-body tr:hover img {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.align-middle {
+    vertical-align: middle !important;
+}
 
 /* =============================    FOOTER   ================================ */
 .footer .col-lg-3{
@@ -848,6 +975,21 @@ main {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ADAPTIVE*/
 @media (min-width:1024px){
     .text-izq{
@@ -866,10 +1008,10 @@ main {
      }
 
      .nav-tabs {
-         flex-wrap: nowrap !important; /* Evita que se bajen a la siguiente línea */
-         overflow-x: auto;            /* Permite scroll horizontal si no caben */
+         flex-wrap: nowrap !important;
+         overflow-x: auto;
          overflow-y: hidden;
-         white-space: nowrap;         /* Mantiene los botones en una sola fila */
+         white-space: nowrap;
          padding-bottom: 10px;
      }
 
@@ -903,8 +1045,8 @@ main {
         position: relative !important;
         width: 100% !important;
         height: auto !important;
-        opacity: 1 !important; /* Anulamos el opacity: 0 de GSAP [cite: 254-257] */
-        transform: none !important; /* Eliminamos rotaciones de cubo o desplazamientos */
+        opacity: 1 !important;
+        transform: none !important;
         pointer-events: auto !important;
         display: block !important;
         margin-bottom: 2rem;
@@ -918,14 +1060,14 @@ main {
          transform: none !important;
          opacity: 1 !important;
          height: auto !important;
-         min-height: 50vh; /* O el tamaño que desees */
+         min-height: 50vh;
          margin: 20px 0;
          visibility: visible !important;
          pointer-events: auto !important;
      }
      #video-modal.is-active {
-         display: block !important; /* Cambiamos a block para flujo normal */
-         position: relative !important; /* Ya no es fixed, se queda en el flujo */
+         display: block !important;
+         position: relative !important;
          background: transparent !important;
          padding: 10px;
          margin-top: 20px;
@@ -935,7 +1077,7 @@ main {
      #video-player {
          width: 100% !important;
          height: auto !important;
-         aspect-ratio: 16 / 9; /* Mantiene la proporción perfecta */
+         aspect-ratio: 16 / 9;
          max-height: none !important;
      }
     /* 4. Ajustes específicos para secciones que GSAP oculta por defecto */

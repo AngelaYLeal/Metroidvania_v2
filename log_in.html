@@ -44,7 +44,7 @@
       <!-- SECCIONES DEL CENTRO -->
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link text-white fw-light" href="index.html">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link text-white fw-light" href="campaña.html">CAMPAÑA</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-light" href="campanna.html">CAMPAÑA</a></li>
         <li class="nav-item"><a class="nav-link text-white fw-light" href="FAQ.html">FAQ</a></li>
         <li class="nav-item"><a class="nav-link text-white fw-light" href="comments.html">COMENTARIOS</a></li>
         <li class="nav-item"><a class="nav-link text-white fw-light" href="AboutUs.html">SOBRE NOSOTROS</a></li>
@@ -54,21 +54,58 @@
       <ul class="navbar-nav ms-auto align-items-center mb-2 mb-lg-0" id="nav-right-actions">
         <!-- Esto se rellena con JavaScript -->
         <li class="nav-item"><a class="nav-link text-white fw-light me-3" href="log_in.html">LOGIN</a></li>
+        <li class="nav-item>"><a href="sign_up.html" class="nav-link text-white fw-light me-3">SIGN UP</a></li>
         <li class="nav-item"><a class="nav-link text-black fw-normal" id="reservar" href="Reserve.html">RESERVAR</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<main>
-  <div class="container mt-5">
-    <h2 class="text-white">Acceso a la Red</h2>
-    <input type="email" id="email" class="form-control bg-dark text-white mb-2" placeholder="Correo">
-    <input type="password" id="password" class="form-control bg-dark text-white mb-3" placeholder="Contraseña">
-  <div class="text-end">
-    <button onclick="iniciarSesion()" class="btn btn-outline-danger ">Acceder</button>
-  </div>
+<main class="flex-grow-1 d-flex align-items-center justify-content-center py-5">
+  <div class="container" id="login">
+    <div class="row justify-content-center">
+      <div class="col-md-5 col-lg-4">
 
+        <!-- Tarjeta de Acceso -->
+        <div class="card bg-black border-secondary shadow-lg">
+          <div class="card-header bg-dark py-3">
+            <h3 class="text-white mb-0 text-center text-uppercase font-original" >
+              Inicio de sesión
+            </h3>
+          </div>
+          <div class="card-body p-4 p-md-5">
+
+            <div class="mb-3">
+              <label class="text-white small text-uppercase mb-1">Correo</label>
+              <div class="input-group">
+                <span class="input-group-text bg-dark border text-white"><i class="fa-solid fa-envelope"></i></span>
+                <input type="email" id="email" class="form-control bg-dark text-white border" placeholder="usuario@cybernetik.com">
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label class="text-white small text-uppercase mb-1">Contraseña</label>
+              <div class="input-group">
+                <span class="input-group-text bg-dark border text-white"><i class="fa-solid fa-key"></i></span>
+                <input type="password" id="password" class="form-control bg-dark text-white border" placeholder="••••••••">
+              </div>
+            </div>
+
+            <button onclick="iniciarSesion()" class="btn btn-outline-info w-100 py-3 fw-bold text-uppercase">
+              <i class="fa-solid fa-right-to-bracket me-2"></i>Verificar Identidad
+            </button>
+
+            <div class="text-center mt-4">
+              <span class="text-secondary small">¿No tienes un perfil creado?</span>
+              <a href="sign_up.html" class="text-neon-pink small text-decoration-none ms-1">Crear Cuenta</a>
+            </div>
+          </div>
+          <div class="card-footer  border-top bg-transparent text-center">
+            <small class="text-muted font-monospace" style="font-size: 0.65rem;">LEVEL: RESTRICTED ACCESS AREA</small>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
 
@@ -104,7 +141,7 @@
         </div>
         <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
           <h5 class="text-white mb-4">Cybernetik Einhearjar</h5>
-          <a class="btn btn-link" href="campaña.html">Campaña</a>
+          <a class="btn btn-link" href="campanna.html">Campaña</a>
           <a class="btn btn-link" href="comments.html">Commentarios</a>
           <a class="btn btn-link" href="FAQ.html">FAQ</a>
           <a class="btn btn-link" href="Reserve.html">Reserva</a>

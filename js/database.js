@@ -2,8 +2,6 @@
 const SUPABASE_URL = 'https://wysyfbjvxpwyvexzekxw.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_jpLKViC0dad4RTwHUC28Ng_uNqaASDW';
 
-// CORRECCIÓN: Usamos 'supabase.createClient' pero lo asignamos a una constante
-// que no choque con el nombre de la librería si la cargas vía CDN.
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // --- FUNCIONES DE AUTENTICACIÓN ---
@@ -30,11 +28,10 @@ async function cargarComentarios() {
         console.error("Error al obtener datos:", error);
         return [];
     }
-    return data; // Devolvemos los datos para que el HTML los maneje
+    return data;
 }
 
 async function insertarComentario(nuevoNombre, nuevoMensaje) {
-    // Si tienes RLS activado, esto solo funcionará si la política lo permite
     const { error } = await supabaseClient
         .from('comentarios')
         .insert([{ usuario: nuevoNombre, contenido: nuevoMensaje }]);
@@ -44,6 +41,6 @@ async function insertarComentario(nuevoNombre, nuevoMensaje) {
         alert("Error de seguridad o de red al publicar.");
     } else {
         alert("¡Transmisión guardada en la red!");
-        location.reload(); // Recarga simple para ver el nuevo comentario
+        location.reload();
     }
 }

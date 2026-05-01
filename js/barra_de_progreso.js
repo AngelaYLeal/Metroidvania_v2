@@ -53,7 +53,6 @@ async function initiateDonation(tier, amount) {
     pendingDonation.tier = tier;
     pendingDonation.amount = parseFloat(amount);
 
-    // Usamos el método de sesión de tu database.js
     const user = await checkSession();
 
     if (user) {
@@ -65,7 +64,7 @@ async function initiateDonation(tier, amount) {
 }
 
 async function processDonation(tier, amount, userId) {
-    // Construimos el objeto respetando tus columnas: tier_name y amount
+
     const donationData = {
         tier_name: tier,
         amount: parseFloat(amount)
@@ -76,18 +75,15 @@ async function processDonation(tier, amount, userId) {
         donationData.user_id = userId;
     }
 
-    // Insertamos en la tabla 'donations'
     const { error } = await supabaseClient.from('donations').insert([donationData]);
 
     if (error) {
         console.error("Error en Supabase:", error.message);
         alert("Error al registrar la contribución: " + error.message);
     } else {
-        // Lanzamos el modal de éxito (id en tu HTML)
         const successModal = new bootstrap.Modal(document.getElementById('thankYouModal'));
         successModal.show();
 
-        // Actualizamos la barra visualmente sin recargar
         updateProgressBar();
     }
 }
