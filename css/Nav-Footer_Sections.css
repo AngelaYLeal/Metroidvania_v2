@@ -72,6 +72,19 @@ h1{
     color: black;
 }
 
+.developer-link {
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.developer-link:hover .team-card {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(13, 202, 240, 0.5); /* Brillo cyan */
+    border-color: #0dcaf0 !important;
+}
+.developer-link:hover h3 {
+    color: #0dcaf0 !important;
+    text-shadow: 0 0 5px #0dcaf0;
+}
 
 /*----------FFAQ -----------------------*/
 .faq-container h2 button{
@@ -156,4 +169,129 @@ h1{
 
 #credits tr:hover{
     background-color: rgb(188, 4, 156);
+}
+
+.table > :not(caption) > * > *{
+    background-color: #c72cb6;
+}
+
+
+/* ==================== COMENTARIOS ========================== */
+/* Paleta de colores suavizada */
+:root {
+    --cyber-dark-bg: #0f111a;        /* Fondo principal menos agresivo que el negro */
+    --cyber-card-bg: #161b22;        /* Fondo de tarjetas */
+    --cyber-header-bg: #1c2128;      /* Encabezados */
+    --cyber-border: #30363d;         /* Bordes discretos */
+    --cyber-accent: #ffffff;         /* Cyan para detalles */
+    --cyber-text-main: #c9d1d9;      /* Texto principal gris claro (menos fatiga visual) */
+    --cyber-text-muted: #8b949e;     /* Texto secundario */
+}
+
+
+/* Estilo de la tarjeta principal de escritura */
+#comments .comment-card {
+    background-color: var(--cyber-card-bg);
+    border: 1px solid var(--cyber-border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+
+#comments .comment-card .form-control {
+    background-color: #000000 !important;
+    border: 1px solid var(--cyber-border);
+    color: var(--cyber-text-main);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#comments .comment-card .form-control:focus {
+    background-color: #171717;
+    border-color: var(--cyber-accent);
+    box-shadow: 0 0 8px rgba(13, 202, 240, 0.2);
+    color: white;
+}
+
+/* Lista de comentarios */
+#comments #comments-list .card {
+    border-radius: 6px;
+    border: 1px solid var(--cyber-border);
+    transition: transform 0.2s ease;
+}
+
+
+#comments #comments-list .card-header {
+    background-color: var(--cyber-header-bg) !important;
+    border-bottom: 1px solid var(--cyber-border) !important;
+}
+
+
+/* Manejo de hilos/respuestas (indentación) */
+#comments .border-start.border-info {
+    border-left: 2px solid var(--cyber-accent) !important;
+    opacity: 0.6;
+    margin-left: 1.5rem !important; /* Ajuste para móvil */
+}
+
+@media (min-width: 768px) {
+    .border-start.border-info {
+        margin-left: 3rem !important;
+    }
+}
+
+
+#comments .btn-link.text-info {
+    color: var(--cyber-accent) !important;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+#comments .btn-link.text-info:hover {
+    opacity: 0.8;
+    text-decoration: underline !important;
+}
+
+
+#comments .badge {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.35em 0.65em;
+}
+
+.shadow-neon-red {
+    box-shadow: 0 0 10px rgba(220, 53, 69, 0.4);
+}
+
+#comments .border-start.border-info {
+    border-left: 2px solid var(--cyber-accent) !important;
+    opacity: 1 !important; /* Ahora es totalmente opaco */
+    margin-left: 1.5rem !important;
+}
+
+
+#comments #comments-list .card.comment-thread-card {
+    background-color: var(--cyber-card-bg) !important;
+    border: 1px solid var(--cyber-border) !important;
+}
+
+
+#comments #comments-list .card.comment-thread-card .card-header {
+    background-color: var(--cyber-header-bg) !important;
+    border-bottom: 1px solid var(--cyber-border) !important;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--cyber-dark-bg);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--cyber-border);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--cyber-text-muted);
 }

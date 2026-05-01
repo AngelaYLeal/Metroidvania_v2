@@ -9,12 +9,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/database.js"></script>
     <script src="js/navbar.js" ></script>
+
+    <!-- VIDEOJS -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@videojs/html/cdn/video.js"></script>
     <link rel="icon" type="image/svg+xml" href="assets/img/logos/Logo_sin_fondo.png" />
 
     <link href="css/styles.css" rel="stylesheet" />
     <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
-    <link href="css/custom2.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -72,11 +75,11 @@
                     <!-- TEXTO IZQUIERDA -->
                     <div class=" text-izq col-lg-6 d-flex flex-column justify-content-center align-items-center text-white">
 
-                        <div class=" hero-text logo-wrapper display-3 text-center">
+                        <div class=" hero-text logo-wrapper font-original display-3 text-center">
                             <p>Cybernetik Einherjar</p>
                         </div>
 
-                        <h1 class="lema text-center">¡Hackea tu paso a la salida!</h1>
+                        <h1 class="lema text-center font">¡Hackea tu paso a la salida!</h1>
                         <h5 class="description text-center">Ayuda a Aron a salir de la Base Nyr y descubre su pasado en este Metroidvania de exploración y misterio, derrota a tus enemigos robot hackeándolos y descubriendo mas sobre ellos.</h5>
 
                         <!-- COUNTDOWN -->
@@ -121,13 +124,16 @@
             <div class="col-lg-5 me-5 d-flex flex-column justify-content-center">
 
                 <div class="text-white mb-4">
-                    <h2 class="display-4 fw-bold">Sobrevive. Hackea. Evoluciona.</h2>
+                    <h2 class="display-4  font-original ">Sobrevive. Hackea. Evoluciona.</h2>
                     <p class="fs-4">Cyberpunk + combate rítmico.</p>
                 </div>
 
-                <div class="neon-wrapper" id="open-video">
-                    <img src="assets/videos/miniatura.jpg" alt="Miniatura" class="thumb-img">
-                    <img src="assets/img/icons/boton-de-play.png" alt="Play" class="play-icon">
+                <div  id="video">
+                    <video-player>
+                        <video-skin>
+                            <video src="assets/videos/MetroidVideo.mp4" poster="assets/videos/miniatura.jpg" playsinline></video>
+                        </video-skin>
+                    </video-player>
                 </div>
 
             </div>
@@ -147,7 +153,7 @@
 
                 <!-- Título -->
                 <div class="text-center mb-5">
-                    <h2 class="display-4 fw-bold">Core Loop</h2>
+                    <h2 class="display-4 fw-bold font-original">Core Loop</h2>
                     <p class="fs-5 text-white-50">Explora. Hackea. Evoluciona.</p>
                 </div>
 
@@ -204,8 +210,15 @@
 
 
         <!-- ================= DONACIONES ================= -->
-        <section id="donation" class="scroll-section container-fluid text-white d-flex align-items-center">
-            <div class="row w-100 justify-content-center align-items-center px-lg-5">
+        <section id="donation" class="scroll-section container-fluid py-5 text-white">
+            <div class="container h-100 d-flex flex-column justify-content-center">
+
+                <!-- TÍTULO de apoyo -->
+                <div class=" text-center mb-5">
+                    <h2 class=" display-5 font-original">SISTEMA DE APOYO</h2>
+                </div>
+
+                <div class="row w-100 justify-content-center align-items-center px-lg-5">
 
                 <!-- SECCION DE BARRA DE DONACIONES IZQUIERDA--->
                 <div class="col-12 col-md-5 col-lg-4 mb-4 mb-lg-0 donation-left">
@@ -224,15 +237,15 @@
                         </div>
 
                         <div class="bg-dark rounded-pill overflow-hidden" style="height: 1rem;">
-                            <div class="h-100 bg-info" id="funding-bar" style="width: 0%;"></div> <!-- width 0 para que el JS lo anime -->
+                            <div class="h-100 bg-info" id="funding-bar" style="width: 0%;"></div>
                         </div>
 
                         <div class="d-flex justify-content-between text-white-50 mt-2 small">
                             <span>0€</span>
-                            <span>5.000€</span>
-                            <span>10.000€</span>
-                            <span>15.000€</span>
-                            <span>20.000€</span>
+                            <span>5k</span>
+                            <span>1k</span>
+                            <span>15k</span>
+                            <span>20k</span>
                         </div>
                     </div>
 
@@ -241,7 +254,7 @@
                         <div class="text-white text-uppercase small">personas nos respaldan</div>
                     </div>
 
-                    <a href="campanna.html" class="btn btn-outline-light w-100 py-3 text-uppercase fw-bold">
+                    <a href="campanna.html#contribuciones" class="btn btn-outline-light w-100 py-3 text-uppercase fw-bold">
                         Donar ahora
                     </a>
                 </div>
@@ -367,17 +380,25 @@
                     </div>
                 </div>
             </div>
+            </div>
         </section>
 
-        <!-- ================= HISTORIA ================= -->
-        <section id="game-info" class="text-white">
-            <div class="game-info-wrapper container h-100 d-flex align-items-center justify-content-center">
+        <!-- ================= GAME INFO ================= -->
+        <section id="game-info" class="scroll-section container-fluid py-5 text-white">
+            <div class="container h-100 d-flex flex-column justify-content-center">
+                <!-- TÍTULO DE SECCIÓN -->
+                <div class=" text-center mt-5 mb-3">
+                        <h2 class=" display-5 font-original">Información acerca del juego</h2>
+                </div>
+
+                <div class="game-info-wrapper container h-100 d-flex align-items-center justify-content-center">
                 <div class="row justify-content-center w-100">
                     <div class="col-12 col-lg-10 col-xl-8">
+                        
                         <!-- TABS-navs -->
                         <ul class="nav nav-tabs justify-content-center justify-content-md-start" id="gameTabs" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="historia-tab" data-bs-toggle="tab" data-bs-target="#historia" type="button" role="tab" aria-controls="historia" aria-selected="true">Historia</button>
+                                <button class="nav-link active" id="mapa-tab" data-bs-toggle="tab" data-bs-target="#mapa" type="button" role="tab" aria-controls="mapa" aria-selected="true">Mapa</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="mecanicas-tab" data-bs-toggle="tab" data-bs-target="#mecanicas" type="button" role="tab" aria-controls="mecanicas" aria-selected="false">Mecánicas</button>
@@ -386,38 +407,134 @@
                                 <button class="nav-link" id="recompensas-tab" data-bs-toggle="tab" data-bs-target="#recompensas" type="button" role="tab" aria-controls="recompensas" aria-selected="false">Recompensas</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="equipo-tab" data-bs-toggle="tab" data-bs-target="#equipo" type="button" role="tab" aria-controls="equipo" aria-selected="false">Equipo</button>
+                                <button class="nav-link" id="personajes-tab" data-bs-toggle="tab" data-bs-target="#personajes" type="button" role="tab" aria-controls="personajes" aria-selected="false">Personajes</button>
                             </li>
                         </ul>
 
                         <!-- TAB CONTENT -->
                         <div class="tab-content game-info-content p-4" id="gameTabsContent">
-                            <div class="tab-pane fade show active" id="historia" role="tabpanel" aria-labelledby="historia-tab">
-                                <h2>Historia</h2>
-                                <img class="img-fluid img-opacity" src="assets/img/game-info/botanical-bamboo-leaves.jpg" alt="Bamboo">
-                                <p>En el año 2099, los Einherjar han despertado...</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum tempus sagittis. Suspendisse at tortor placerat, vehicula purus eget, vulputate turpis. Vestibulum vel sem in nibh auctor interdum vitae vitae libero.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum tempus sagittis. Suspendisse at tortor placerat, vehicula purus eget, vulputate turpis. Vestibulum vel sem in nibh auctor interdum vitae vitae libero.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum tempus sagittis. Suspendisse at tortor placerat, vehicula purus eget, vulputate turpis. Vestibulum vel sem in nibh auctor interdum vitae vitae libero.</p>
+                            <!-- MAPA -->
+                            <div class="tab-pane fade show active" id="mapa" role="tabpanel" aria-labelledby="mapa-tab">
+                                <h2>Vista del mapa de juego (beta)</h2>
+                                <img class="img-fluid img-opacity" src="assets/img/game-info/mapa.png" alt="Mapa">
+
+                                <p>
+                                    Este diseño presenta una base tecnológica avanzada sumida en el caos, donde la exploración se divide en sectores con mecánicas únicas. El mapa de <strong>mapa.png</strong> muestra una estructura interconectada que alterna entre áreas industriales, de soporte vital y de alta seguridad.
+                                </p>
+
+                                <h3 class="text-neon-pink fw-bold">Zonas Desbloqueadas</h3>
+                                <p>
+                                    El viaje comienza en la <strong>Cápsula</strong> y la <strong>Sala de Descanso</strong>, entornos de grafito iluminados por luces LED azules que sirven de antesala al complejo <strong>Almacén</strong>. En esta zona, el movimiento vertical es clave; el uso de ganchos magnéticos en grandes silos de carga permite alcanzar plataformas imposibles de llegar mediante saltos normales, conectando directamente con la <strong>Zona de Residencia</strong>.
+                                </p>
+
+                                <h3 class="text-neon-pink fw-bold">Sectores por Descubrir</h3>
+                                <ul>
+                                    <li><strong>Gestión de Residuos:</strong> Un laberinto industrial con charcos de metal líquido y hornos de fundición que requieren equipo ignífugo.</li>
+                                    <li><strong>Zona de Reparación:</strong> Un área llena de engranajes y brazos robóticos donde las fugas de refrigerante pueden congelar al jugador instantáneamente.</li>
+                                    <li><strong>Gestión de Agua:</strong> Un sector de tuberías tóxicas y secciones sumergidas donde se debe manipular el nivel del agua para avanzar.</li>
+                                    <li><strong>Zona Vegetal:</strong> Un ecosistema donde estructuras asépticas son devoradas por flora bioluminiscente y criaturas venenosas.</li>
+                                    <li><strong>Zona de Energía y Seguridad:</strong> El núcleo crítico de la base, protegido por bobinas de Tesla, suelos móviles, láseres y sistemas de vigilancia avanzada.</li>
+                                </ul>
+
+                                <h3 class="text-neon-pink fw-bold">Amenazas Identificadas</h3>
+                                <p>
+                                    El bestiario incluye desde enemigos esqueléticos robóticos hasta fauna sintética, como <strong>gusanos de engranajes</strong> que se ocultan en las paredes y <strong>arácnidos simbiontes</strong> que se acoplan a otros enemigos para potenciarlos.
+                                </p>
                             </div>
+
+                            <!-- MECANICAS -->
                             <div class="tab-pane fade" id="mecanicas" role="tabpanel" aria-labelledby="mecanicas-tab">
-                                <h2>Mecánicas de Juego</h2>
-                                <img class="img-fluid img-opacity" src="assets/img/game-info/botanical-bamboo-leaves.jpg" alt="Bamboo">
-                                <p>Combate rítmico y hackeo en tiempo real. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <h2 >Mecánicas de Juego</h2>
+                                <img class="img-fluid img-opacity" src="assets/img/game-info/nintendo.png" alt="Nintendo">
+                                <h3 class="text-neon-pink fw-bold" >Mecánicas Principales y Movimiento</h3>
+                                <p>
+                                    El control de <strong>Aron</strong> se basa en un movimiento fluido que combina acciones básicas como caminar, correr (con derrape al frenar) y agacharse para el sigilo. La exploración vertical es fundamental gracias al sistema de <strong>salto y agarre</strong>, que permite alcanzar plataformas elevadas sujetándose automáticamente de los bordes.
+                                </p>
+
+                                <h3 class="text-neon-pink fw-bold" >Combate y Habilidades de ARMATA</h3>
+                                <ul>
+                                    <li><strong>Arsenal Básico:</strong> Disparo de energía a larga distancia y un <strong>Modo Hackeo</strong> que ralentiza el tiempo para debilitar enemigos mediante minijuegos.</li>
+                                    <li><strong>Defensa y Potencia:</strong> Incluye un <strong>escudo de energía</strong> (que aturde al romperse) y un <strong>lanzamisiles</strong> capaz de destruir barricadas y paredes agrietadas.</li>
+                                    <li><strong>Control del Entorno:</strong> El <strong>Puño Meteoro</strong> permite empujar bloques pesados, mientras que el <strong>Látigo Eléctrico</strong> sirve para columpiarse o atraer enemigos.</li>
+                                    <li><strong>Movilidad Avanzada:</strong> Uso de <strong>botas propulsoras</strong> para el doble salto y un <strong>cinturón de levitación</strong> para mantenerse en el aire consumiendo energía.</li>
+                                    <li><strong>Especializaciones:</strong> El <strong>Disparo Disruptor</strong> resuelve puzzles eléctricos y la <strong>Hack Sword</strong> permite ejecuciones instantáneas que ignoran blindajes.</li>
+                                </ul>
+
+                                <h3 class="text-neon-pink fw-bold" >Economía y Botín</h3>
+                                <p>
+                                    Al derrotar enemigos, se obtienen materiales de diversa rareza como <strong>tornillería, engranajes y baterías</strong>. Los jefes garantizan siempre un <strong>Núcleo de Energía</strong> (objeto de valor muy alto) además de materiales raros como sensores.
+                                </p>
                             </div>
+
+                            <!-- RECOMPENSAD -->
                             <div class="tab-pane fade" id="recompensas" role="tabpanel" aria-labelledby="recompensas-tab">
                                 <h2>Recompensas</h2>
-                                <img class="img-fluid img-opacity" src="assets/img/game-info/botanical-bamboo-leaves.jpg" alt="Bamboo">
-                                <p>Desde acceso anticipado hasta skins exclusivas. Descubre todos los niveles de apoyo y sus ventajas.</p>
+                                <img class="img-fluid img-opacity" src="assets/img/game-info/nintendo.png" alt="Nintendo">
+                                <p>
+                                    La progresión se basa en la recolección de materiales tras el combate, donde la calidad del botín escala con la jerarquía del enemigo.
+                                </p>
+
+                                <ul>
+                                    <li><strong>Botín por Rango:</strong>
+                                        <ul>
+                                            <li><strong>Básicos:</strong> Chatarra común como tornillería y cables.</li>
+                                            <li><strong>Superiores y Terreno:</strong> Componentes de valor medio como engranajes, baterías y sensores.</li>
+                                            <li><strong>Jefes:</strong> Sueltan materiales raros y garantizan siempre un <strong>Núcleo de Energía</strong>.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Escalado de Daño:</strong> El poder de la ARMATA progresa en 4 niveles, pasando de <strong>5 a 21 puntos de daño</strong> para enfrentar enemigos con salud incrementada en zonas avanzadas.</li>
+                                    <li><strong>Mecánica de Mejora:</strong> Los materiales permiten optimizar el equipo para superar el aumento de dificultad (hasta 1.5x de vida en enemigos de élite).</li>
+                                </ul>
                             </div>
-                            <div class="tab-pane fade" id="equipo" role="tabpanel" aria-labelledby="equipo-tab">
-                                <h2>El Equipo</h2>
-                                <img class="img-fluid img-opacity" src="assets/img/game-info/botanical-bamboo-leaves.jpg" alt="Bamboo">
-                                <p>Un grupo de desarrolladores apasionados por el cyberpunk y los juegos de ritmo. Conoce a las mentes detrás del proyecto.</p>
+
+                            <!-- PERSONAJE Y ENEMIGOS -->
+                            <div class="tab-pane fade" id="personajes" role="tabpanel" aria-labelledby="personajes-tab">
+                                <h2>Los Personajes y Enemigos</h2>
+                                <img class="img-fluid img-opacity" src="assets/img/game-info/nintendo.png" alt="Nintendo">
+                                <h3 class="text-neon-pink fw-bold">Catálogo de Enemigos y Amenazas</h3>
+
+                                <h4 class="text-decoration-underline">Enemigos Básicos (Infraestructura y Patrulla)</h4>
+                                <ul>
+                                    <li><strong>Endoesqueletos Robóticos:</strong> Versiones humanoides que varían entre el combate cuerpo a cuerpo con armas punzantes (20-45 HP) y soporte a distancia con cañones láser (25-55 HP).</li>
+                                    <li><strong>Unidades de Apoyo:</strong> Pequeños arácnidos que curan a otros enemigos mediante soldadura (10-25 HP) y drones voladores que lanzan granadas en parábola (20-35 HP).</li>
+                                    <li><strong>Especialistas de Zona:</strong>
+                                        <ul>
+                                            <li><strong>Dron de Soplete:</strong> Patrulla áreas estrechas y libera gas tóxico al morir (30-65 HP).</li>
+                                            <li><strong>Larva Mecánica:</strong> Se desplaza por techos lanzando ácido y se divide en dos versiones más rápidas al recibir daño (15-45 HP).</li>
+                                            <li><strong>Autómata de Limpieza:</strong> Unidad esférica que absorbe al jugador y libera microbichos saltadores al ser destruida (40-80 HP).</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <h4 class="text-decoration-underline">Enemigos Superiores (Élite)</h4>
+                                <ul>
+                                    <li><strong>Unidad de Sierras:</strong> Enemigo blindado de gran tamaño (120-220 HP). Debe ser hackeado tres veces durante su estado de aturdimiento tras embestir paredes para eliminar su blindaje.</li>
+                                    <li><strong>Gusano de Engranajes:</strong> Criatura que se oculta en superficies; el hackeo desprende partes de su cuerpo y el daño mecánico expone sus componentes internos (110-200 HP).</li>
+                                    <li><strong>Autómata Industrial:</strong> Gran unidad con lanzallamas que entra en modo sobrecalentamiento al 30% de vida, creando charcos de metal fundido (150-280 HP).</li>
+                                    <li><strong>Exterminador Beta:</strong> Prototipo con piernas de araña que dispara misiles guiados desde las paredes (110-160 HP).</li>
+                                </ul>
+
+                                <h4 class="text-decoration-underline" >Amenazas de Terreno y Estáticas</h4>
+                                <ul>
+                                    <li><strong>Hackers de Entorno:</strong> Enemigos que manipulan obstáculos eléctricos y barreras desde terminales (50-100 HP).</li>
+                                    <li><strong>Ojos Mecánicos:</strong> Torretas láser de pared que se protegen cerrando sus párpados si el jugador se acerca; requieren hackeo para ser vulnerables (20-45 HP).</li>
+                                    <li><strong>Serpientes de Tensión:</strong> Cables eléctricos infinitos que actúan como obstáculos constantes.</li>
+                                </ul>
+
+                                <h3 class="text-neon-pink fw-bold">Enfrentamientos de Jefe (Bosses)</h3>
+                                <div style="background-color: rgba(255,0,0,0.05); padding: 10px; border-radius: 5px;">
+                                    <p><strong>Jefe 1 (El Taladrador):</strong> Equipado con lanzacohetes y brazos de prensa. Obliga al jugador a hackear sistemas de seguridad para activar barreras ante ataques de energía no esquivables (400-650 HP).</p>
+
+                                    <p><strong>Jefe 2 (Núcleo Líquido):</strong> Suspendido en energía líquida, manipula el escenario en dos fases. La fase final es una carrera contrarreloj para evitar la sobrecarga del reactor (500-800 HP).</p>
+
+                                    <p><strong>Jefe 3 (Vestigio del Sistema):</strong> Humanoide de 2.5m con núcleo inestable. Puede regenerar salud conectándose al suelo y posee un punto débil en la espalda (x1.2 daño). Al 10% de vida, se vuelve una bomba de tiempo que exige su derrota inmediata (1000-1300 HP).</p>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
 
@@ -427,7 +544,7 @@
 
                 <!-- Encabezado de Agradecimiento -->
                 <div class="text-center mt-lg-5 mb-5 wow fadeIn">
-                    <h2 class="text-neon-pink fw-bold text-uppercase display-5">Muchas gracias por leernos</h2>
+                    <h2 class="font-original fw-bold text-uppercase display-5">Muchas gracias por leernos</h2>
                     <p class="lead font-monospace text-info">
                         Vuestro apoyo es la energía que mantiene vivo este proyecto.
                     </p>
@@ -567,7 +684,7 @@
 
 
     <!-- MIS SCRIPTS -->
-    <script src="js/scripts.js"></script>
+
     <script src="js/barra_de_progreso.js"></script>
     <script src="js/clock_counter.js"></script>
     <script src="js/animaciones_iNDEX.js"></script>

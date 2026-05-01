@@ -51,6 +51,10 @@
 .text-neon-pink{
     color: var(--neon-pink);
 }
+
+.font-tittle-metroid{
+    font-family: 'Metroidvenia', monospace;
+}
 /*====================== LOADER =========================*/
 
 #loader-wrapper {
@@ -213,7 +217,9 @@
 
 /* ================= FONDO ================= */
 body {
-    font-family: 'Metroidvenia Simple', serif;
+    font-family: monospace, SansSerif, serif;
+    font-weight: 600;
+    font-size: 2vh;
     background-image: url('../assets/img/bg/background-vignette-large-up.1a45baa6.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -268,7 +274,9 @@ main {
     position: relative;
     overflow: hidden;
 }
-
+#hero .lema{
+    font-family: 'Metroidvenia', monospace;
+}
 .scroll-section {
     min-height: 100vh;
     height: auto;
@@ -389,7 +397,7 @@ main {
 .neon-wrapper {
     border: 2px solid white;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 20px;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -400,7 +408,7 @@ main {
 
 
 /* ================= VIDEO MODAL ================= */
-/* El contenedor que oscurece todo */
+
 .video-modal {
     display: none; /* Oculto por defecto */
     position: fixed;
@@ -568,26 +576,6 @@ main {
 }
 
 
-
-/*----------------EL SLIDER CON NOMBRES ------------------*/
-
-#donation-sidebar .splide {
-    margin-top: 20px; /* Separación con el contenido de arriba */
-    padding: 10px;
-    border-top: 1px solid #444;
-    border-bottom: 1px solid #444;
-}
-#donation-sidebar .splide__slide {
-    font-size: 2rem;
-    text-align: center;
-    white-space: nowrap;
-}
-
-#donation-sidebar .splide__arrows {
-    display: none;
-}
-
-
 /* --- CONFIGURACIÓN DEL SWIPER --- */
 
 
@@ -673,7 +661,10 @@ main {
 .swiper-button-next,
 .swiper-button-prev {
     color: grey !important;
-    font-weight: bold;
+    width: 30px !important;
+    font-weight: bold !important;
+    height: 30px !important;
+
 }
 
 
@@ -775,7 +766,7 @@ main {
 }
 
 .game-info-content {
-    background: rgba(179, 174, 174, 0.2);
+    background: #2125299e;
     backdrop-filter: blur(12px);
     border-top: 1px solid rgba(235, 0, 194);
     border-bottom: 1px solid rgba(235, 0, 194);
@@ -824,6 +815,11 @@ main {
 .game-info-content p {
     line-height: 1.6;
     color: #f0f0f0;
+    font-weight: 400;
+}
+
+.game-info-content ul {
+    font-weight: 400;
 }
 
 /* ================ AGRADECIMIENTOS Y FEEDBACK ================== */
@@ -1015,7 +1011,7 @@ main {
          padding-bottom: 10px;
      }
 
-     /* Opcional: mejora el scroll en móviles */
+
      .nav-tabs::-webkit-scrollbar {
          height: 4px;
      }
@@ -1033,14 +1029,14 @@ main {
         pointer-events: none;
     }
 
-    /* 2. Resetear el contenedor principal [cite: 280, 281] */
+
     #pin-wrapper {
         height: auto !important;
         perspective: none !important;
         overflow: visible !important;
     }
 
-    /* 3. Forzar que las secciones se comporten como bloques normales [cite: 282, 283] */
+
     #pin-wrapper > section {
         position: relative !important;
         width: 100% !important;
@@ -1065,13 +1061,7 @@ main {
          visibility: visible !important;
          pointer-events: auto !important;
      }
-     #video-modal.is-active {
-         display: block !important;
-         position: relative !important;
-         background: transparent !important;
-         padding: 10px;
-         margin-top: 20px;
-     }
+
 
      /* El video se adapta al ancho de la pantalla */
      #video-player {
@@ -1094,7 +1084,20 @@ main {
     }
 }
 
-
+/* Scrollbar personalizada para que no rompa la estética */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--cyber-dark-bg);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--cyber-border);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--cyber-text-muted);
+}
 
 
 
