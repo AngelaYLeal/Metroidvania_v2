@@ -179,12 +179,12 @@ h1{
 /* ==================== COMENTARIOS ========================== */
 /* Paleta de colores suavizada */
 :root {
-    --cyber-dark-bg: #0f111a;        /* Fondo principal menos agresivo que el negro */
+    --cyber-dark-bg: #0f111a;        /* Fondo principal  */
     --cyber-card-bg: #161b22;        /* Fondo de tarjetas */
     --cyber-header-bg: #1c2128;      /* Encabezados */
     --cyber-border: #30363d;         /* Bordes discretos */
     --cyber-accent: #ffffff;         /* Cyan para detalles */
-    --cyber-text-main: #c9d1d9;      /* Texto principal gris claro (menos fatiga visual) */
+    --cyber-text-main: #c9d1d9;      /* Texto principal gris claro  */
     --cyber-text-muted: #8b949e;     /* Texto secundario */
 }
 
