@@ -414,61 +414,6 @@ main {
 }
 
 
-/* ================= VIDEO MODAL ================= */
-
-.video-modal {
-    display: none; /* Oculto por defecto */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Oscurece el fondo */
-    z-index: 99999; /* Asegura que esté encima de todo */
-    justify-content: center;
-    align-items: center;
-}
-
-/* Para mostrarlo cuando sea necesario */
-.video-modal.is-active {
-    display: flex !important;
-}
-
-/* Botón de cierre */
-#close-video {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: white;
-    font-size: 40px;
-    cursor: pointer;
-    z-index: 10000;
-}
-
-#open-video {
-    position: relative; /* Necesario para posicionar el icono encima */
-    overflow: hidden;   /* Para que al ampliar el icono no se salga del marco */
-    transition: transform 0.3s ease;
-}
-
-/* El icono centrado */
-.play-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;          /* Ajusta el tamaño según tu archivo */
-    height: auto;
-    transition: transform 0.4s ease, opacity 0.3s ease;
-    pointer-events: none; /* Para que el clic pase a través del icono al contenedor */
-    opacity: 0.8;
-}
-
-#open-video:hover .play-icon {
-    transform: translate(-50%, -50%) scale(1.2); /* Amplía solo el icono */
-    opacity: 1;
-}
-
 /* Asegurar que la imagen de la miniatura se vea bien */
 .thumb-img {
     width: 100%;
