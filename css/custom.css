@@ -1106,5 +1106,19 @@ main {
     background: var(--cyber-text-muted);
 }
 
+/*==================================REDES SOCIALES===============================*/
+.social-icon-img {
+    max-width: 180px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.social-card:hover .social-icon-img {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.bg-dark-50{
+    background: rgba(33, 37, 41, 0.5);
+}
 
 

@@ -2,19 +2,32 @@
 <html lang="es">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Cybernetik Einherjar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Simulacion de web de crowfounding" />
+    <meta name="author" content="Angela Leal" />
+    <title>Redes</title>
     <link rel="icon" type="image/svg+xml" href="assets/img/logos/Logo_sin_fondo.png" />
-    <script src="https://kit.fontawesome.com/818fee26fe.js" crossorigin="anonymous"></script>
+    <!-- SDK DE SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/database.js"></script>
+
     <script src="js/navbar.js" ></script>
+    <script src="https://kit.fontawesome.com/818fee26fe.js" crossorigin="anonymous"></script>
+    <!-- WAVE SURFER JS -->
+    <script src="https://unpkg.com/wavesurfer.js@7"></script>
+    <script src="https://unpkg.com/wavesurfer.js@7/dist/plugins/hover.min.js"></script>
+
+    <!-- VIDEOJS -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@videojs/html/cdn/video.js"></script>
+
     <link href="css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     <link href="css/custom.css" rel="stylesheet" />
+
+
 </head>
 <body>
-
-
 <!-- ================================LOADER======================= -->
 <div id="loader-wrapper">
     <div class="loader-content">
@@ -22,6 +35,7 @@
         <div class="spinner"></div>
     </div>
 </div>
+
 <!-- ================= NAVBAR ================= -->
 <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container-fluid px-5">
@@ -44,7 +58,7 @@
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="comments.html">COMENTARIOS</a></li>
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="creditos.html">AUTORÍA</a></li>
                 <li class="nav-item"><a class="nav-link text-white fw-light" href="AboutUs.html">SOBRE NOSOTROS</a></li><li class="nav-item">
-<li class="nav-item"><a class="nav-link text-white fw-light" href="redes.html">REDES</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-light" href="redes.html">REDES</a></li>
             </ul>
 
             <!-- SECCIONES DE LA DERECHA (DINÁMICAS) -->
@@ -58,53 +72,119 @@
     </div>
 </nav>
 
+<main class="container py-5 mt-5">
+    <!-- TÍTULO DE SECCIÓN -->
+    <div class="row mb-5 justify-content-center text-center">
+        <div class="col-md-8">
+            <h2 class="display-4  text-white font-original mb-3">CONEXIÓN EXTERNA</h2>
+            <p class="text-white-50 lead">Sincroniza con nuestros nodos de comunicación para recibir las últimas transmisiones globales.</p>
+            <hr class="border-primary border-2 opacity-50 mx-auto" style="width: 100px;">
+        </div>
+    </div>
 
-<main>
-    <div class="container my-5" id="reservation">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-6 neon-wrapper p-2">
-                <img src="/assets/img/1920x1080image.jpg" alt="Cybernetik Einherjar" class="img-fluid rounded shadow-lg">
-            </div>
 
-            <div class="col-lg-6 text-white">
-                <h1 class="display-5 fw-bold mb-3 font-original">Reserva tu Acceso Anticipado</h1>
-                <p class="lead mb-4">Sé de los primeros en explorar el universo de <strong>Cybernetik Einherjar</strong>. Al reservar, aseguras acceso exclusivo a contenido digital adicional, una skin legendaria de edición limitada y la banda sonora original del juego.</p>
+    <!-- SECCIÓN FEED DE INSTAGRAM -->
+    <section class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <!-- CABECERA DEL FEED -->
+                <div class="d-flex align-items-center mb-4">
+                    <div class="flex-grow-1 border-bottom border-primary opacity-25"></div>
+                    <h3 class="mx-4 text-white glitch-text" style="letter-spacing: 3px;">
+                        <i class="fab fa-instagram me-2 text-primary"></i>NYROFFICIALGAME
+                    </h3>
+                    <div class="flex-grow-1 border-bottom border-primary opacity-25"></div>
+                </div>
 
-                <div class="d-grid gap-2 d-md-block">
-                    <a href="campanna.html" class="btn btn-primary btn-lg px-5 py-3 shadow">RESERVAR AHORA</a>
-                    <p class="text-muted mt-3 small">*Simulación académica: No se procesarán pagos reales.</p>
+                <!-- CONTENEDOR DEL WIDGET -->
+                <div class="widget-frame p-2 p-md-3 bg-dark border border-primary shadow-lg">
+                    <!-- SnapWidget -->
+                    <script src="https://snapwidget.com/js/snapwidget.js"></script>
+                    <iframe src="https://snapwidget.com/embed/1122983"
+                            class="snapwidget-widget"
+                            allowtransparency="true"
+                            frameborder="0"
+                            scrolling="no"
+                            style="border:none; overflow:hidden; width:100%; height: 500px;"
+                            title="Echa un ojo a nuestra cuenta de Instagram oficial">
+                    </iframe>
+                </div>
+
+                <div class="text-end mt-2">
+                    <small class="text-primary fw-bold" style="font-size: 0.7rem;">STATUS: SYNC_OK // SOURCE: @nyrgameofficial</small>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="row mt-5 g-4">
-            <h1 class="text-white">Si reservas ahora te llevarás:</h1>
-            <div class="col-md-4">
-                <div class="card h-100 border-0 bg-light p-3">
-                    <i class="fa-solid fa-gift fa-2x text-primary mb-3"></i>
-                    <h5>Pack de Bienvenida</h5>
-                    <p class="small">Items exclusivos iniciales para equipar a tu unidad desde el primer nivel.</p>
+    <div class="row mb-5 justify-content-center text-center">
+        <div class="col-md-8">
+            <hr class="border-primary border-2 opacity-50 mx-auto" style="width: 100px;">
+            <h1 class=" text-white font-tittle-metroid mb-3">OTRAS REDES SOCIALES</h1>
+            <p class="text-white-50 lead">Aquí encontrarás el rastro digital de la estación NYR, desde el diseño de sus núcleos hasta las últimas brechas en la red de seguridad global.</p>
+
+        </div>
+    </div>
+
+    <!-- REJILLA DE REDES -->
+    <div class="row g-4 justify-content-center">
+
+        <!-- DISCORD -->
+        <div class="col-sm-4 col-lg-3 border-0">
+            <a href="https://discord.gg/8jY6vUBw" target="_blank" class="text-decoration-none">
+                <div class="card bg-dark border-info h-100 social-card">
+                    <div class="card-body text-center align-items-center p-4">
+                        <img src="assets/img/redes_sociales/discord.png" alt="Discord" class="img-fluid mb-3 social-icon-img">
+                        <h4 class="text-white">DISCORD</h4>
+                        <p class="text-white-50 small">Únete a la resistencia y conecta con otros soldados Einherjar.</p>
+                        <span class="badge rounded-pill bg-info mt-2">Entrar</span>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 border-0 bg-light p-3">
-                    <i class="fa-solid fa-file-audio fa-2x text-primary mb-3"></i>
-                    <h5>Banda Sonora Digital</h5>
-                    <p class="small">Acceso exclusivo a todas las pistas compuestas para la campaña.</p>
+            </a>
+        </div>
+
+        <!-- GITHUB -->
+        <div class="col-sm-4 col-lg-3 border-0">
+            <a href="https://github.com/AngelaYLeal/Metroidvania_v2.git" target="_blank" class="text-decoration-none">
+                <div class="card bg-dark border-light h-100 social-card">
+                    <div class="card-body text-center align-items-center p-4">
+                        <img src="assets/img/redes_sociales/github.png" alt="GitHub" class="img-fluid mb-3 social-icon-img">
+                        <h4 class="text-white">GITHUB</h4>
+                        <p class="text-white-50 small">Accede al núcleo del sistema y revisa el código fuente del proyecto.</p>
+                        <span class="badge rounded-pill bg-secondary mt-2">Repositorio</span>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 border-0 bg-light p-3">
-                    <i class="fa-solid fa-code fa-2x text-primary mb-3"></i>
-                    <h5>Acceso a la Beta</h5>
-                    <p class="small">Forma parte del grupo de testeo para reportar bugs y ver el desarrollo.</p>
+            </a>
+        </div>
+
+        <!-- YOUTUBE -->
+        <div class="col-sm-4 col-lg-3 border-0">
+            <a href="#!" target="_blank" class="text-decoration-none">
+                <div class="card bg-dark border-danger h-100 social-card">
+                    <div class="card-body text-center align-items-center  p-4">
+                        <img src="assets/img/redes_sociales/youtube.png" alt="YouTube" class="img-fluid mb-3 social-icon-img">
+                        <h4 class="text-white">YOUTUBE</h4>
+                        <p class="text-white-50 small">Transmisiones en video: trailers, gameplays y diarios de desarrollo.</p>
+                        <span class="badge rounded-pill bg-danger mt-2">Suscribirse</span>
+                    </div>
                 </div>
-            </div>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- SECCIÓN DE CONTACTO RÁPIDO -->
+    <div class="row mt-5 pt-5 justify-content-center text-center">
+        <div class="col-lg-6 p-4 border border-primary bg-dark-50">
+            <h5 class="text-white mb-3">¿Dudas críticas?</h5>
+            <p class="text-white-50">Si prefieres una línea directa, envía un mensaje al terminal de soporte:</p>
+            <a href="mailto:nyrgameofficial@gmail.com" class="btn btn-outline-primary px-5 py-2">
+                <i class="fas fa-envelope me-2"></i>nyrgameofficial@gmail.com
+            </a>
         </div>
     </div>
 </main>
 
-<!-- ================= FOOTER ================= -->
 <footer>
     <div class="container-fluid bg-dark text-white-50 footer pt-5">
         <div class="container py-5">
@@ -162,10 +242,9 @@
 
 <!-- ================= JS ================= -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
->
 
 <!-- MIS SCRIPTS -->
-<script src="js/wow.js"></script>
 <script src="js/loader.js"></script>
+
 </body>
 </html>
