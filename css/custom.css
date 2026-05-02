@@ -79,7 +79,6 @@
 }
 
 .loader-content {
-    /* Esto es clave para que los hijos se alineen al centro */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -101,7 +100,7 @@
     100% { transform: rotate(360deg); }
 }
 
-/* Clase para ocultar el loader */
+
 .loader-hidden {
     opacity: 0;
     pointer-events: none;
@@ -109,9 +108,9 @@
 
 .navbar {
     font-family: 'Zekton', serif;
-    background-color: rgba(0, 0, 0, 0.8) !important; /* Fondo oscuro semitransparente */
-    backdrop-filter: blur(10px); /* Efecto desenfoque moderno */
-    border-bottom: 1px solid rgba(255, 0, 255, 0.3); /* Línea sutil magenta abajo */
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 0, 255, 0.3);
     padding: 10px 0;
 }
 
@@ -122,7 +121,7 @@
 
 /* Contenedores de navegación (Centro y Derecha) */
 .navbar-nav {
-    border: none; /* Quitamos el borde grueso que encerraba todo */
+    border: none;
     gap: 5px;
 }
 
@@ -161,14 +160,14 @@
     width: 70%;
 }
 
-/* Mantiene el estilo cuando la clase .active está presente */
+
 .navbar-nav .nav-link.active {
     background-color: rgba(255, 0, 255, 0.1);
     color: #ff00ff !important;
 }
 
 
-/* Botón Reservar Especial (Cyan Neón) */
+/* Botón Reservar Especial  */
 #reservar {
     background-color: #0dcaf0 !important;
     color: #000 !important;
@@ -187,7 +186,7 @@
 }
 
 /* Avatar y Marco */
-/* Contenedor del marco (El círculo exterior) */
+
 .avatar-frame {
     width: 42px;
     height: 42px;
@@ -204,7 +203,7 @@
     flex-shrink: 0;
 }
 
-/* La imagen dentro del marco */
+
 .nav-avatar {
     width: 100%;
     height: 100%;
@@ -212,14 +211,14 @@
     display: block;
 }
 
-/* Toggler (Hamburguesa para móvil) */
+
 .navbar-toggler {
     border: 1px solid #ff00ff;
     padding: 5px;
 }
 
 .navbar-toggler-icon {
-    filter: invert(1) sepia(1) saturate(5) hue-rotate(280deg); /* Hace el icono magenta */
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(280deg);
 }
 
 /* ================= FONDO ================= */
@@ -273,7 +272,7 @@ main {
 
 /* Efecto hover */
 .btn-top:hover {
-    transform: scale(1.3); /* Efecto de aumento al pasar el ratón */
+    transform: scale(1.3);
 }
 
 /* ================= HERO CORE ================= */
@@ -297,28 +296,28 @@ main {
     text-indent: 4em;
 }
 
-/* Escenario para las animaciones */
+
 #pin-wrapper {
     position: relative;
     height: 100vh;
     width: 100%;
     overflow: hidden;
-    perspective: 1500px; /* Vital para el efecto del cubo 3D */
+    perspective: 1500px;
 }
 
 
-/* Todas las secciones dentro comparten el mismo espacio */
+
 #pin-wrapper > section {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    backface-visibility: hidden; /* Evita parpadeos en rotaciones 3D */
-    display: flex; /* Mantiene tu estructura centrada */
+    backface-visibility: hidden;
+    display: flex;
     align-items: center;
 }
 
-/* Z-index para asegurar el orden de las capas */
+
 #hero { z-index: 10; }
 #cta-video { z-index: 20; pointer-events: auto; }
 #donation { z-index: 30; pointer-events: auto; }
@@ -328,7 +327,7 @@ main {
 /* ================= SAMUS ================= */
 #personaje-flotante {
     position: absolute;
-    right: 10%;       /* INICIO: derecha */
+    right: 10%;
     top: 0%;
     height: 140vh;
     z-index: -1;
@@ -343,7 +342,7 @@ main {
     top: 50%;
     transform: translateY(-50%);
     width: 45%;
-    opacity: 0;        /* oculto al inicio */
+    opacity: 0;
     pointer-events: none;
     z-index: 4;
 
@@ -352,12 +351,12 @@ main {
     gap: 20px;
 }
 #cta-video {
-    /* Asegura que el contenedor ocupe toda la pantalla para poder alinear */
+
     height: 100vh;
-    padding-right: 5%; /* Un poco de margen para que no toque el borde derecho */
+    padding-right: 5%;
 }
 
-/* Ajuste para móviles: si el texto es muy grande, apilamos todo */
+
 @media (max-width: 992px) {
     #cta-video {
         justify-content: center !important;
@@ -624,7 +623,7 @@ main {
 /* Las tarjetas del Swiper */
 #donation .row {
     justify-content: center;
-    gap: 30px; /* móvil por defecto */
+    gap: 30px;
     margin: 0 auto;
 }
 
@@ -743,18 +742,18 @@ main {
 
 }
 
-/* Personalizar el thumb (la barra que se arrastra) */
+/* Personalizar el thumb  */
 .game-info-content::-webkit-scrollbar-thumb {
     background: rgba(179, 174, 174, 0.2);
     border-radius: 12px;
 }
 
-/* Al pasar el ratón por encima */
+
 #gameTabsContent::-webkit-scrollbar-thumb:hover {
     background: rgba(204, 198, 198, 0.81);
 }
 
-/* Tipografía dentro del contenido */
+
 .game-info-content h2 {
     color: white;
     font-family: 'Metroidvenia', monospace;
@@ -1022,21 +1021,20 @@ main {
          aspect-ratio: 16 / 9;
          max-height: none !important;
      }
-    /* 4. Ajustes específicos para secciones que GSAP oculta por defecto */
+/
     #cta-video, #donation, #game-info, #comments {
         visibility: visible !important;
         top: auto !important;
         left: auto !important;
     }
 
-    /* 5. Asegurar que el contenido de info sea legible sin scroll interno forzado */
     #game-info {
         max-height: none !important;
         margin-top: 0 !important;
     }
 }
 
-/* Scrollbar personalizada para que no rompa la estética */
+/* Scrollbar personalizada */
 ::-webkit-scrollbar {
     width: 8px;
 }

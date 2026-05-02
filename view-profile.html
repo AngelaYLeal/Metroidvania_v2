@@ -202,7 +202,7 @@
 </footer>
 
 <script>
-  // Diccionario de imágenes de insignias (Global)
+  // Diccionario de imágenes de insignias
   const BADGE_IMAGES = {
     "Soldado Raso": "assets/img/badges/soldado.png",
     "Hacker de Élite": "assets/img/badges/hacker.png",
@@ -215,11 +215,9 @@
   window.onload = async () => {
     const urlParams = new URLSearchParams(window.location.search);
 
-    // Recogemos ambas variables posibles
     const targetUserId = urlParams.get('id');
     const targetUsername = urlParams.get('username');
 
-    // Si no hay ninguna de las dos, mostramos error
     if (!targetUserId && !targetUsername) {
       mostrarError();
       return;
@@ -228,19 +226,17 @@
     try {
       let userId = targetUserId;
 
-      // Si recibimos un username en lugar de un ID, primero buscamos el ID de ese usuario
       if (targetUsername && !targetUserId) {
         const { data, error } = await supabaseClient
                 .from('perfiles')
                 .select('id')
-                .ilike('username', targetUsername) // ilike ignora mayúsculas/minúsculas
+                .ilike('username', targetUsername)
                 .single();
 
         if (error || !data) throw new Error("Usuario no encontrado por nombre.");
         userId = data.id;
       }
 
-      // Una vez tenemos el ID de forma segura, cargamos el resto de funciones
       await cargarDatosPerfilPublico(userId);
       await cargarHistorialDonacionesPublico(userId);
 
@@ -277,7 +273,7 @@
 
       // Llenar campos básicos
       document.getElementById('view-username').innerText = perfil.username || "Desconocido";
-      document.getElementById('view-uid').innerText = "ID: " + perfil.id.substring(0, 8) + "..."; // Ocultamos el ID completo por privacidad
+      document.getElementById('view-uid').innerText = "ID: " + perfil.id.substring(0, 8) + "...";
 
       const avatarImg = document.getElementById('view-avatar');
       if (perfil.avatar_url) avatarImg.src = perfil.avatar_url;
@@ -356,7 +352,6 @@
         if(don.tier_name.includes("Supremo")) tierBadgeClass = "text-success";
         if(don.tier_name.includes("Comandante")) tierBadgeClass = "text-danger";
 
-        // Ocultamos la columna del precio exacto aportado por privacidad, solo mostramos el total arriba
         tableBody.innerHTML += `
                     <tr class="bg-transparent border-secondary">
                         <td class="font-monospace small align-middle text-secondary">${fecha}</td>

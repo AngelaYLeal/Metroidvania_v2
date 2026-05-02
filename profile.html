@@ -228,7 +228,7 @@
 <script>
     let userSession = null;
 
-    // Diccionario de imágenes de insignias (Global)
+    // Diccionario de imágenes de insignias
     const BADGE_IMAGES = {
         "Soldado Raso": "assets/img/badges/soldado.png",
         "Hacker de Élite": "assets/img/badges/hacker.png",
@@ -267,7 +267,6 @@
             const ultimaDonacion = tieneDonaciones ? donacionesRes.data[0].tier_name : null;
 
             if (perfil) {
-                // Llenar campos básicos
                 document.getElementById('edit-username').value = perfil.username || "";
                 document.getElementById('edit-email').value = userSession.email;
                 document.getElementById('profile-uid').innerText = "ID: " + userSession.id;
@@ -304,7 +303,6 @@
                         </div>`;
                 }
 
-                // Inyectar banner y actualizar borde del avatar
                 const existingBanner = document.getElementById('rango-banner');
                 if (existingBanner) existingBanner.remove();
                 infoCol.insertAdjacentHTML('afterbegin', bannerHTML);

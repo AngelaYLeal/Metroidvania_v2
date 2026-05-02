@@ -188,17 +188,14 @@
 
     document.addEventListener('DOMContentLoaded', async () => {
         try {
-            // 1. Verificamos la identidad en la base de datos
             currentUser = await checkSession();
         } catch (error) {
             console.error("Error de sincronización con el servidor:", error);
             currentUser = null;
         }
 
-        // 2. Actualizamos la interfaz (mostrar form o pedir login)
         gestionarInterfazUsuario();
 
-        // 3. Descargamos las transmisiones (comentarios)
         cargarComentarios();
     });
 
@@ -226,7 +223,7 @@
         if (!userId) return '';
 
         try {
-            // Consultamos categoría y donaciones en paralelo para mayor velocidad
+
             const [perfilRes, donacionRes] = await Promise.all([
                 supabaseClient.from('perfiles').select('categoria').eq('id', userId).single(),
                 supabaseClient.from('donations').select('tier_name').eq('user_id', userId).order('created_at', { ascending: false }).limit(1)
@@ -245,7 +242,7 @@
                 </span>`;
             }
 
-            // 2. Badge de Contribuidor (Con imagen según Tier)
+            // 2. Badge de Contribuidor
             if (tier) {
                 const imgSrc = BADGE_IMAGES[tier] || "assets/img/logos/Logo_sin_fondo.png";
                 html += `
@@ -254,7 +251,7 @@
                 </span>`;
             }
 
-            // 3. Badge de Infiltrado (Gente que no ha donado ni es dev)
+            // 3. Badge de Infiltrado
             if (categoria === 'usuario' && !tier) {
                 html += `
                 <span class="badge border border-secondary text-secondary opacity-75" style="font-size: 0.55rem;">

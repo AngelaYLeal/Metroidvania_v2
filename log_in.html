@@ -169,7 +169,6 @@
 
 <script>
   window.onload = async () => {
-    // Usamos la función que ya definiste en database.js
     const user = await checkSession();
     if (user) {
       window.location.href = 'profile.html';
@@ -185,12 +184,12 @@
       return;
     }
 
-    // Feedback visual de carga
+
     btn.disabled = true;
     btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin me-2"></i>Accediendo...';
 
     try {
-      // Usamos supabaseClient definido en database.js
+
       const { data, error } = await supabaseClient.auth.signInWithPassword({
         email,
         password
@@ -198,15 +197,12 @@
 
       if (error) throw error;
 
-      // Si el acceso es correcto
       if (data.user) {
-        // Guardamos un aviso de éxito (opcional)
         console.log("Sesión iniciada para:", data.user.email);
         window.location.href = 'profile.html';
       }
     } catch (error) {
       alert("Acceso denegado: " + error.message);
-      // Restauramos el botón en caso de error
       btn.disabled = false;
       btn.innerHTML = 'Acceder';
     }

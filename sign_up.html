@@ -191,7 +191,6 @@
     btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin me-2"></i>Sincronizando...';
 
     try {
-      // 1. Crear usuario en Auth usando supabaseClient (el nombre que definimos en database.js)
       const { data, error } = await supabaseClient.auth.signUp({
         email,
         password
@@ -199,7 +198,6 @@
 
       if (error) throw error;
 
-      // 2. Crear su perfil en la tabla 'perfiles'
       if (data.user) {
         const { error: profileError } = await supabaseClient
                 .from('perfiles')
