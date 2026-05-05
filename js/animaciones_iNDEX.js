@@ -5,7 +5,7 @@ let mm = gsap.matchMedia();
 // ==========================================
 // 1. ESCRITORIO (Desktop > 991px)
 // ==========================================
-mm.add("(min-width: 992px)", () => {
+mm.add("(min-width: 1024px)", () => {
     // Estados iniciales
     gsap.set("#cta-video", { y: "100%", opacity: 0 });
     gsap.set("#donation", { rotationX: -90, transformOrigin: "50% 100%", opacity: 0 });
@@ -70,7 +70,13 @@ mm.add("(min-width: 992px)", () => {
 // ==========================================
 // 3. MÓVILES
 // ==========================================
-mm.add("(max-width: 1023px)", () => {
+mm.add("(max-width: 1023.98px)", () => {
+
+    ScrollTrigger.getAll().forEach(t => t.kill());
+
+    gsap.set("section, #pin-wrapper, #personaje-flotante", {
+        clearProps: "all"
+    });
 
     gsap.set("section", {
         position: "relative",
@@ -83,7 +89,7 @@ mm.add("(max-width: 1023px)", () => {
     if (spy) spy.removeAttribute('data-bs-spy');
 });
 
-// 4. SWIPER (Funciona en ambos modos) [cite: 86]
+// 4. SWIPER
 const swiper = new Swiper('.my-slider', {
     slidesPerView: 1,
     spaceBetween: 20,

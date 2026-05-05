@@ -3,7 +3,6 @@ async function actualizarNavbar(user) {
     if (!navRight) return;
 
     if (user) {
-        // 1. Si hay usuario, buscamos su perfil para el avatar
         const { data: perfil } = await supabaseClient
             .from('perfiles')
             .select('avatar_url')
@@ -12,30 +11,42 @@ async function actualizarNavbar(user) {
 
         const imgPath = perfil?.avatar_url ? perfil.avatar_url : 'assets/img/icons/no_img.jpg';
 
-        // 2. Contenido para LOGUEADO: Reservar + Avatar + Logout
         navRight.innerHTML = `
             <li class="nav-item">
-                <a class="nav-link text-black fw-normal me-3" id="reservar" href="Reserve.html">RESERVAR</a>
+                <a class="nav-link text-black fw-normal" id="reservar" href="Reserve.html">RESERVAR</a>
             </li>
-            <li class="nav-item me-3">
-                <a href="profile.html" class="d-flex align-items-center text-decoration-none">
-                    <div class="avatar-frame shadow-sm border border-info rounded-circle" style="width: 35px; height: 35px; overflow: hidden;">
-                        <img src="${imgPath}" alt="Avatar" class="nav-avatar" style="width: 100%; height: 100%; object-fit: cover;">
+            <li class="nav-item ms-lg-2">
+                <a href="profile.html" class="d-flex align-items-center">
+                    <div class="avatar-frame">
+                        <img src="${imgPath}" alt="Avatar" class="nav-avatar">
                     </div>
                 </a>
             </li>
             <li class="nav-item">
-                <button onclick="ejecutarLogout()" class="btn btn-link nav-link text-danger p-0" title="Cerrar Sesión">
+                <button onclick="ejecutarLogout()" class="btn btn-link nav-link text-danger ms-2">
                     <i class="fa-solid fa-power-off"></i>
                 </button>
             </li>
         `;
     } else {
-        // 3. Contenido para NO LOGUEADO: Login + Sign Up + Reservar
+        // CAMBIO AQUÍ: Usamos iconos + texto con clase ocultable
         navRight.innerHTML = `
-            <li class="nav-item"><a class="nav-link text-white fw-light me-2" href="log_in.html">LOGIN</a></li>
-            <li class="nav-item"><a class="nav-link text-info fw-light me-3" href="sign_up.html">SIGN UP</a></li>
-            <li class="nav-item"><a class="nav-link text-black fw-normal" id="reservar" href="Reserve.html">RESERVAR</a></li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="log_in.html">
+                    <div class="user-icon-frame d-lg-flex d-none d-xl-none">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <span class="nav-text-hide">LOGIN</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-info" href="sign_up.html">
+                    <span class="nav-text-hide">SIGN UP</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-black fw-normal" id="reservar" href="Reserve.html">RESERVAR</a>
+            </li>
         `;
     }
 }

@@ -7,7 +7,7 @@ https://fontstruct.com/fontstructions/show/2828477
 Try Fontstruct at https://fontstruct.com
 It’s easy and it’s fun.
 
-Fontstruct is copyright ©2026 Rob Meek
+Fontstruct is copyright ©2027 Rob Meek
 
 LEGAL NOTICE:
 In using this font you must comply with the licensing terms described in the

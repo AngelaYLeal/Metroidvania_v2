@@ -134,7 +134,7 @@ h1{
 
 
 .accordion-body {
-    background-color: #050505;
+    background-color: #212529;
     color: #cccccc;
     font-size: 0.95rem;
     line-height: 1.6;
@@ -176,6 +176,45 @@ h1{
 }
 
 
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+#credits table {
+    min-width: 600px;
+    font-size: clamp(0.75rem, 1.5vw, 1rem);
+}
+
+@media (max-width: 768px) {
+    #credits h1 {
+        font-size: 1.8rem;
+    }
+
+
+    #credits .table td,
+    #credits .table th {
+        padding: 8px 4px !important;
+    }
+
+    .btn-sm {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.7rem;
+    }
+}
+
+
+#credits td {
+    white-space: nowrap;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#credits td:first-child {
+    white-space: normal;
+}
 /* ==================== COMENTARIOS ========================== */
 /* Paleta de colores suavizada */
 :root {

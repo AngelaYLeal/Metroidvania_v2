@@ -55,6 +55,10 @@
     text-shadow: 2px 2px 0px #ff00ff;
 }
 
+.font-zekton{
+    font-family: 'Zekton', sans-serif;
+}
+
 .text-neon-pink{
     color: var(--neon-pink);
 }
@@ -115,6 +119,9 @@
     pointer-events: none;
 }
 
+
+/*====================NAVBAR===============================================*/
+
 .navbar {
     font-family: 'Zekton', serif;
     background-color: rgba(0, 0, 0, 0.8) !important;
@@ -132,6 +139,11 @@
 .navbar-nav {
     border: none;
     gap: 5px;
+    display: flex;
+    align-items: center !important;
+    justify-content: center;
+    text-align: center;
+
 }
 
 /* Enlaces individuales */
@@ -173,6 +185,50 @@
 .navbar-nav .nav-link.active {
     background-color: rgba(255, 0, 255, 0.1);
     color: #ff00ff !important;
+}
+
+/* --- SISTEMA ANTI-DESBORDE (1265px - 992px) --- */
+@media (max-width: 1265px) and (min-width: 992px) {
+    /* 1. Reducimos el logo para ganar espacio */
+    .navbar-brand img {
+        height: 35px !important;
+    }
+
+    /* 2. Reducimos el espacio entre enlaces del centro */
+    .navbar-nav .nav-link {
+        padding: 8px 8px !important;
+        font-size: 0.75rem !important;
+    }
+
+    /* 3. Compactamos el botón Reservar */
+    #reservar {
+        padding: 6px 12px !important;
+        font-size: 0.75rem !important;
+        margin-left: 5px !important;
+    }
+
+    /* 4. Escondemos el texto de LOGIN y SIGN UP pero dejamos el icono */
+    .nav-text-hide {
+        display: none;
+    }
+
+    /* 5. Creamos el marco para el icono de usuario genérico */
+    .user-icon-frame {
+        width: 35px;
+        height: 35px;
+        border: 1px solid #ff00ff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ff00ff;
+        transition: 0.3s;
+    }
+}
+
+/* Evitar el scroll horizontal global */
+body {
+    overflow-x: hidden;
 }
 
 
@@ -221,25 +277,23 @@
 }
 
 
-.navbar-toggler {
-    border: 1px solid #ff00ff;
-    padding: 5px;
-}
-
 .navbar-toggler-icon {
     filter: invert(1) sepia(1) saturate(5) hue-rotate(280deg);
 }
 
 /* ================= FONDO ================= */
 body {
-    font-family: monospace, SansSerif, serif;
-    font-weight: 600;
-    font-size: 2.7vh;
+    font-family: Zekton, SansSerif, serif;
+    font-size: 2vh;
+    letter-spacing:1px;
     background-image: url('../assets/img/bg/background-vignette-large-up.1a45baa6.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
 
+}
+strong{
+    color: #bc049c ;
 }
 
 body::before {
@@ -254,8 +308,25 @@ main {
     min-height: 100vh;
 }
 
+/* TÍTULO ORNAMENTADO */
+.ornamented-title {
+    background: linear-gradient(90deg, rgba(255,0,255,0.3) 0%, rgba(0,0,0,0.8) 100%);
+    border-left: 8px solid #ff00ff;
+    border-right: 2px solid #00ffff;
+    padding: 15px 15px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 0, 255, 0.2);
+}
 
+li{
+    margin-bottom: 3px;
+}
 
+u {
+    text-decoration-color: rgb(255, 255, 255);
+    text-decoration-thickness: 1px;
+    font-weight: bold;
+}
 /* =============== BOTON PARA IR AL TOP - HERO =========================== */
 .btn-top {
     position: fixed;
@@ -405,6 +476,10 @@ main {
 .separator {
     color: #ffffff;
     margin-bottom: 15px;
+}
+
+#countdown{
+    font-size: 1rem;
 }
 
 
@@ -930,6 +1005,11 @@ main {
     border-right: none;
 }
 
+footer .row{
+    font-size: 0.9rem;
+}
+
+footer .a.btn.btn-link{ font-size: 0.8rem; }
 
 
 
@@ -947,16 +1027,25 @@ main {
 
 
 /* ADAPTIVE*/
-@media (min-width:1024px){
-    .text-izq{
-        margin-left: calc(100/12*.5*1%);
+
+@media (max-width: 1999px) {
+    #personaje-flotante {
+        filter: brightness(0.6) !important;
+        
+        transition: filter 0.3s ease;
     }
 }
- @media (max-width: 1023px) {
+
+ @media (max-width: 1023.98px) {
+     .text-izq {
+         margin-left: 0 !important;
+         width: 100% !important;
+         max-width: 100% !important;
+     }
 
      body {
          background-image: url('../assets/img/bg/wallpapersden.com_planet-in-space-4k_4200x2280.jpg');
-         background-size: 400%;
+         background-size: cover;
          background-position: center;
          background-repeat: no-repeat;
          background-attachment: fixed;
@@ -968,7 +1057,6 @@ main {
          overflow-x: auto;
          overflow-y: hidden;
          white-space: nowrap;
-         padding-bottom: 10px;
      }
 
 
@@ -979,15 +1067,21 @@ main {
          background: #00ffcc;
      }
 
-     /* 1. Ocultar a Samus  */
-    #personaje-flotante {
-        align-content: center;
-        top: 20%;
-        right: -40%;
-        height: 160vh;
-        z-index: -1;
-        pointer-events: none;
-    }
+     /* Samus  */
+     #personaje-flotante {
+         position: absolute; /* O fixed si quieres que te siga, pero absolute es mejor para el Hero */
+         top: 10%;           /* Ajusta según donde quieras que asome la cabeza */
+         left: 50%;          /* Centrado horizontal */
+         transform: translateX(-50%);
+         height: 120vh;      /* Un poco más pequeño que el 160vh para que no rompa el layout */
+         width: auto;
+         right: auto;        /* Reseteamos el -40% previo */
+         z-index: -1;        /* Detrás del texto */
+         pointer-events: none;
+         filter: brightness(40%); /* Un poco más oscuro para que el texto sea legible */
+         opacity: 1 !important;
+         visibility: visible !important;
+     }
 
 
     #pin-wrapper {
@@ -1004,13 +1098,11 @@ main {
         opacity: 1 !important;
         transform: none !important;
         pointer-events: auto !important;
-        display: block !important;
         margin-bottom: 2rem;
     }
 
      #cta-video {
          position: relative !important;
-         display: block !important;
          top: auto !important;
          left: auto !important;
          transform: none !important;
@@ -1031,15 +1123,32 @@ main {
          max-height: none !important;
      }
 /
-    #cta-video, #donation, #game-info, #comments {
+    #cta-video, #donation, #game-info, #comments, #core-loop {
         visibility: visible !important;
         top: auto !important;
         left: auto !important;
+        justify-content: center !important;
     }
 
     #game-info {
         max-height: none !important;
         margin-top: 0 !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+
+    .donation-left .text-white.small.fw-bold.text-uppercase {
+        font-size: 0.65rem !important; /* Más pequeño que el 'small' estándar */
+    }
+
+    .donation-left .text-neon-pink.fw-bold {
+        font-size: 0.9rem;
+    }
+
+
+    .donation-left .text-white-50.mt-2.small span {
+        font-size: 0.6rem;
     }
 }
 

@@ -73,7 +73,7 @@
                 <div class="row h-100">
 
                     <!-- TEXTO IZQUIERDA -->
-                    <div class=" text-izq col-lg-6 d-flex flex-column justify-content-center align-items-center text-white">
+                    <div class=" text-izq col-12 col-lg-12 col-xl-6 d-flex flex-column justify-content-center align-items-center text-white">
 
                         <div class=" hero-text logo-wrapper font-original display-3 text-center">
                             <p>Cybernetik Einherjar</p>
@@ -85,7 +85,7 @@
                         <!-- COUNTDOWN -->
                         <div class="countdown-section mt-5">
                             <h4 id="clock-tittle" class="text-white text-center fw-bold">Sincronización final en:</h4>
-                            <div id="countdown" class="d-flex justify-content-center align-items-center gap-3 mt-3">
+                            <div id="countdown" class="d-flex justify-content-center align-items-center mt-3">
                                 <div class="time-node text-center">
                                     <span id="days" class="d-block fw-bold">00</span>
                                     <div class="small">Días</div>
@@ -121,7 +121,7 @@
         <!-- ================= CTA  ================= -->
         <section id="cta-video" class="scroll-section container-fluid d-flex align-items-center justify-content-end">
 
-            <div class="col-lg-5 me-5 d-flex flex-column justify-content-center margin-top">
+            <div class="col-12 col-lg-10 col-xl-5 me-xl-5 d-flex flex-column justify-content-center margin-top">
 
                 <div class="text-white mb-4">
                     <h2 class="display-4  font-original ">Sobrevive. Hackea. Evoluciona.</h2>
@@ -146,7 +146,7 @@
                 <!-- Título -->
                 <div class="text-center mb-5">
                     <h2 class="display-4 fw-bold font-original">Core Loop</h2>
-                    <p class="fs-5 text-white-50">Explora. Hackea. Evoluciona.</p>
+                    <p class="fs-5 text-white text-opacity-75">Explora. Hackea. Evoluciona.</p>
                 </div>
 
                 <!-- 3 columnas responsive -->
@@ -206,172 +206,172 @@
             <div class="container h-100 d-flex flex-column justify-content-center">
 
                 <!-- TÍTULO de apoyo -->
-                <div class=" text-center mt-5">
+                <div class=" text-center my-5">
                     <h2 class=" display-5 font-original">SISTEMA DE APOYO</h2>
                 </div>
 
-                <div class="row w-100 justify-content-center align-items-center px-lg-5">
+                <div class="row w-100 justify-content-center align-items-center px-lg-5 gx-2">
 
-                <!-- SECCION DE BARRA DE DONACIONES IZQUIERDA--->
-                <div class="col-12 col-md-5 col-lg-4 mb-4 mb-lg-0 donation-left">
+                    <!-- SECCION DE BARRA DE DONACIONES IZQUIERDA--->
+                    <div class="col-12 col-md-5 col-lg-5 mb-4 mb-lg-0 donation-left">
 
-                    <div class=" text-center mb-4 ">
-                        <div class="text-white h5">¡Ayúdanos a desarrollar nuestro videojuego y recibe recompensas a cambio!</div>
-                    </div>
+                        <div class=" text-center mb-4 ">
+                            <div class="text-white h5">¡Ayúdanos a desarrollar nuestro videojuego y recibe recompensas a cambio!</div>
+                        </div>
 
-                    <div class="cyber-panel p-4 rounded">
+                        <div class="cyber-panel p-4 rounded">
 
-                        <div class="d-flex justify-content-between align-items-end mb-3">
-                            <div class="text-white small fw-bold lh-1 text-uppercase">
-                                Funding Progress
+                            <div class="d-flex justify-content-between align-items-end mb-3">
+                                <div class="text-white small fw-bold lh-lg text-uppercase">
+                                    Funding Progress:
+                                </div>
+                                <div class="text-neon-pink fw-bold"> <span id="current-amount">3210.00</span> €</div>
                             </div>
-                            <div class="text-neon-pink fw-bold" ><span id="current-amount">3210.00</span> €</div>
+
+                            <div class="bg-dark rounded-pill overflow-hidden" style="height: 1rem;">
+                                <div class="h-100 bg-info" id="funding-bar" style="width: 0%;"></div>
+                            </div>
+
+                            <div class="d-flex justify-content-between text-white-50 mt-2 small">
+                                <span>0€</span>
+                                <span>5k</span>
+                                <span>1k</span>
+                                <span>15k</span>
+                                <span>20k</span>
+                            </div>
                         </div>
 
-                        <div class="bg-dark rounded-pill overflow-hidden" style="height: 1rem;">
-                            <div class="h-100 bg-info" id="funding-bar" style="width: 0%;"></div>
+                        <div class="my-4 text-center text-lg-start">
+                            <div class="display-6 text-neon-pink " id="backers-count">64</div>
+                            <div class="text-white text-uppercase small">personas nos respaldan</div>
                         </div>
 
-                        <div class="d-flex justify-content-between text-white-50 mt-2 small">
-                            <span>0€</span>
-                            <span>5k</span>
-                            <span>1k</span>
-                            <span>15k</span>
-                            <span>20k</span>
-                        </div>
+                        <a href="campanna.html#contribuciones" class="btn btn-outline-light w-100 py-3 text-uppercase fw-bold">
+                            Donar ahora
+                        </a>
                     </div>
 
-                    <div class="my-4 text-center text-lg-start">
-                        <div class="display-6 text-neon-pink " id="backers-count">64</div>
-                        <div class="text-white text-uppercase small">personas nos respaldan</div>
-                    </div>
+                    <!-- sección de campaña- CONTRICUCIONES -->
+                    <div class="col-12 col-md-5 col-lg-5 mb-4 mb-lg-0 donation-right">
+                        <div class="swiper my-slider shadow-lg rounded">
+                            <div class="swiper-wrapper">
 
-                    <a href="campanna.html#contribuciones" class="btn btn-outline-light w-100 py-3 text-uppercase fw-bold">
-                        Donar ahora
-                    </a>
+                                <!-- NIVEL 1: SOLDADO RASO -->
+                                <div class="swiper-slide h-auto">
+                                    <div class="card card-cyberpunk h-100 tier-Soldado">
+                                        <div class="rank-icon-container">
+                                            <img src="assets/img/badges/soldado.png" class="rank-icon" alt="Soldado Raso">
+                                        </div>
+                                        <div class="card-body d-flex flex-column pt-0">
+                                            <h2 class="text-white font-original mb-1 text-center">SOLDADO RASO</h2>
+                                            <h4 class="text-white h2 mb-3 text-center">5<span class="small">€</span></h4>
+                                            <p class="card-text text-secondary small flex-grow-1 text-center">
+                                                Una copia digital de Cybernetik Einherjar para Steam (PC). Tu nombre aparecerá en los créditos finales como patrocinador de nivel base.
+                                            </p>
+                                            <div class="mt-3 p-2 bg-black-75 rounded-1 border-left-soldado">
+                                                <small class=" font-monospace d-block text-center" style="font-size: 0.75rem;">SISTEMA: ENTREGA DIC 2027</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- NIVEL 2: HACKER DE ÉLITE (MÁS POPULAR) -->
+                                <div class="swiper-slide h-auto">
+                                    <div class="card card-cyberpunk h-100 tier-Hacker position-relative overflow-hidden">
+                                        <!-- Cinta de popularidad -->
+                                        <div class="popular-ribbon">MÁS POPULAR</div>
+
+                                        <div class="rank-icon-container">
+                                            <img src="assets/img/badges/hacker.png" class="rank-icon" alt="Hacker de Élite">
+                                        </div>
+                                        <div class="card-body d-flex flex-column pt-0">
+                                            <h2 class="text-white font-original mb-1 text-center">HACKER DE ÉLITE</h2>
+                                            <h4 class="text-white h2 mb-3 text-center">10<span class="small">€</span></h4>
+                                            <p class="card-text text-secondary small flex-grow-1 text-center">
+                                                Copia digital + <strong>Acceso a Beta Cerrada</strong> + Artbook Digital (100 págs) + Banda Sonora original en calidad FLAC.
+                                            </p>
+                                            <div class="mt-3 p-2 bg-black-75 rounded-1 border-left-info">
+                                                <small class="font-monospace d-block text-center" style="font-size: 0.75rem;">SISTEMA: SEPT 2027 (BETA)</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- NIVEL 3: EINHERJAR SUPREMO -->
+                                <div class="swiper-slide h-auto">
+                                    <div class="card card-cyberpunk h-100 tier-Einherjar">
+                                        <div class="rank-icon-container">
+                                            <img src="assets/img/badges/supremo.png" class="rank-icon" alt="Einherjar Supremo">
+                                        </div>
+                                        <div class="card-body d-flex flex-column pt-0">
+                                            <h2 class="font-original text-white mb-1 text-center">EINHERJAR SUPREMO</h2>
+                                            <h4 class="text-white h2 mb-3 text-center">20<span class="small">€</span></h4>
+                                            <p class="card-text text-secondary small flex-grow-1 text-center">
+                                                Todo lo anterior + <strong>Edición Física</strong> + Figura de resina (15cm) de Aron + Diseño de un NPC menor en el Bar del Sector 4.
+                                            </p>
+                                            <div class="mt-3 p-2 bg-black-75 rounded-1 border-left-success">
+                                                <small class="font-monospace d-block text-center" style="font-size: 0.75rem;">SISTEMA: MARZO 2027</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- NIVEL 4: EXPLORADOR DE DATOS -->
+                                <div class="swiper-slide h-auto">
+                                    <div class="card card-cyberpunk h-100 tier-Explorador">
+                                        <div class="rank-icon-container">
+                                            <img src="assets/img/badges/explorador.png" class="rank-icon" alt="Explorador de Datos">
+                                        </div>
+                                        <div class="card-body d-flex flex-column pt-0">
+                                            <h2 class="text-white font-original mb-1 text-center">EXPLORADOR DE DATOS</h2>
+                                            <h4 class="text-white h2 mb-3 text-center">50<span class="small">€</span></h4>
+                                            <p class="card-text text-secondary small flex-grow-1 text-center">
+                                                Nivel Hacker + Tu nombre tallado en un <strong>monumento conmemorativo</strong> en el Nexo Central + Acceso a canal exclusivo Discord.
+                                            </p>
+                                            <div class="mt-3 p-2 bg-black-75 rounded-1 border-left-warning">
+                                                <small class="font-monospace d-block text-center" style="font-size: 0.75rem;">SISTEMA: DIC 2027</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- NIVEL 5: COMANDANTE DE FLOTA -->
+                                <div class="swiper-slide h-auto">
+                                    <div class="card card-cyberpunk h-100 tier-Comandante border-2">
+                                        <div class="rank-icon-container">
+                                            <img src="assets/img/badges/comandante.png" class="rank-icon" alt="Comandante de Flota">
+                                        </div>
+                                        <div class="card-body d-flex flex-column pt-0">
+                                            <h2 class="text-white font-original  mb-1 text-center">COMANDANTE</h2>
+                                            <h4 class="text-white h2 mb-3 text-center">100<span class="small">€</span></h4>
+                                            <p class="card-text text-secondary small flex-grow-1 text-center">
+                                                Todo lo anterior + Camiseta + Póster firmado + <strong>Tu avatar digitalizado</strong> como un holograma decorativo in-game.
+                                            </p>
+                                            <div class="mt-3 p-2 bg-black-75 rounded-1 border-left-danger">
+                                                <small class="font-monospace d-block text-center" style="font-size: 0.75rem;">SISTEMA: MARZO 2027</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- NIVEL 6: APOYO ALTRUISTA -->
+                                <div class="swiper-slide h-auto">
+                                    <div class="card card-cyberpunk h-100 border-secondary border-dashed">
+                                        <div class="card-body d-flex flex-column justify-content-center align-items-center p-4">
+                                            <i class="fa-solid fa-heart text-danger mb-3" style="font-size: 5.5rem;"></i>
+                                            <h2 class="text-white font-original mb-2 text-center">APOYO ALTRUISTA</h2>
+                                            <p class="card-text text-secondary small text-center mb-4">Apoya porque crees en el proyecto sin esperar nada a cambio. ¡Gracias!</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- Botones de navegación -->
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- sección de campaña- CONTRICUCIONES -->
-                <div class="col-12 col-md-5 col-lg-4 mb-4 mb-lg-0 donation-right">
-                    <div class="swiper my-slider shadow-lg rounded">
-                        <div class="swiper-wrapper">
-
-                            <!-- NIVEL 1: SOLDADO RASO -->
-                            <div class="swiper-slide h-auto">
-                                <div class="card card-cyberpunk h-100 tier-Soldado">
-                                    <div class="rank-icon-container">
-                                        <img src="assets/img/badges/soldado.png" class="rank-icon" alt="Soldado Raso">
-                                    </div>
-                                    <div class="card-body d-flex flex-column pt-0">
-                                        <h2 class="text-white font-original mb-1 text-center">SOLDADO RASO</h2>
-                                        <h4 class="text-white h2 mb-3 text-center">5<span class="small">€</span></h4>
-                                        <p class="card-text text-secondary small flex-grow-1 text-center">
-                                            Una copia digital de Cybernetik Einherjar para Steam (PC). Tu nombre aparecerá en los créditos finales como patrocinador de nivel base.
-                                        </p>
-                                        <div class="mt-3 p-2 bg-black-75 rounded-1 border-left-soldado">
-                                            <small class=" font-monospace d-block text-center" style="font-size: 0.75rem;">SISTEMA: ENTREGA DIC 2025</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- NIVEL 2: HACKER DE ÉLITE (MÁS POPULAR) -->
-                            <div class="swiper-slide h-auto">
-                                <div class="card card-cyberpunk h-100 tier-Hacker position-relative overflow-hidden">
-                                    <!-- Cinta de popularidad -->
-                                    <div class="popular-ribbon">MÁS POPULAR</div>
-
-                                    <div class="rank-icon-container">
-                                        <img src="assets/img/badges/hacker.png" class="rank-icon" alt="Hacker de Élite">
-                                    </div>
-                                    <div class="card-body d-flex flex-column pt-0">
-                                        <h2 class="text-white font-original mb-1 text-center">HACKER DE ÉLITE</h2>
-                                        <h4 class="text-white h2 mb-3 text-center">10<span class="small">€</span></h4>
-                                        <p class="card-text text-secondary small flex-grow-1 text-center">
-                                            Copia digital + <strong>Acceso a Beta Cerrada</strong> + Artbook Digital (100 págs) + Banda Sonora original en calidad FLAC.
-                                        </p>
-                                        <div class="mt-3 p-2 bg-black-75 rounded-1 border-left-info">
-                                            <small class="font-monospace d-block text-center" style="font-size: 0.75rem;">SISTEMA: SEPT 2025 (BETA)</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- NIVEL 3: EINHERJAR SUPREMO -->
-                            <div class="swiper-slide h-auto">
-                                <div class="card card-cyberpunk h-100 tier-Einherjar">
-                                    <div class="rank-icon-container">
-                                        <img src="assets/img/badges/supremo.png" class="rank-icon" alt="Einherjar Supremo">
-                                    </div>
-                                    <div class="card-body d-flex flex-column pt-0">
-                                        <h2 class="font-original text-white mb-1 text-center">EINHERJAR SUPREMO</h2>
-                                        <h4 class="text-white h2 mb-3 text-center">20<span class="small">€</span></h4>
-                                        <p class="card-text text-secondary small flex-grow-1 text-center">
-                                            Todo lo anterior + <strong>Edición Física</strong> + Figura de resina (15cm) de Aron + Diseño de un NPC menor en el Bar del Sector 4.
-                                        </p>
-                                        <div class="mt-3 p-2 bg-black-75 rounded-1 border-left-success">
-                                            <small class="font-monospace d-block text-center" style="font-size: 0.75rem;">SISTEMA: MARZO 2026</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- NIVEL 4: EXPLORADOR DE DATOS -->
-                            <div class="swiper-slide h-auto">
-                                <div class="card card-cyberpunk h-100 tier-Explorador">
-                                    <div class="rank-icon-container">
-                                        <img src="assets/img/badges/explorador.png" class="rank-icon" alt="Explorador de Datos">
-                                    </div>
-                                    <div class="card-body d-flex flex-column pt-0">
-                                        <h2 class="text-white font-original mb-1 text-center">EXPLORADOR DE DATOS</h2>
-                                        <h4 class="text-white h2 mb-3 text-center">50<span class="small">€</span></h4>
-                                        <p class="card-text text-secondary small flex-grow-1 text-center">
-                                            Nivel Hacker + Tu nombre tallado en un <strong>monumento conmemorativo</strong> en el Nexo Central + Acceso a canal exclusivo Discord.
-                                        </p>
-                                        <div class="mt-3 p-2 bg-black-75 rounded-1 border-left-warning">
-                                            <small class="font-monospace d-block text-center" style="font-size: 0.75rem;">SISTEMA: DIC 2025</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- NIVEL 5: COMANDANTE DE FLOTA -->
-                            <div class="swiper-slide h-auto">
-                                <div class="card card-cyberpunk h-100 tier-Comandante border-2">
-                                    <div class="rank-icon-container">
-                                        <img src="assets/img/badges/comandante.png" class="rank-icon" alt="Comandante de Flota">
-                                    </div>
-                                    <div class="card-body d-flex flex-column pt-0">
-                                        <h2 class="text-white font-original  mb-1 text-center">COMANDANTE</h2>
-                                        <h4 class="text-white h2 mb-3 text-center">100<span class="small">€</span></h4>
-                                        <p class="card-text text-secondary small flex-grow-1 text-center">
-                                            Todo lo anterior + Camiseta + Póster firmado + <strong>Tu avatar digitalizado</strong> como un holograma decorativo in-game.
-                                        </p>
-                                        <div class="mt-3 p-2 bg-black-75 rounded-1 border-left-danger">
-                                            <small class="font-monospace d-block text-center" style="font-size: 0.75rem;">SISTEMA: MARZO 2026</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- NIVEL 6: APOYO ALTRUISTA -->
-                            <div class="swiper-slide h-auto">
-                                <div class="card card-cyberpunk h-100 border-secondary border-dashed">
-                                    <div class="card-body d-flex flex-column justify-content-center align-items-center p-4">
-                                        <i class="fa-solid fa-heart text-danger mb-3" style="font-size: 5.5rem;"></i>
-                                        <h2 class="text-white font-original mb-2 text-center">APOYO ALTRUISTA</h2>
-                                        <p class="card-text text-secondary small text-center mb-4">Apoya porque crees en el proyecto sin esperar nada a cambio. ¡Gracias!</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- Botones de navegación -->
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
-                    </div>
-                </div>
-            </div>
             </div>
         </section>
 
@@ -414,12 +414,12 @@
                                     Este diseño presenta una base tecnológica avanzada sumida en el caos, donde la exploración se divide en sectores con mecánicas únicas. El mapa de <strong>mapa.png</strong> muestra una estructura interconectada que alterna entre áreas industriales, de soporte vital y de alta seguridad.
                                 </p>
 
-                                <h3 class="text-neon-pink fw-bold">Zonas Desbloqueadas</h3>
+                                <h3 class="ornamented-title fw-bold">Zonas Desbloqueadas</h3>
                                 <p>
                                     El viaje comienza en la <strong>Cápsula</strong> y la <strong>Sala de Descanso</strong>, entornos de grafito iluminados por luces LED azules que sirven de antesala al complejo <strong>Almacén</strong>. En esta zona, el movimiento vertical es clave; el uso de ganchos magnéticos en grandes silos de carga permite alcanzar plataformas imposibles de llegar mediante saltos normales, conectando directamente con la <strong>Zona de Residencia</strong>.
                                 </p>
 
-                                <h3 class="text-neon-pink fw-bold">Sectores por Descubrir</h3>
+                                <h3 class="ornamented-title fw-bold">Sectores por Descubrir</h3>
                                 <ul>
                                     <li><strong>Gestión de Residuos:</strong> Un laberinto industrial con charcos de metal líquido y hornos de fundición que requieren equipo ignífugo.</li>
                                     <li><strong>Zona de Reparación:</strong> Un área llena de engranajes y brazos robóticos donde las fugas de refrigerante pueden congelar al jugador instantáneamente.</li>
@@ -428,7 +428,7 @@
                                     <li><strong>Zona de Energía y Seguridad:</strong> El núcleo crítico de la base, protegido por bobinas de Tesla, suelos móviles, láseres y sistemas de vigilancia avanzada.</li>
                                 </ul>
 
-                                <h3 class="text-neon-pink fw-bold">Amenazas Identificadas</h3>
+                                <h3 class="ornamented-title fw-bold">Amenazas Identificadas</h3>
                                 <p>
                                     El bestiario incluye desde enemigos esqueléticos robóticos hasta fauna sintética, como <strong>gusanos de engranajes</strong> que se ocultan en las paredes y <strong>arácnidos simbiontes</strong> que se acoplan a otros enemigos para potenciarlos.
                                 </p>
@@ -438,21 +438,21 @@
                             <div class="tab-pane fade" id="mecanicas" role="tabpanel" aria-labelledby="mecanicas-tab">
                                 <h2 >Mecánicas de Juego</h2>
                                 <img class="img-fluid img-opacity" src="assets/img/game-info/nintendo.png" alt="Nintendo">
-                                <h3 class="text-neon-pink fw-bold" >Mecánicas Principales y Movimiento</h3>
+                                <h3 class="ornamented-title fw-bold" >Mecánicas Principales y Movimiento</h3>
                                 <p>
                                     El control de <strong>Aron</strong> se basa en un movimiento fluido que combina acciones básicas como caminar, correr (con derrape al frenar) y agacharse para el sigilo. La exploración vertical es fundamental gracias al sistema de <strong>salto y agarre</strong>, que permite alcanzar plataformas elevadas sujetándose automáticamente de los bordes.
                                 </p>
 
-                                <h3 class="text-neon-pink fw-bold" >Combate y Habilidades de ARMATA</h3>
+                                <h3 class="ornamented-title fw-bold" >Combate y Habilidades de ARMATA</h3>
                                 <ul>
-                                    <li><strong>Arsenal Básico:</strong> Disparo de energía a larga distancia y un <strong>Modo Hackeo</strong> que ralentiza el tiempo para debilitar enemigos mediante minijuegos.</li>
-                                    <li><strong>Defensa y Potencia:</strong> Incluye un <strong>escudo de energía</strong> (que aturde al romperse) y un <strong>lanzamisiles</strong> capaz de destruir barricadas y paredes agrietadas.</li>
-                                    <li><strong>Control del Entorno:</strong> El <strong>Puño Meteoro</strong> permite empujar bloques pesados, mientras que el <strong>Látigo Eléctrico</strong> sirve para columpiarse o atraer enemigos.</li>
-                                    <li><strong>Movilidad Avanzada:</strong> Uso de <strong>botas propulsoras</strong> para el doble salto y un <strong>cinturón de levitación</strong> para mantenerse en el aire consumiendo energía.</li>
-                                    <li><strong>Especializaciones:</strong> El <strong>Disparo Disruptor</strong> resuelve puzzles eléctricos y la <strong>Hack Sword</strong> permite ejecuciones instantáneas que ignoran blindajes.</li>
+                                    <li><strong>Arsenal Básico:</strong> Disparo de energía a larga distancia y un <u>Modo Hackeo</u> que ralentiza el tiempo para debilitar enemigos mediante minijuegos.</li>
+                                    <li><strong>Defensa y Potencia:</strong> Incluye un <u>escudo de energía</u> (que aturde al romperse) y un <u>lanzamisiles</u> capaz de destruir barricadas y paredes agrietadas.</li>
+                                    <li><strong>Control del Entorno:</strong> El <u>Puño Meteoro</u> permite empujar bloques pesados, mientras que el <u>Látigo Eléctrico</u> sirve para columpiarse o atraer enemigos.</li>
+                                    <li><strong>Movilidad Avanzada:</strong> Uso de <u>botas propulsoras</u> para el doble salto y un <u>cinturón de levitación</u> para mantenerse en el aire consumiendo energía.</li>
+                                    <li><strong>Especializaciones:</strong> El <u>Disparo Disruptor</u> resuelve puzzles eléctricos y la <u>Hack Sword</u> permite ejecuciones instantáneas que ignoran blindajes.</li>
                                 </ul>
 
-                                <h3 class="text-neon-pink fw-bold" >Economía y Botín</h3>
+                                <h3 class="ornamented-title fw-bold" >Economía y Botín</h3>
                                 <p>
                                     Al derrotar enemigos, se obtienen materiales de diversa rareza como <strong>tornillería, engranajes y baterías</strong>. Los jefes garantizan siempre un <strong>Núcleo de Energía</strong> (objeto de valor muy alto) además de materiales raros como sensores.
                                 </p>
@@ -483,9 +483,9 @@
                             <div class="tab-pane fade" id="personajes" role="tabpanel" aria-labelledby="personajes-tab">
                                 <h2>Los Personajes y Enemigos</h2>
                                 <img class="img-fluid img-opacity" src="assets/img/game-info/nintendo.png" alt="Nintendo">
-                                <h3 class="text-neon-pink fw-bold">Catálogo de Enemigos y Amenazas</h3>
+                                <h3 class="ornamented-title fw-bold">Catálogo de Enemigos y Amenazas</h3>
 
-                                <h4 class="text-decoration-underline">Enemigos Básicos (Infraestructura y Patrulla)</h4>
+                                <h4 class="text-decoration-underline fw-bold">Enemigos Básicos (Infraestructura y Patrulla)</h4>
                                 <ul>
                                     <li><strong>Endoesqueletos Robóticos:</strong> Versiones humanoides que varían entre el combate cuerpo a cuerpo con armas punzantes (20-45 HP) y soporte a distancia con cañones láser (25-55 HP).</li>
                                     <li><strong>Unidades de Apoyo:</strong> Pequeños arácnidos que curan a otros enemigos mediante soldadura (10-25 HP) y drones voladores que lanzan granadas en parábola (20-35 HP).</li>
@@ -498,7 +498,7 @@
                                     </li>
                                 </ul>
 
-                                <h4 class="text-decoration-underline">Enemigos Superiores (Élite)</h4>
+                                <h4 class="text-decoration-underline fw-bold">Enemigos Superiores (Élite)</h4>
                                 <ul>
                                     <li><strong>Unidad de Sierras:</strong> Enemigo blindado de gran tamaño (120-220 HP). Debe ser hackeado tres veces durante su estado de aturdimiento tras embestir paredes para eliminar su blindaje.</li>
                                     <li><strong>Gusano de Engranajes:</strong> Criatura que se oculta en superficies; el hackeo desprende partes de su cuerpo y el daño mecánico expone sus componentes internos (110-200 HP).</li>
@@ -506,14 +506,14 @@
                                     <li><strong>Exterminador Beta:</strong> Prototipo con piernas de araña que dispara misiles guiados desde las paredes (110-160 HP).</li>
                                 </ul>
 
-                                <h4 class="text-decoration-underline" >Amenazas de Terreno y Estáticas</h4>
+                                <h4 class="text-decoration-underline fw-bold" >Amenazas de Terreno y Estáticas</h4>
                                 <ul>
                                     <li><strong>Hackers de Entorno:</strong> Enemigos que manipulan obstáculos eléctricos y barreras desde terminales (50-100 HP).</li>
                                     <li><strong>Ojos Mecánicos:</strong> Torretas láser de pared que se protegen cerrando sus párpados si el jugador se acerca; requieren hackeo para ser vulnerables (20-45 HP).</li>
                                     <li><strong>Serpientes de Tensión:</strong> Cables eléctricos infinitos que actúan como obstáculos constantes.</li>
                                 </ul>
 
-                                <h3 class="text-neon-pink fw-bold">Enfrentamientos de Jefe (Bosses)</h3>
+                                <h3 class="ornamented-title fw-bold">Enfrentamientos de Jefe (Bosses)</h3>
                                 <div>
                                     <p><strong>Jefe 1 (El Taladrador):</strong> Equipado con lanzacohetes y brazos de prensa. Obliga al jugador a hackear sistemas de seguridad para activar barreras ante ataques de energía no esquivables (400-650 HP).</p>
 
@@ -546,7 +546,7 @@
                 <div class="row justify-content-center mb-5">
                     <div class="col-md-8 text-center bg-black border border-secondary p-4 rounded shadow-lg">
                         <h4 class="mb-3">¿Tienes datos que aportar?</h4>
-                        <p class=" text-white-50 small mb-4">
+                        <p class=" text-white text-opacity-75 small mb-4">
                             Buscamos personas dispuestas a dar feedback honesto para optimizar la experiencia de Cybernetik Einhearjar.
                             Cada transmisión nos ayuda a forjar un mejor videojuego.
                         </p>
