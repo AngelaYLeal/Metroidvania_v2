@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         barGap: 2,
         barRadius: 2,
         height: 60,
-        url: 'assets/audio/ost_theme.mp3',
+        url: '../assets/audio/ost_theme.mp3',
         plugins: [
             WaveSurfer.Hover.create({
                 lineColor: '#ff0000',
