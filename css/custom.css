@@ -62,6 +62,15 @@
 .font-tittle-metroid{
     font-family: 'Metroidvenia', monospace;
 }
+
+
+.margin-top{
+    margin-top: 4rem;
+}
+
+.margin-bottom{
+    margin-bottom: 4rem;
+}
 /*====================== LOADER =========================*/
 
 #loader-wrapper {
