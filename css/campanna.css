@@ -16,7 +16,7 @@
 
 @font-face {
     font-family: 'Doctor Glitch';
-    src: url('/assets/fonts/Doctor Glitch.otf') format('opentype');
+    src: url('/assets/fonts/doctor_glitch.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
     font-family: 'Zekton';
-    src: url('/assets/fonts/Zekton-Regular.otf') format('truetype');
+    src: url('/assets/fonts/zekton-regular.otf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
