@@ -1,74 +1,109 @@
-// Configuración de conexión
-const SUPABASE_URL = 'https://wysyfbjvxpwyvexzekxw.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_jpLKViC0dad4RTwHUC28Ng_uNqaASDW';
+// --- CONFIGURACIÓN DE POUCHDB ---
+const dbComentarios = new PouchDB('comentarios_local');
+const dbPerfiles = new PouchDB('perfiles_local');
+const dbDonaciones = new PouchDB('donaciones_local');
 
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// --- FUNCIONES DE AUTENTICACIÓN ---
 
 async function checkSession() {
-    const { data: { session } } = await supabaseClient.auth.getSession();
-    return session ? session.user : null;
+    const user = JSON.parse(localStorage.getItem('session_user'));
+    return user || null;
 }
 
 async function logout() {
-    await supabaseClient.auth.signOut();
+    localStorage.removeItem('session_user');
     window.location.href = 'log_in.html';
 }
 
-// --- FUNCIONES DE BASE DE DATOS (SQL) ---
+// --- FUNCIONES DE BASE DE DATOS (COMENTARIOS) ---
 
 async function cargarComentarios() {
-    const { data, error } = await supabaseClient
-        .from('comentarios')
-        .select('*')
-        .order('created_at', { ascending: false });
-
-    if (error) {
-        console.error("Error al obtener datos:", error);
+    try {
+        const result = await dbComentarios.allDocs({ include_docs: true, descending: true });
+        // Mapeamos para mantener compatibilidad con tu código actual
+        return result.rows.map(row => ({
+            id: row.doc._id,
+            usuario: row.doc.usuario,
+            contenido: row.doc.contenido,
+            created_at: row.doc.created_at
+        }));
+    } catch (err) {
+        console.error("Error al cargar comentarios locales:", err);
         return [];
     }
-    return data;
 }
 
 async function insertarComentario(nuevoNombre, nuevoMensaje) {
-    const { error } = await supabaseClient
-        .from('comentarios')
-        .insert([{ usuario: nuevoNombre, contenido: nuevoMensaje }]);
+    const nuevoDoc = {
+        _id: new Date().getTime().toString(),
+        usuario: nuevoNombre,
+        contenido: nuevoMensaje,
+        created_at: new Date().toISOString()
+    };
 
-    if (error) {
-        console.error("Error detalle:", error);
-        alert("Error de seguridad o de red al publicar.");
-    } else {
-        alert("¡Transmisión guardada en la red!");
+    try {
+        await dbComentarios.put(nuevoDoc);
+        alert("¡Transmisión guardada en el búnker local!");
         location.reload();
+    } catch (err) {
+        console.error("Error al guardar comentario:", err);
+        alert("Fallo en la memoria local del búnker.");
     }
 }
-
 
 // --- FUNCIONES DE RANGO Y ESTADO ---
 
 async function getUserFullStatus(userId) {
     if (!userId) return null;
 
-    // Obtener categoría del perfil
-    const { data: perfil } = await supabaseClient
-        .from('perfiles')
-        .select('categoria, username')
-        .eq('id', userId)
-        .single();
+    try {
+        // 1. Obtener perfil
+        const perfil = await dbPerfiles.get(userId.toString()).catch(() => null);
 
-    // Obtener última donación
-    const { data: donaciones } = await supabaseClient
-        .from('donations')
-        .select('tier_name')
-        .eq('user_id', userId)
-        .order('created_at', { ascending: false })
-        .limit(1);
+        // 2. Obtener donaciones del usuario
+        const resultDonaciones = await dbDonaciones.allDocs({ include_docs: true });
+        const listaDonaciones = resultDonaciones.rows
+            .map(r => r.doc)
+            .filter(d => d.user_id === userId)
+            .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
-    return {
-        categoria: perfil?.categoria || 'usuario',
-        tier: (donaciones && donaciones.length > 0) ? donaciones[0].tier_name : null,
-        username: perfil?.username || 'Sujeto Anónimo'
-    };
+        return {
+            categoria: perfil?.categoria || 'usuario',
+            tier: (listaDonaciones.length > 0) ? listaDonaciones[0].tier_name : null,
+            username: perfil?.username || 'Sujeto Anónimo'
+        };
+    } catch (err) {
+        console.error("Error al obtener estado de usuario:", err);
+        return { categoria: 'usuario', tier: null, username: 'Error de Red Local' };
+    }
 }
+
+// --- PROTOCOLO DE INICIALIZACIÓN (Para el Profesor) ---
+// Esta función carga los datos de initial_data.js si la DB está vacía
+async function inicializarBunker() {
+    try {
+        const infoCom = await dbComentarios.info();
+        const infoPer = await dbPerfiles.info();
+        const infoDon = await dbDonaciones.info();
+
+        // Si falta alguno de los bloques principales, inyectamos la semilla
+        if (infoCom.doc_count === 0 || infoPer.doc_count === 0 || infoDon.doc_count === 0) {
+            console.log("Sistema vacío. Inyectando registros históricos...");
+
+            // Usamos las constantes definidas en initial_data.js
+            if (typeof INITIAL_COMMENTS !== 'undefined') await dbComentarios.bulkDocs(INITIAL_COMMENTS);
+            if (typeof INITIAL_PROFILES !== 'undefined') await dbPerfiles.bulkDocs(INITIAL_PROFILES);
+            if (typeof INITIAL_DONATIONS !== 'undefined') await dbDonaciones.bulkDocs(INITIAL_DONATIONS);
+
+            console.log("✅ Datos de respaldo cargados. Reiniciando sistemas...");
+            setTimeout(() => location.reload(), 500);
+        } else {
+            console.log("%c ACCESO AL BÚNKER CONCEDIDO ", "color: #00ffff; background: #000; font-weight: bold; border: 1px solid #00ffff; padding: 5px;");
+        }
+    } catch (err) {
+        console.error("Error en el protocolo de inicialización:", err);
+    }
+}
+
+// Ejecutar al cargar el script
+inicializarBunker();

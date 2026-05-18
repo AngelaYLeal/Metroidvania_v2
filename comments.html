@@ -8,15 +8,15 @@
     <title>Comentarios</title>
    <link href="js/library/fontawesome-free-7.2.0-web/css/all.css" rel="stylesheet" />
 
-    <!-- SDK DE SUPABASE -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- POUCH DB CODE
+     -->
+  <script src="js/library/pouchdb-9.0.0.min.js"></script>
+
     <script src="js/database.js"></script>
 
     <link rel="icon" type="image/svg+xml" href="assets/img/logos/Logo_sin_fondo.png" />
 
     <link href="css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     <link href="css/custom.css" rel="stylesheet" />
     <link href="css/Nav-Footer_Sections.css" rel="stylesheet" />
 </head>
@@ -176,7 +176,6 @@
 <script>
     let currentUser = null;
 
-    // Diccionario de imágenes de insignias
     const BADGE_IMAGES = {
         "Soldado Raso": "assets/img/badges/soldado.png",
         "Hacker de Élite": "assets/img/badges/hacker.png",
@@ -187,16 +186,10 @@
     };
 
     document.addEventListener('DOMContentLoaded', async () => {
-        try {
-            currentUser = await checkSession();
-        } catch (error) {
-            console.error("Error de sincronización con el servidor:", error);
-            currentUser = null;
-        }
-
+        // Usamos la función local de database.js
+        currentUser = await checkSession();
         gestionarInterfazUsuario();
-
-        cargarComentarios();
+        cargarComentariosWeb(); // Cambié el nombre para no chocar con la de database.js
     });
 
     function gestionarInterfazUsuario() {
@@ -218,85 +211,55 @@
         }
     }
 
-    // --- LÓGICA DE INSIGNIAS ---
+    // --- LÓGICA DE INSIGNIAS (AHORA LOCAL) ---
     async function renderBadgesHTML(userId) {
         if (!userId) return '';
-
         try {
-
-            const [perfilRes, donacionRes] = await Promise.all([
-                supabaseClient.from('perfiles').select('categoria').eq('id', userId).single(),
-                supabaseClient.from('donations').select('tier_name').eq('user_id', userId).order('created_at', { ascending: false }).limit(1)
-            ]);
-
-            const categoria = perfilRes.data?.categoria || 'usuario';
-            const tier = (donacionRes.data && donacionRes.data.length > 0) ? donacionRes.data[0].tier_name : null;
+            // Usamos la función que ya definimos en database.js que consulta PouchDB
+            const status = await getUserFullStatus(userId);
+            if (!status) return '';
 
             let html = '';
-
-            // 1. Badge de Desarrollador (Rojo Neón)
-            if (categoria === 'developer') {
-                html += `
-                <span class="badge bg-danger border border-light shadow-neon-red me-1" style="font-size: 0.6rem;">
-                    <i class="fa-solid fa-code me-1"></i>DEV
-                </span>`;
+            if (status.categoria === 'developer') {
+                html += `<span class="badge bg-danger border border-light shadow-neon-red me-1" style="font-size: 0.6rem;"><i class="fa-solid fa-code me-1"></i>DEV</span>`;
             }
-
-            // 2. Badge de Contribuidor
-            if (tier) {
-                const imgSrc = BADGE_IMAGES[tier] || "assets/img/logos/Logo_sin_fondo.png";
-                html += `
-                <span class="badge border border-info text-info me-1 bg-black" style="font-size: 0.6rem;">
-                    <img src="${imgSrc}" style="width:12px; margin-right:4px; vertical-align: middle;"> ${tier}
-                </span>`;
+            if (status.tier) {
+                const imgSrc = BADGE_IMAGES[status.tier] || "assets/img/logos/Logo_sin_fondo.png";
+                html += `<span class="badge border border-info text-info me-1 bg-black" style="font-size: 0.6rem;">
+                            <img src="${imgSrc}" style="width:12px; margin-right:4px; vertical-align: middle;"> ${status.tier}
+                         </span>`;
             }
-
-            // 3. Badge de Infiltrado
-            if (categoria === 'usuario' && !tier) {
-                html += `
-                <span class="badge border border-secondary text-secondary opacity-75" style="font-size: 0.55rem;">
-                    <i class="fa-solid fa-user-secret me-1"></i>Infiltrado
-                </span>`;
+            if (status.categoria === 'usuario' && !status.tier) {
+                html += `<span class="badge border border-secondary text-secondary opacity-75" style="font-size: 0.55rem;"><i class="fa-solid fa-user-secret me-1"></i>Infiltrado</span>`;
             }
-
             return html;
         } catch (err) {
-            console.error("Error renderizando insignias:", err);
             return '';
         }
     }
-
-    // --- FUNCIÓN GENERAR HTML DE COMENTARIO ---
-    const urlParams = new URLSearchParams(window.location.search);
-    const userId = urlParams.get('id');
 
     async function generarHTMLComentario(comentario, todosLosComentarios, nivel = 0) {
         const fecha = new Date(comentario.created_at).toLocaleString('es-ES', {
             day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'
         });
-        const fotoUrl = comentario.perfiles?.avatar_url || 'assets/img/logos/Logo_sin_fondo.png';
-        const badgeHTML = await renderBadgesHTML(comentario.usuario_id);
+
+        // Buscamos avatar en PouchDB (opcional, si no, usamos el logo)
+        const fotoUrl = 'assets/img/logos/Logo_sin_fondo.png';
+        const badgeHTML = await renderBadgesHTML(comentario.usuario_id || comentario.usuario);
 
         const hijos = todosLosComentarios.filter(c => c.parent_id === comentario.id);
-        hijos.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
-
         const indentClass = nivel > 0 ? 'ms-4 ms-md-5 border-start border-info ps-3 mt-3' : 'mb-4';
-        const cardClass = 'bg-dark border-secondary';
 
         const hijosHTMLArray = await Promise.all(hijos.map(hijo => generarHTMLComentario(hijo, todosLosComentarios, nivel + 1)));
-        const hijosHTML = hijosHTMLArray.join('');
-
-        const perfilLink = `view-profile.html?id=${comentario.usuario_id}`;
 
         return `
     <div class="${indentClass}" id="comment-${comentario.id}">
-        <div class="card ${cardClass} shadow-sm">
+        <div class="card bg-dark border-secondary shadow-sm">
             <div class="card-header border-secondary d-flex justify-content-between align-items-center bg-black py-1">
-                <a href="${perfilLink}" class="text-decoration-none d-flex align-items-center flex-wrap user-profile-trigger">
-                    <img src="${fotoUrl}" class="rounded-circle border border-info me-2"
-                         style="width: ${nivel === 0 ? '30px' : '22px'}; height: ${nivel === 0 ? '30px' : '22px'}; object-fit: cover;">
-                    <strong class="text-white small hover-cyan" style="font-size: 0.8rem;">${comentario.usuario}</strong>
-                </a>
+                <div class="d-flex align-items-center flex-wrap">
+                    <img src="${fotoUrl}" class="rounded-circle border border-info me-2" style="width: 22px; height: 22px;">
+                    <strong class="text-white small" style="font-size: 0.8rem;">${comentario.usuario}</strong>
+                </div>
                 <div class="ms-1 d-inline-flex align-items-center">
                     ${badgeHTML}
                     <span class="text-secondary ms-2" style="font-size: 0.65rem;">${fecha}</span>
@@ -304,46 +267,34 @@
             </div>
             <div class="card-body p-3">
                 <p class="card-text text-light mb-2" style="white-space: pre-wrap; font-size: 0.9rem;">${comentario.contenido}</p>
-
                 ${currentUser ? `
-                    <button class="btn btn-link btn-sm text-info p-0 text-decoration-none shadow-none" style="font-size: 0.75rem;" onclick="toggleReplyForm(${comentario.id})">
+                    <button class="btn btn-link btn-sm text-info p-0 text-decoration-none" style="font-size: 0.75rem;" onclick="toggleReplyForm('${comentario.id}')">
                         <i class="fa-solid fa-reply me-1"></i>Responder
                     </button>
-
-                    <!-- FORMULARIO DE RESPUESTA (OCULTO POR DEFECTO) -->
                     <div id="reply-form-${comentario.id}" class="d-none mt-3">
-                        <textarea id="reply-input-${comentario.id}" class="form-control bg-black text-white border-secondary mb-2" rows="2" placeholder="Escribe tu respuesta..."></textarea>
+                        <textarea id="reply-input-${comentario.id}" class="form-control bg-black text-white border-secondary mb-2" rows="2"></textarea>
                         <div class="d-flex justify-content-end gap-2">
-                            <button onclick="toggleReplyForm(${comentario.id})" class="btn btn-outline-secondary btn-sm">Cancelar</button>
-                            <button onclick="enviarRespuesta(${comentario.id})" class="btn btn-info btn-sm text-dark fw-bold">Responder</button>
+                            <button onclick="enviarRespuesta('${comentario.id}')" class="btn btn-info btn-sm text-dark fw-bold">Responder</button>
                         </div>
                     </div>
                 ` : ''}
             </div>
         </div>
-        <div class="replies-container">
-            ${hijosHTML}
-        </div>
-    </div>
-    `;
+        <div class="replies-container">${hijosHTMLArray.join('')}</div>
+    </div>`;
     }
 
-    async function cargarComentarios() {
+    async function cargarComentariosWeb() {
         const listaHTML = document.getElementById('comments-list');
-        const { data, error } = await supabaseClient
-            .from('comentarios')
-            .select(`
-                id, usuario, contenido, created_at, parent_id, usuario_id,
-                perfiles (avatar_url)
-            `)
-            .order('created_at', { ascending: false });
+        // Llamamos a la función de database.js que lee de PouchDB
+        const data = await cargarComentarios();
 
-        if (error) { console.error("Error:", error); return; }
         if (!data || data.length === 0) {
             listaHTML.innerHTML = `<div class="text-center text-secondary py-4">No hay transmisiones archivadas.</div>`;
             return;
         }
 
+        // PouchDB devuelve los comentarios. Filtramos raíces (sin parent_id)
         const raices = data.filter(c => !c.parent_id);
         const listaCompletaHTML = await Promise.all(raices.map(comentario => generarHTMLComentario(comentario, data)));
         listaHTML.innerHTML = listaCompletaHTML.join('');
@@ -352,41 +303,14 @@
     async function publicarComentario() {
         const mensajeInput = document.getElementById('comentario-input');
         const mensaje = mensajeInput.value.trim();
-        const btn = document.querySelector('#comment-form-container button');
-
         if (!mensaje) return;
-        btn.disabled = true;
-        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Transmitiendo...';
 
-        try {
-            const { data: perfil } = await supabaseClient
-                .from('perfiles')
-                .select('username')
-                .eq('id', currentUser.id)
-                .single();
-
-            const { error } = await supabaseClient
-                .from('comentarios')
-                .insert([{
-                    usuario: perfil?.username || "Einherjar",
-                    contenido: mensaje,
-                    usuario_id: currentUser.id
-                }]);
-
-            if (error) throw error;
-            mensajeInput.value = '';
-            await cargarComentarios();
-        } catch (error) {
-            alert("Error: " + error.message);
-        } finally {
-            btn.disabled = false;
-            btn.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i>Transmitir';
-        }
+        // Usamos la función local de database.js
+        await insertarComentario(currentUser.username || "Einherjar", mensaje);
     }
 
     function toggleReplyForm(id) {
-        const form = document.getElementById(`reply-form-${id}`);
-        form.classList.toggle('d-none');
+        document.getElementById(`reply-form-${id}`).classList.toggle('d-none');
     }
 
     async function enviarRespuesta(parentId) {
@@ -394,41 +318,27 @@
         const mensaje = input.value.trim();
         if (!mensaje) return;
 
-        const btn = document.querySelector(`#reply-form-${parentId} .btn-info`);
-        btn.disabled = true;
+        // Guardamos en PouchDB con el parent_id
+        const nuevoDoc = {
+            _id: new Date().getTime().toString(),
+            usuario: currentUser.username || "Einherjar",
+            contenido: mensaje,
+            parent_id: parentId,
+            created_at: new Date().toISOString(),
+            usuario_id: currentUser.id
+        };
 
-        try {
-            const { data: perfil } = await supabaseClient
-                .from('perfiles')
-                .select('username')
-                .eq('id', currentUser.id)
-                .single();
-
-            const { error } = await supabaseClient
-                .from('comentarios')
-                .insert([{
-                    usuario: perfil?.username || "Einherjar",
-                    contenido: mensaje,
-                    usuario_id: currentUser.id,
-                    parent_id: parentId
-                }]);
-
-            if (error) throw error;
-            await cargarComentarios();
-        } catch (error) {
-            alert("Error al responder: " + error.message);
-            btn.disabled = false;
-        }
+        await dbComentarios.put(nuevoDoc);
+        location.reload();
     }
 </script>
 
 <!-- ================= JS ================= -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 
 
 <!-- MIS SCRIPTS -->
-<script src="js/wow.js"></script>
 <script src="js/navbar.js" ></script>
 
 

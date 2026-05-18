@@ -53,6 +53,14 @@
     color: #ff00ff;
 }
 
+#btn-play-2:hover{
+    width: 45px;
+    height: 45px;
+    border-color: #ff00ff;
+    color: #000000;
+    background: #ff00ff;
+}
+
 .progress{
     height: 25px;
     background-color: #222;
@@ -152,6 +160,80 @@
 }
 .border-dashed{
     border:dashed;
+}
+
+
+/* --- REPRODUCTORES DE AUDIO CYBERPUNK --- */
+.cyber-timeline {
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cyber-progress {
+    height: 100%;
+    width: 0%; /* Crecerá con JS */
+    border-radius: 6px;
+    pointer-events: none;
+    transition: width 0.1s linear;
+}
+
+/* Tema Cyan (Pista 1) */
+.cyan-theme .cyber-progress {
+    background: #00ffff;
+    box-shadow: 0 0 10px #00ffff;
+}
+
+/* Tema Rosa (Pista 2) */
+.pink-theme .cyber-progress {
+    background: #ff00ff;
+    box-shadow: 0 0 10px #ff00ff;
+}
+
+.cyber-time {
+    color: #a0a0a0;
+    font-size: 0.85rem;
+    font-family: monospace;
+}
+.cyber-timeline {
+    position: relative;
+    overflow: visible !important;
+}
+
+.hover-time {
+    position: absolute;
+    top: -30px; /* Un poco más arriba */
+    left: 0;
+    transform: translateX(-50%);
+    background: none;
+    color:#00ffff !important;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-family: 'Courier New', Courier, monospace;
+    pointer-events: none;
+    display: none;
+
+    z-index: 9999;
+    white-space: nowrap;
+
+}
+
+
+.cyber-timeline:hover .hover-time {
+    display: block !important;
+}
+
+.pink-theme .hover-time {
+    color: #ff00ff !important;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace;
+
 }
 .text-neon-pink { color: #ff00ff; }
 .text-neon-cyan { color: #00ffff !important; }
