@@ -1012,21 +1012,9 @@ footer .row{
 footer .a.btn.btn-link{ font-size: 0.8rem; }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ADAPTIVE*/
+/*======================================
+                 ADAPTIVE
+===========================================*/
 
 @media (max-width: 1999px) {
     #personaje-flotante {
@@ -1044,12 +1032,10 @@ footer .a.btn.btn-link{ font-size: 0.8rem; }
      }
 
      body {
-         background-image: url('../assets/img/bg/wallpapersden.com_planet-in-space-4k_4200x2280.jpg');
          background-size: cover;
          background-position: center;
          background-repeat: no-repeat;
          background-attachment: fixed;
-
      }
 
      .nav-tabs {
@@ -1070,7 +1056,7 @@ footer .a.btn.btn-link{ font-size: 0.8rem; }
      /* Samus  */
      #personaje-flotante {
          position: absolute; /* O fixed si quieres que te siga, pero absolute es mejor para el Hero */
-         top: 10%;           /* Ajusta según donde quieras que asome la cabeza */
+         top: 50%;           /* Ajusta según donde quieras que asome la cabeza */
          left: 50%;          /* Centrado horizontal */
          transform: translateX(-50%);
          height: 120vh;      /* Un poco más pequeño que el 160vh para que no rompa el layout */

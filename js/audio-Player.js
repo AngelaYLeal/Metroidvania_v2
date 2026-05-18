@@ -1,4 +1,4 @@
-// my-wavesurfer.js (Reescrito como Reproductor Custom para esquivar CORS)
+// audio-Player.js - para evitar usar el wavesurfer
 document.addEventListener("DOMContentLoaded", () => {
 
     // Función creadora para no repetir código
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!audio || !btn) return;
 
-        // Ayudante para que el tiempo se vea como "1:05"
+        // Tiempo
         const formatTime = (seconds) => {
             if (isNaN(seconds)) return "0:00";
             const m = Math.floor(seconds / 60);

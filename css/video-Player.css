@@ -1,0 +1,165 @@
+/* =======================================================
+   ==          REPRODUCTOR DE VIDEO CYBERPUNK            ==
+   ======================================================= */
+
+/* Contenedor Principal del Reproductor */
+.cyber-player-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #000000;
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 0 15px rgba(235, 0, 194, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+
+  container-type: inline-size;
+}
+
+.cyber-player-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
+
+/* =========================================
+   CAPA INICIAL (PANTALLA DE CARGA / PLAY)
+   ========================================= */
+.initial-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 17, 26, 0.1);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  cursor: pointer;
+  transition: opacity 0.3s ease, ease-out 0.2s;
+}
+
+.initial-overlay img {
+  /* Mínimo 50px, tamaño ideal el 10% del ancho del reproductor, máximo 90px */
+  width: clamp(50px, 10cqw, 90px);
+  height: auto;
+  filter: drop-shadow(0 0 8px var(--neon-pink));
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+
+.initial-overlay:hover img {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 15px var(--neon-pink)) brightness(1.2);
+}
+
+/* =========================================
+   BARRA DE CONTROLES INFERIOR
+   ========================================= */
+.cyber-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(15, 17, 26, 0.95));
+  display: flex;
+  flex-direction: column;
+  padding: clamp(6px, 1.5cqw, 15px) clamp(8px, 2cqw, 20px);
+  gap: clamp(4px, 1cqw, 10px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+
+.cyber-player-container.is-playing:hover .cyber-controls {
+  opacity: 1;
+}
+
+/* Diseño de Filas e Interacciones */
+.controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.controls-left, .controls-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Botones con Estilo de Terminal */
+.cyber-player-container .cyber-btn {
+  background: none;
+  border: none;
+  color: var(--cyber-text-main);
+  cursor: pointer;
+  font-size: clamp(14px, 2.5cqw, 22px);
+  padding: 4px clamp(3px, 0.8cqw, 8px);
+  margin-top: 0;
+  transition: color 0.2s ease, text-shadow 0.2s ease, transform 0.1s ease;
+  display: inline-block;
+}
+
+.cyber-player-container .cyber-btn:hover {
+  background: none; /* Elimina el fondo de tu botón general */
+  color: var(--neon-pink);
+  text-shadow: 0 0 8px var(--neon-pink);
+  transform: scale(1.1);
+}
+
+/* Tipografía de Tiempos */
+.cyber-time-display {
+  font-family: 'Zekton', monospace;
+  /* Escalado dinámico: entre 11px y 16px según la pantalla */
+  font-size: clamp(11px, 1.8cqw, 16px);
+  color: var(--cyber-text-muted);
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   SISTEMA DE LA BARRA DE PROGRESO
+   ========================================= */
+.cyber-progress-container {
+  width: 100%;
+  height: clamp(3px, 0.8cqw, 6px);
+  background: rgba(48, 54, 61, 0.6);
+  cursor: pointer;
+  position: relative;
+  border-radius: 2px;
+  transition: height 0.2s ease;
+}
+
+.cyber-progress-container:hover {
+  height: clamp(5px, 1.2cqw, 9px);
+}
+
+.cyber-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--neon-pink-dim), var(--neon-pink));
+  box-shadow: 0 0 8px var(--neon-pink);
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+/* Optimización para Dispositivos Táctiles (Móviles) */
+@media (max-width: 1023.98px) {
+  .cyber-controls {
+    opacity: 1 !important; /* Siempre visible para interactuar con pantallas táctiles */
+    background: rgba(15, 17, 26, 0.85);
+  }
+
+  .cyber-progress-container {
+    height: 7px;
+  }
+
+  .initial-overlay img {
+    width: 60px;
+  }
+}

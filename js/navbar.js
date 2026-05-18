@@ -1,93 +1,97 @@
+// js/navbar.js
+
 async function actualizarNavbar(user) {
     const navRight = document.getElementById('nav-right-actions');
     if (!navRight) return;
 
+    // Si hay un usuario con sesión activa en el búnker local
     if (user) {
-        const { data: perfil } = await supabaseClient
-            .from('perfiles')
-            .select('avatar_url')
-            .eq('id', user.id)
-            .single();
+        // Rescatamos el estado completo (username real, categoria, tier) directamente de PouchDB usando su ID
+        const datosUsuario = await getUserFullStatus(user.id);
 
-        const imgPath = perfil?.avatar_url ? perfil.avatar_url : 'assets/img/icons/no_img.jpg';
+        // Ruta de tu avatar por defecto (puedes cambiarla por la que quieras en tu carpeta assets)
+        const imgPath = 'assets/img/logos/Logo_sin_fondo.png';
 
         navRight.innerHTML = `
             <li class="nav-item">
                 <a class="nav-link text-black fw-normal" id="reservar" href="Reserve.html">RESERVAR</a>
             </li>
             <li class="nav-item ms-lg-2">
-                <a href="profile.html" class="d-flex align-items-center">
-                    <div class="avatar-frame">
-                        <img src="${imgPath}" alt="Avatar" class="nav-avatar">
+                <a href="profile.html" class="d-flex align-items-center text-decoration-none" title="Operador: ${datosUsuario?.username || user.username}">
+                    <div class="avatar-frame d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 1px solid #00ffff; border-radius: 50%; overflow: hidden; background: #000;">
+                        <img src="${imgPath}" alt="Avatar" class="nav-avatar" style="width: 100%; height: auto; object-fit: cover;">
                     </div>
+                    <span class="text-info small ms-2 d-lg-none">${datosUsuario?.username || user.username}</span>
                 </a>
             </li>
             <li class="nav-item">
-                <button onclick="ejecutarLogout()" class="btn btn-link nav-link text-danger ms-2">
+                <button onclick="ejecutarLogout()" class="btn btn-link nav-link text-danger ms-2" style="border:none; background:none;" title="Desconectar del Sistema">
                     <i class="fa-solid fa-power-off"></i>
                 </button>
             </li>
         `;
     } else {
-        // CAMBIO AQUÍ: Usamos iconos + texto con clase ocultable
+        // Estructura para usuarios invitados (Mantiene exactamente tus clases y estilos originales de los HTML)
         navRight.innerHTML = `
             <li class="nav-item">
-                <a class="nav-link text-white" href="log_in.html">
-                    <div class="user-icon-frame d-lg-flex d-none d-xl-none">
-                        <i class="fa-solid fa-user"></i>
-                    </div>
-                    <span class="nav-text-hide">LOGIN</span>
-                </a>
+                <a class="nav-link text-white fw-light me-3" href="log_in.html">LOGIN</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-info" href="sign_up.html">
-                    <span class="nav-text-hide">SIGN UP</span>
-                </a>
+                <a class="nav-link text-white fw-light me-3" href="sign_up.html">SIGN UP</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-black fw-normal" id="reservar" href="Reserve.html">RESERVAR</a>
             </li>
         `;
     }
+
+    // Refrescar el colapsable de Bootstrap para pantallas móviles
+    const menuColapsable = document.getElementById('navbarSupportedContent');
+    if (menuColapsable && typeof bootstrap !== 'undefined') {
+        const bsCollapse = bootstrap.Collapse.getInstance(menuColapsable);
+        if (bsCollapse) {
+            bsCollapse.hide();
+        }
+    }
 }
-// FUNCION PARA TENER EL HOVER ACTIVO
+
+// Redirecciona y limpia el localStorage mediante pouchDB.js
+function ejecutarLogout() {
+    logout();
+}
+
+// FUNCIÓN PARA MANTENER EL HOVER DE LA PÁGINA ACTIVA (.active)
 document.addEventListener("DOMContentLoaded", function() {
-    // Obtiene la URL actual
+    // Obtiene el nombre del archivo actual de la URL
     const currentUrl = window.location.pathname.split("/").pop();
 
-    // Selecciona todos los enlaces del navbar
+    // Selecciona todos los enlaces de navegación del bloque central
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
     navLinks.forEach(link => {
-        // Si el href del enlace coincide con la página actual, añade .active
-        if (link.getAttribute('href') === currentUrl) {
+        const hrefAttr = link.getAttribute('href');
+
+        // Si el href coincide exactamente con la página cargada, se marca activa
+        if (hrefAttr === currentUrl) {
             link.classList.add('active');
         }
 
-        // Manejo especial para la página de inicio vacía
-        if (currentUrl === "" && link.getAttribute('href') === "index.html") {
+        // Caso especial si el servidor abre la raíz vacía y estás parado en index.html
+        if (currentUrl === "" && hrefAttr === "index.html") {
             link.classList.add('active');
         }
     });
 });
 
-// Función cierre de sesión
-async function ejecutarLogout() {
-    const { error } = await supabaseClient.auth.signOut();
-    if (error) {
-        console.error("Error al cerrar sesión:", error.message);
-    } else {
-        // Redirigir a inicio o recargar para limpiar el estado
-        window.location.href = 'index.html';
-    }
-}
-
-// window.onload
+// Evento unificado de arranque al cargar la ventana del navegador
 window.onload = async () => {
+    // 1. Verificamos la sesión mediante pouchDB.js
     const currentUser = await checkSession();
 
-    actualizarNavbar(currentUser);
+    // 2. Renderizamos los botones correspondientes en el Navbar
+    await actualizarNavbar(currentUser);
 
+    // 3. Ejecutamos flujos paralelos de otras páginas si es que sus scripts están presentes
     if (typeof gestionarInterfazUsuario === "function") gestionarInterfazUsuario();
-    if (typeof cargarComentarios === "function") cargarComentarios();
+    // Nota: El llamado directo a cargarComentarios() aquí se remueve si ya es ejecutado internamente por su propio comments.js
 };

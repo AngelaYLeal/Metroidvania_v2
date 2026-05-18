@@ -8,35 +8,22 @@
     <title>Campaña - Cybernetik Einherjar</title>
     <link rel="icon" type="image/svg+xml" href="assets/img/logos/Logo_sin_fondo.png" />
 
-
-    <!-- POUCH DB CODE-->
-    <script src="js/library/pouchdb-9.0.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/pouchDB.js"></script>
-
-    <!-- POUCHDB -->
-    <script href="js/library/pouchdb-9.0.0.min.js"></script>
-
-    <!-- SWIPER -->
-    <script src="js/library/swiper-bundle.min.js"></script>
-    <link href="css/swiper-bundle.min.css" rel="stylesheet" />
-
-    <!-- VIDEOJS -->
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@videojs/html/cdn/video.js"></script>
-    <link href="css/videojs.css" rel="stylesheet" />
-
-
-    <script src="js/navbar.js" ></script>
-
-
-
-
     <link href="js/library/fontawesome-free-7.2.0-web/css/all.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
-    <link href="css/custom.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" /> <link href="css/video-Player.css" rel="stylesheet" />
     <link href="css/campanna.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
 
+    <script src="js/library/bootstrap.bundle.min.js" defer></script>
+    <script src="js/library/pouchdb-9.0.0.min.js" defer></script> <script src="js/wow.js" defer></script>
 
+    <script src="js/initial-db-comments.js" defer></script>
+    <script src="js/pouchDB.js" defer></script>
+
+    <script src="js/navbar.js" defer></script>
+    <script src="js/loader.js" defer></script>
+    <script src="js/barra_de_progreso.js" defer></script>
+    <script src="js/videoCampanna.js" defer></script>
+    <script src="js/audio-Player.js" defer></script>
   </head>
 
   <body class="d-flex flex-column min-vh-100 bg-dark text-white">
@@ -111,7 +98,7 @@
             <div class="row justify-content-center">
               <div id="dynamic-video-container" class="col-12 col-lg-9">
 
-                <!-- ============ VIDEO JS ======= --->
+                <!-- ============ pseudo videoJS ======= --->
 
               </div>
               <div class="mt-4 p-3 border-start border-info bg-dark">
@@ -641,53 +628,6 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const container = document.getElementById('dynamic-video-container');
-      const mql = window.matchMedia('(max-width: 991px)'); // Breakpoint LG de Bootstrap
-
-      function renderVideo(isMobile) {
-
-        container.innerHTML = '';
-
-        if (isMobile) {
-          // RENDER MÓVIL
-          container.innerHTML = `
-                <video-player>
-                  <video-minimal-skin>
-                    <video src="./assets/videos/MetroidVideo.mp4" poster="./assets/videos/miniatura.jpg" playsinline></video>
-                  </video-minimal-skin>
-                </video-player>
-            `;
-        } else {
-          // RENDER DESKTOP
-          container.innerHTML = `
-                <video-player>
-                  <video-skin>
-                    <video src="./assets/videos/MetroidVideo.mp4" poster="./assets/videos/miniatura.jpg" playsinline ></video>
-                  </video-skin>
-                </video-player>
-            `;
-        }
-      }
-
-      renderVideo(mql.matches);
-
-      mql.addEventListener('change', (e) => {
-        renderVideo(e.matches);
-      });
-    });
-  </script>
-
-
-
-  <script src="js/barra_de_progreso.js"></script>
-  <script src="js/wow.js"></script>
-  <script src="js/loader.js"></script>
-
-  <!-- MY CUSTOM MUSIC PLAYER -->
-  <script  src="js/my-wavesurfer.js" ></script>
 
   </body>
   </html>

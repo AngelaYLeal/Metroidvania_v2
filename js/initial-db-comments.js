@@ -2,14 +2,10 @@
 const INITIAL_COMMENTS = [
     {"usuario":"Angela","contenido":"Buenas, esto es un coemntario de prueba","created_at":"2026-05-01T14:50:05.224458+00:00","_id":"10"},
     {"usuario":"Luis","contenido":"el juego esta genial, la historia esta bien escrita","created_at":"2026-05-01T14:59:01.976984+00:00","_id":"11"},
-    {"usuario":"Luis","contenido":"probando respuesta","created_at":"2026-05-01T14:59:17.096074+00:00","_id":"12"},
     {"usuario":"Aitor","contenido":"Holaaa!!! Gracias por apoyar nuestro juego! ;3","created_at":"2026-05-01T15:06:02.960926+00:00","_id":"13"},
     {"usuario":"Angela","contenido":"Hoal a todos los inteernautas","created_at":"2026-05-01T19:02:04.302943+00:00","_id":"14"},
-    {"usuario":"Angela","contenido":"Te respondo internauta, para demostrar mis funciones","created_at":"2026-05-01T19:04:23.661179+00:00","_id":"15"},
     {"usuario":"prueba1","contenido":"Prueba 1 de comentarios","created_at":"2026-04-30T16:32:01.547512+00:00","_id":"6"},
     {"usuario":"prueba1","contenido":"prueba 3","created_at":"2026-04-30T16:36:35.004826+00:00","_id":"7"},
-    {"usuario":"prueba1","contenido":"respuesta a prueba 3","created_at":"2026-04-30T16:37:01.937142+00:00","_id":"8"},
-    {"usuario":"prueba1","contenido":"HOLA","created_at":"2026-04-30T23:13:42.92283+00:00","_id":"9"}
 ];
 
 
