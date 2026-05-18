@@ -12,7 +12,7 @@
      -->
   <script src="js/library/pouchdb-9.0.0.min.js"></script>
 
-    <script src="js/database.js"></script>
+    <script src="js/pouchDB.js"></script>
 
     <link rel="icon" type="image/svg+xml" href="assets/img/logos/Logo_sin_fondo.png" />
 
@@ -186,10 +186,10 @@
     };
 
     document.addEventListener('DOMContentLoaded', async () => {
-        // Usamos la función local de database.js
+        // Usamos la función local de pouchDB.js
         currentUser = await checkSession();
         gestionarInterfazUsuario();
-        cargarComentariosWeb(); // Cambié el nombre para no chocar con la de database.js
+        cargarComentariosWeb(); // Cambié el nombre para no chocar con la de pouchDB.js
     });
 
     function gestionarInterfazUsuario() {
@@ -215,7 +215,7 @@
     async function renderBadgesHTML(userId) {
         if (!userId) return '';
         try {
-            // Usamos la función que ya definimos en database.js que consulta PouchDB
+            // Usamos la función que ya definimos en pouchDB.js que consulta PouchDB
             const status = await getUserFullStatus(userId);
             if (!status) return '';
 
@@ -286,7 +286,7 @@
 
     async function cargarComentariosWeb() {
         const listaHTML = document.getElementById('comments-list');
-        // Llamamos a la función de database.js que lee de PouchDB
+        // Llamamos a la función de pouchDB.js que lee de PouchDB
         const data = await cargarComentarios();
 
         if (!data || data.length === 0) {
@@ -305,7 +305,7 @@
         const mensaje = mensajeInput.value.trim();
         if (!mensaje) return;
 
-        // Usamos la función local de database.js
+        // Usamos la función local de pouchDB.js
         await insertarComentario(currentUser.username || "Einherjar", mensaje);
     }
 
