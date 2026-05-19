@@ -6,32 +6,32 @@ async function actualizarNavbar(user) {
 
     // Si hay un usuario con sesión activa en el búnker local
     if (user) {
-        // Rescatamos el estado completo (username real, categoria, tier) directamente de PouchDB usando su ID
+        // si hay/detecta un user === > get user
         const datosUsuario = await getUserFullStatus(user.id);
 
-        // Ruta de tu avatar por defecto (puedes cambiarla por la que quieras en tu carpeta assets)
+        // Ruta de tu avatar por defecto
         const imgPath = 'assets/img/logos/Logo_sin_fondo.png';
 
         navRight.innerHTML = `
             <li class="nav-item">
                 <a class="nav-link text-black fw-normal" id="reservar" href="Reserve.html">RESERVAR</a>
             </li>
-            <li class="nav-item ms-lg-2">
+            <li class="nav-item">
                 <a href="profile.html" class="d-flex align-items-center text-decoration-none" title="Operador: ${datosUsuario?.username || user.username}">
                     <div class="avatar-frame d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 1px solid #00ffff; border-radius: 50%; overflow: hidden; background: #000;">
                         <img src="${imgPath}" alt="Avatar" class="nav-avatar" style="width: 100%; height: auto; object-fit: cover;">
                     </div>
-                    <span class="text-info small ms-2 d-lg-none">${datosUsuario?.username || user.username}</span>
+                    <span class="text-info small d-lg-none">${datosUsuario?.username || user.username}</span>
                 </a>
             </li>
             <li class="nav-item">
-                <button onclick="ejecutarLogout()" class="btn btn-link nav-link text-danger ms-2" style="border:none; background:none;" title="Desconectar del Sistema">
+                <button onclick="ejecutarLogout()" class="btn btn-link nav-link text-danger" style="border:none; background:none;" title="Desconectar del Sistema">
                     <i class="fa-solid fa-power-off"></i>
                 </button>
             </li>
         `;
     } else {
-        // Estructura para usuarios invitados (Mantiene exactamente tus clases y estilos originales de los HTML)
+        // Estructura para usuarios invitados
         navRight.innerHTML = `
             <li class="nav-item">
                 <a class="nav-link text-white fw-light me-3" href="log_in.html">LOGIN</a>
@@ -85,13 +85,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Evento unificado de arranque al cargar la ventana del navegador
 window.onload = async () => {
-    // 1. Verificamos la sesión mediante pouchDB.js
+    // 1.  la sesión mediante pouchDB.js?
     const currentUser = await checkSession();
 
-    // 2. Renderizamos los botones correspondientes en el Navbar
+    // 2.  botones correspondientes en el Navbar
     await actualizarNavbar(currentUser);
 
-    // 3. Ejecutamos flujos paralelos de otras páginas si es que sus scripts están presentes
+    // 3.
     if (typeof gestionarInterfazUsuario === "function") gestionarInterfazUsuario();
     // Nota: El llamado directo a cargarComentarios() aquí se remueve si ya es ejecutado internamente por su propio comments.js
 };
