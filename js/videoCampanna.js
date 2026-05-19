@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <img src="assets/img/icons/boton-de-play.png" alt="Reproducir Tráiler">
             </div>
 
-            <video id="cyber-video" src="./assets/videos/MetroidVideo.mp4" poster="./assets/videos/miniatura.jpg" playsinline></video>
+            <video id="cyber-video" src="./assets/videos/trailer.mp4" poster="./assets/videos/miniatura.png" playsinline></video>
             
             <div id="cyber-controls" class="cyber-controls" style="display: none;">
                 <div class="cyber-progress-container" id="progress-container">
