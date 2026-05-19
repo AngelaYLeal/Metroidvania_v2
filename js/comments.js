@@ -158,7 +158,7 @@ async function generarHTMLComentario(comentario, todosLosComentarios, nivel = 0)
             <div class="card-header border-secondary d-flex justify-content-between align-items-center bg-black py-1">
                 <a href="${perfilLink}" class="text-decoration-none d-flex align-items-center flex-wrap user-profile-trigger">
                     <img src="${fotoUrl}" class="rounded-circle border border-info me-2"
-                         style="width: ${nivel === 0 ? '30px' : '22px'}; height: ${nivel === 0 ? '30px' : '22px'}; object-fit: cover;">
+                         style="width: ${nivel === 0 ? '30px' : '22px'}; height: ${nivel === 0 ? '30px' : '22px'};">
                     <strong class="text-white small hover-cyan" style="font-size: 0.8rem;">${comentario.usuario}</strong>
                 </a>
                 <div class="ms-1 d-inline-flex align-items-center">

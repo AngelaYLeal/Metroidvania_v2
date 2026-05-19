@@ -9,7 +9,7 @@ async function actualizarNavbar(user) {
             .eq('id', user.id)
             .single();
 
-        const imgPath = perfil?.avatar_url ? perfil.avatar_url : 'assets/img/icons/no_img.png';
+        const imgPath = perfil?.avatar_url ? perfil.avatar_url : 'assets/img/logos/Logo_sin_fondo.png';
 
         navRight.innerHTML = `
             <li class="nav-item">
