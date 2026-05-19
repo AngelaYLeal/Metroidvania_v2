@@ -139,3 +139,29 @@ document.addEventListener('DOMContentLoaded', function() {
             : '<i class="fa-solid fa-expand"></i>';
     });
 });
+
+window.onload = async () => {
+    // ... tu otra lógica de inicialización (como la navbar) ...
+
+    // Inicializar Galería Swiper
+    const gallerySwiper = new Swiper('.gallery-swiper', {
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
+        loop: true,
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.gallery-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        speed: 1000
+    });
+};
