@@ -3,16 +3,48 @@ gsap.registerPlugin(ScrollToPlugin);
 let mm = gsap.matchMedia();
 
 // ==========================================
-// 1. ESCRITORIO (Desktop > 991px)
+// 1. ESCRITORIO (Desktop > 1024px)
 // ==========================================
 mm.add("(min-width: 1024px)", () => {
-    // Estados iniciales
+
+    // FUNCIONES CALCULADORAS DE AUTOCENTRADO DINÁMICO
+    const getHeroX = () => {
+        const pinWrapper = document.getElementById('pin-wrapper');
+        const heroTarget = document.querySelector('.hero-aron-target');
+        if (!pinWrapper || !heroTarget) return 0;
+
+        const wrapperRect = pinWrapper.getBoundingClientRect();
+        const targetRect = heroTarget.getBoundingClientRect();
+        // Devuelve el punto central exacto del tercio derecho del Hero
+        return targetRect.left - wrapperRect.left + (targetRect.width / 2);
+    };
+
+    const getCtaX = () => {
+        const pinWrapper = document.getElementById('pin-wrapper');
+        const ctaTarget = document.querySelector('.cta-aron-target');
+        if (!pinWrapper || !ctaTarget) return 0;
+
+        const wrapperRect = pinWrapper.getBoundingClientRect();
+        const targetRect = ctaTarget.getBoundingClientRect();
+        // Devuelve el punto central exacto del tercio izquierdo del CTA Video
+        return targetRect.left - wrapperRect.left + (targetRect.width / 2);
+    };
+
+    // Estados iniciales nativos
     gsap.set("#cta-video", { y: "100%", opacity: 0 });
     gsap.set("#donation", { rotationX: -90, transformOrigin: "50% 100%", opacity: 0 });
     gsap.set("#game-info", { x: "100%", opacity: 0 });
     gsap.set("#comments", { y: "100%", opacity: 0, pointerEvents: "none" });
-    gsap.set("#core-loop", {y: "100%", opacity: 0 });
+    gsap.set("#core-loop", { y: "100%", opacity: 0 });
     gsap.set("#core-loop .col-lg-4", { opacity: 0, scale: 0.8 });
+
+    // Posicionamos el pivote de Aron exactamente centrado en su coordenada de anclaje
+    gsap.set("#personaje-flotante", {
+        x: getHeroX,
+        xPercent: -50,  // Centra horizontalmente respecto a su propio eje
+        yPercent: -50,  // Centra verticalmente respecto a su propio eje
+        opacity: 1
+    });
 
     const masterTl = gsap.timeline({
         scrollTrigger: {
@@ -27,31 +59,35 @@ mm.add("(min-width: 1024px)", () => {
     });
 
     masterTl
-        // STEP 1: Hero sale, Video entra
+        // STEP 1: Hero sale, Video entra y Aron se desplaza centrándose al tercio izquierdo
         .to(".logo-wrapper, .lema, .description, .countdown-section", { opacity: 0, x: -100, duration: 1 }, "step1")
-        .to("#personaje-flotante", { x: "-50vw", duration: 1, opacity:1 }, "step1")
+        .to("#personaje-flotante", { x: getCtaX, duration: 1, opacity: 1 }, "step1")
         .to("#cta-video", { y: "0%", opacity: 1, pointerEvents: "auto", duration: 1 }, "step1")
 
-        // STEP 2: Video sale, CORE LOOP entra y se "virtualiza"
+        // STEP 2: Video sale, CORE LOOP entra y Aron sale elegantemente hacia la izquierda
         .to("#cta-video", { y: "-100%", opacity: 0, duration: 2 }, "step-core")
-        .to("#personaje-flotante", { opacity: 0,x:"-80vw",scale:0.8, duration: 1, ease: "power1.inOut" }, "step-core")
+        .to("#personaje-flotante", {
+            x: () => getCtaX() - 300,
+            opacity: 0,
+            scale: 0.8,
+            duration: 1,
+            ease: "power1.inOut"
+        }, "step-core")
         .to("#core-loop", { y: "0%", opacity: 1, duration: 1 }, "step-core")
         .to({}, {
-            duration: 0.1, // No ocupa casi espacio en el scroll
+            duration: 0.1,
             onStart: () => {
-                // Hacia adelante: Animación por TIEMPO (1 segundo de separación)
                 gsap.fromTo("#core-loop .col-lg-4",
                     { opacity: 0, scale: 0.8 },
                     { opacity: 1, scale: 1, duration: 0.5, stagger: 0.25, overwrite: "auto", ease: "power2.out" }
                 );
             },
             onReverseComplete: () => {
-                // Hacia atrás: Si el usuario vuelve a subir, ocultamos las tarjetas
-                // para que la animación vuelva a funcionar si baja de nuevo.
                 gsap.to("#core-loop .col-lg-4", { opacity: 0, scale: 0.8, duration: 0.3, overwrite: "auto" });
             }
         }, "step-core+=0.5")
-        // STEP 3: CORE LOOP sale (modificado), Donaciones entra
+
+        // STEP 3: CORE LOOP sale, Donaciones entra
         .to("#core-loop", { y: "-50vh", rotationX: 90, opacity: 0, duration: 1 }, "step2")
         .to("#donation", { rotationX: 0, opacity: 1, pointerEvents: "auto", duration: 1.5 }, "step2")
 
@@ -66,30 +102,51 @@ mm.add("(min-width: 1024px)", () => {
     return () => gsap.set("*", { clearProps: "all" });
 });
 
-
 // ==========================================
-// 3. MÓVILES
+// 2. MÓVILES y TABLETS (< 1024px)
 // ==========================================
 mm.add("(max-width: 1023.98px)", () => {
-
+    // Matamos los ScrollTriggers de escritorio para que no interfieran
     ScrollTrigger.getAll().forEach(t => t.kill());
 
-    gsap.set("section, #pin-wrapper, #personaje-flotante", {
-        clearProps: "all"
-    });
+    // Reseteamos estilos que GSAP pueda haber dejado clavados en PC
+    gsap.set("section, #pin-wrapper, #personaje-flotante", { clearProps: "all" });
+    gsap.set("section", { position: "relative", opacity: 1 });
 
-    gsap.set("section", {
-        position: "relative",
-        clearProps: "all",
-        opacity: 1
-    });
+    // === MOVIMIENTO FÍSICO DEL ELEMENTO EN EL HTML ===
+    const aron = document.getElementById("personaje-flotante");
+    const ctaSection = document.getElementById("cta-video");
 
-    // Desactivar ScrollSpy de Bootstrap
+    if (aron && ctaSection) {
+
+        ctaSection.insertBefore(aron, ctaSection.firstChild);
+
+        gsap.set(aron, {
+            position: "absolute",
+            top: "0",
+            left: "0",
+            width: "100%",
+            height: "100%",
+            display: "block",
+            zIndex: 1,
+            filter: "brightness(0.55)",
+            opacity: 1,
+            visibility: "visible",
+            pointerEvents: "none"
+        });
+    }
+
     const spy = document.querySelector('[data-bs-spy="scroll"]');
     if (spy) spy.removeAttribute('data-bs-spy');
-});
 
-// 4. SWIPER
+    return () => {
+        const heroSection = document.getElementById("hero");
+        if (aron && heroSection) {
+            heroSection.appendChild(aron);
+        }
+    };
+});
+// 3. SWIPER
 const swiper = new Swiper('.my-slider', {
     slidesPerView: 1,
     spaceBetween: 20,
@@ -101,9 +158,7 @@ const swiper = new Swiper('.my-slider', {
     autoHeight: false,
 });
 
-
-// btn top
-
+// Botón volver arriba (Back to top)
 ScrollTrigger.create({
     trigger: "body",
     start: "500px top",
@@ -112,13 +167,9 @@ ScrollTrigger.create({
 });
 
 document.querySelector("#back-to-top").addEventListener("click", (e) => {
-    e.preventDefault(); // Evitamos recargas indeseadas
-
+    e.preventDefault();
     gsap.to(window, {
-        scrollTo: {
-            y: 0,
-            autoKill: false
-        },
+        scrollTo: { y: 0, autoKill: false },
         duration: 0.6,
         ease: "power3.inOut",
         overwrite: "auto"
