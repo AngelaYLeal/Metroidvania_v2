@@ -82,12 +82,14 @@ async function ejecutarLogout() {
     }
 }
 
-// window.onload
-window.onload = async () => {
+async function inicializarNavbar() {
     const currentUser = await checkSession();
-
     actualizarNavbar(currentUser);
 
     if (typeof gestionarInterfazUsuario === "function") gestionarInterfazUsuario();
     if (typeof cargarComentarios === "function") cargarComentarios();
-};
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    inicializarNavbar();
+});

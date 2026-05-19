@@ -10,7 +10,7 @@ const BADGE_IMAGES = {
     "Apoyo Altruista": "assets/img/badges/apoyo.png"
 };
 
-window.onload = async () => {
+document.addEventListener("DOMContentLoaded", async () => {
     userSession = await checkSession();
 
     if (!userSession) {
@@ -21,7 +21,7 @@ window.onload = async () => {
     // Ejecutamos ambas cargas
     await cargarDatosPerfil();
     await cargarHistorialDonaciones();
-};
+});
 
 // --- LÓGICA DE PERFIL (Avatar, Nombre, Email y RANGOS) ---
 

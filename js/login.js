@@ -1,7 +1,7 @@
 // js/login.js
 
 // 1. Al cargar la página, comprueba sesión y activa el escuchador del formulario
-window.onload = async () => {
+document.addEventListener("DOMContentLoaded", async () => {
     //  si existe la función checkSession antes de ejecutarla? 0 :
     if (typeof checkSession === 'function') {
         const user = await checkSession();
@@ -16,7 +16,7 @@ window.onload = async () => {
     if (form) {
         form.addEventListener('submit', iniciarSesion);
     }
-};
+});
 
 // 2. Función de inicio de sesión
 async function iniciarSesion(event) {

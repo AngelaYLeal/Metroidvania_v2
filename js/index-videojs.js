@@ -1,9 +1,9 @@
 // js/index.js
 
-window.onload = () => {
+document.addEventListener("DOMContentLoaded", async () => {
     // Inicializar el renderizado adaptativo del Tráiler en el Home
     inicializarVideoHome();
-};
+});
 
 function inicializarVideoHome() {
     const container = document.getElementById('dynamic-video-container');

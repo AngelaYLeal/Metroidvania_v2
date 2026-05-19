@@ -5,7 +5,7 @@ let currentDonationTier = "";
 let currentDonationAmount = 0;
 let donationModalInstance = null;
 
-window.onload = async () => {
+document.addEventListener("DOMContentLoaded",async () => {
     // 1. Inicializar Sistema de Donaciones y Progreso de Barra
     await actualizarProgresoFinanciacion();
     inicializarEventosDonaciones();
@@ -15,7 +15,7 @@ window.onload = async () => {
 
     // 3. Inicializar renderizado adaptativo del Trailer (VideoJS)
     inicializarVideoAdaptativo();
-};
+});
 
 /* ==========================================================================
    SECCIÓN: SISTEMA DE FINANCIACIÓN & EVENTOS

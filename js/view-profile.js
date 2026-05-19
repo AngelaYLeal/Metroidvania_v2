@@ -11,7 +11,7 @@ const BADGE_IMAGES = {
 };
 
 // Captura de parámetros de la URL e inicialización de consultas
-window.onload = async () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const urlParams = new URLSearchParams(window.location.search);
 
     const targetUserId = urlParams.get('id');
@@ -45,7 +45,7 @@ window.onload = async () => {
         console.error(err.message);
         mostrarError();
     }
-};
+});
 
 function mostrarError() {
     document.getElementById('error-container').classList.remove('d-none');

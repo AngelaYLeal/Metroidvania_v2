@@ -1,12 +1,12 @@
 // js/signup.js
 
 // Al cargar la ventana, se carga el el escuchador al formulario
-window.onload = () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const form = document.getElementById('registerForm');
     if (form) {
         form.addEventListener('submit', registrarUsuario);
     }
-};
+});
 
 async function registrarUsuario(event) {
 
