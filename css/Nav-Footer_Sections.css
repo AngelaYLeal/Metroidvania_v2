@@ -100,7 +100,7 @@ h1{
     background-color: #0a0a0a !important;
     border: 1px solid #333 !important;
     margin-bottom: 1rem;
-    border-radius: 0 !important; /* Bordes rectos para estilo más industrial */
+    border-radius: 0 !important;
     transition: all 0.3s ease;
 }
 
@@ -129,7 +129,7 @@ h1{
 
 
 .accordion-button::after {
-    filter: invert(1) sepia(1) saturate(5) hue-rotate(175deg); /* Cambia la flecha a color cian */
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(175deg);
 }
 
 
@@ -215,7 +215,9 @@ h1{
 #credits td:first-child {
     white-space: normal;
 }
-/* ==================== COMENTARIOS ========================== */
+/* ========================================
+                   COMENTARIOS
+========================================== */
 /* Paleta de colores suavizada */
 :root {
     --cyber-dark-bg: #0f111a;        /* Fondo principal  */
@@ -281,7 +283,7 @@ h1{
 #comments .border-start.border-info {
     border-left: 2px solid var(--cyber-accent) !important;
     opacity: 0.6;
-    margin-left: 1.5rem !important; /* Ajuste para móvil */
+    margin-left: 1.5rem !important;
 }
 
 @media (min-width: 768px) {
@@ -316,7 +318,7 @@ h1{
 
 #comments .border-start.border-info {
     border-left: 2px solid var(--cyber-accent) !important;
-    opacity: 1 !important; /* Ahora es totalmente opaco */
+    opacity: 1 !important;
     margin-left: 1.5rem !important;
 }
 

@@ -53,8 +53,7 @@ async function renderBadgesHTML(usernameOrId) {
         if (usernameOrId.includes('-') || usernameOrId.length > 20) {
             status = await getUserFullStatus(usernameOrId);
         } else {
-            // 2. Si viene de los datos semilla iniciales, es un nombre plano (ej: "Angela").
-            // Buscamos en dbPerfiles el documento que tenga ese "username".
+            //buscar en db perfiles
             const resultPerfiles = await dbPerfiles.allDocs({ include_docs: true });
             const perfilEncontrado = resultPerfiles.rows.find(row =>
                 row.doc.username && row.doc.username.toLowerCase() === usernameOrId.toLowerCase()
@@ -118,8 +117,7 @@ async function generarHTMLComentario(comentario, todosLosComentarios, nivel = 0)
             );
             if (encontrado) perfilEncontrado = encontrado.doc;
         }
-
-        // Si el perfil existe en PouchDB, lo convertimos en un enlace clickable con estilo Cyberpunk
+        // perfil encontrado porque existe
         if (perfilEncontrado) {
             usernameHTML = `
                 <a href="view-profile.html?id=${perfilEncontrado._id}" 

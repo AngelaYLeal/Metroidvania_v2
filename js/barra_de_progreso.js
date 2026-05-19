@@ -2,7 +2,7 @@
 
 let pendingDonation = { tier: '', amount: 0 };
 const MAX_AMOUNT = 20000;
-const BASE_AMOUNT = 5000; // Tus datos históricos iniciales se sumarán a esta base cibernética
+const BASE_AMOUNT = 5000;
 
 document.addEventListener("DOMContentLoaded", () => {
     updateProgressBar();
@@ -23,11 +23,10 @@ async function updateProgressBar() {
     let totalDonated = BASE_AMOUNT;
 
     try {
-        // Consultamos todos los documentos de donaciones en el búnker local
         const result = await dbDonaciones.allDocs({ include_docs: true });
 
         if (result && result.rows) {
-            // Sumamos los montos locales usando el campo exacto 'amount'
+
             const totalLocal = result.rows.reduce((acc, row) => {
                 const monto = row.doc && row.doc.amount ? parseFloat(row.doc.amount) : 0;
                 return acc + monto;
@@ -47,13 +46,11 @@ async function updateProgressBar() {
         let percentage = (totalDonated / MAX_AMOUNT) * 100;
         if (percentage > 100) percentage = 100;
 
-        // Mantenemos tu genial retraso visual para la animación de carga neón
         setTimeout(() => {
             progressBar.style.width = percentage + '%';
             if (percentageLabel) percentageLabel.innerText = Math.floor(percentage) + '%';
         }, 400);
 
-        // Formato de moneda europea limpio
         amountElement.innerText = totalDonated.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 }
@@ -68,7 +65,6 @@ async function initiateDonation(tier, amount) {
     pendingDonation.tier = tier;
     pendingDonation.amount = parseFloat(amount);
 
-    // checkSession() ya está definida de forma global en tu pouchDB.js
     const user = await checkSession();
 
     if (user) {
@@ -81,28 +77,26 @@ async function initiateDonation(tier, amount) {
 
 // --- GUARDAR LA NUEVA DONACIÓN EN POUCHDB ---
 async function processDonation(tier, amount, userId) {
-    // Estructuramos el nuevo documento con la misma forma que tus datos de initial_data.js
+
     const donationData = {
-        _id: 'donacion_' + new Date().getTime().toString(), // PouchDB necesita un campo único ID obligatoriamente
+        _id: 'donacion_' + new Date().getTime().toString(),
         tier_name: tier,
         amount: parseFloat(amount),
         created_at: new Date().toISOString()
     };
 
-    // Si el usuario simulado está logueado, le asociamos su UUID de perfil
+
     if (userId) {
         donationData.user_id = userId;
     }
 
     try {
-        // En lugar de .insert() de Supabase, usamos .put() de PouchDB
+
         await dbDonaciones.put(donationData);
 
-        // Lanzamos el modal de agradecimiento de Bootstrap que ya tenías maquetado
         const successModal = new bootstrap.Modal(document.getElementById('thankYouModal'));
         successModal.show();
 
-        // Refrescamos inmediatamente el cálculo de la barra en la interfaz
         updateProgressBar();
 
     } catch (err) {

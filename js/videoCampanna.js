@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('dynamic-video-container');
     if (!container) return;
 
-    // Inyectamos la estructura universal
+    // estructura universal
     container.innerHTML = `
         <div id="cyber-player" class="cyber-player-container">
             

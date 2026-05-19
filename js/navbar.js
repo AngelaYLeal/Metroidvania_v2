@@ -9,7 +9,6 @@ async function actualizarNavbar(user) {
         // si hay/detecta un user === > get user
         const datosUsuario = await getUserFullStatus(user.id);
 
-        // Ruta de tu avatar por defecto
         const imgPath = 'assets/img/logos/Logo_sin_fondo.png';
 
         navRight.innerHTML = `
@@ -65,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Obtiene el nombre del archivo actual de la URL
     const currentUrl = window.location.pathname.split("/").pop();
 
-    // Selecciona todos los enlaces de navegación del bloque central
+
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
     navLinks.forEach(link => {
@@ -83,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-// Evento unificado de arranque al cargar la ventana del navegador
+
 window.onload = async () => {
     // 1.  la sesión mediante pouchDB.js?
     const currentUser = await checkSession();

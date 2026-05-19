@@ -38,11 +38,11 @@ mm.add("(min-width: 1024px)", () => {
     gsap.set("#core-loop", { y: "100%", opacity: 0 });
     gsap.set("#core-loop .col-lg-4", { opacity: 0, scale: 0.8 });
 
-    // Posicionamos el pivote de Aron exactamente centrado en su coordenada de anclaje
+    // POSICION DE ARON
     gsap.set("#personaje-flotante", {
         x: getHeroX,
-        xPercent: -50,  // Centra horizontalmente respecto a su propio eje
-        yPercent: -50,  // Centra verticalmente respecto a su propio eje
+        xPercent: -50,
+        yPercent: -50,
         opacity: 1
     });
 
@@ -106,10 +106,9 @@ mm.add("(min-width: 1024px)", () => {
 // 2. MÓVILES y TABLETS (< 1024px)
 // ==========================================
 mm.add("(max-width: 1023.98px)", () => {
-    // Matamos los ScrollTriggers de escritorio para que no interfieran
+
     ScrollTrigger.getAll().forEach(t => t.kill());
 
-    // Reseteamos estilos que GSAP pueda haber dejado clavados en PC
     gsap.set("section, #pin-wrapper, #personaje-flotante", { clearProps: "all" });
     gsap.set("section", { position: "relative", opacity: 1 });
 

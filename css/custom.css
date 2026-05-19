@@ -194,25 +194,21 @@
         height: 35px !important;
     }
 
-    /* 2. Reducimos el espacio entre enlaces del centro */
     .navbar-nav .nav-link {
         padding: 8px 8px !important;
         font-size: 0.75rem !important;
     }
 
-    /* 3. Compactamos el botón Reservar */
     #reservar {
         padding: 6px 12px !important;
         font-size: 0.75rem !important;
 
     }
 
-    /* 4. Escondemos el texto de LOGIN y SIGN UP pero dejamos el icono */
     .nav-text-hide {
         display: none;
     }
 
-    /* 5. Creamos el marco para el icono de usuario genérico */
     .user-icon-frame {
         width: 35px;
         height: 35px;
@@ -226,7 +222,6 @@
     }
 }
 
-/* Evitar el scroll horizontal global */
 body {
     overflow-x: hidden;
 }
@@ -759,24 +754,24 @@ u {
     width: 100%;
     min-height: 100vh;
     display: flex;
-    flex-direction: column; /* CAMBIO: Cambiado a column para que el título respete el flujo superior */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 120px 1rem 2rem 1rem; /* CAMBIO: Subimos el padding top de 2rem a 120px como escudo base contra el navbar */
+    padding: 120px 1rem 2rem 1rem;
     box-sizing: border-box;
 }
 
 /* Parche elástico directo: si la pantalla es de tipo laptop compacta, modificamos el comportamiento flex */
 @media (min-width: 1024px) and (max-height: 860px) {
     #game-info {
-        justify-content: flex-start !important; /* Desactiva el centrado vertical agresivo que escondía el título */
-        padding-top: 100px !important;         /* Deja el espacio exacto para el navbar en laptops */
-        height: auto !important;               /* Evita congelar la pantalla si el contenido de las pestañas es largo */
+        justify-content: flex-start !important;
+        padding-top: 100px !important;
+        height: auto !important;
     }
 }
 
 .game-info-wrapper {
-    width: 100%; /* CAMBIO: Asegura adaptabilidad en anchos laptop */
+    width: 100%;
     max-width: 1600px;
     margin: 0 auto;
 }
@@ -814,7 +809,7 @@ u {
     backdrop-filter: blur(12px);
     border-top: 1px solid rgba(235, 0, 194);
     border-bottom: 1px solid rgba(235, 0, 194);
-    max-height: 55vh; /* CAMBIO: Bajado de 70vh a 55vh en pantallas estándar para garantizar que el título quepa en laptops sin scroll general */
+    max-height: 55vh;
     overflow-y: auto;
 }
 
@@ -1098,7 +1093,6 @@ footer .a.btn.btn-link{ font-size: 0.8rem; }
    == 2. PARCHE CRÍTICO PARA LAPTOP L (Ancho >= 1440px)                     ==
    ========================================================================== */
 @media (min-width: 1440px) {
-    /* Evita que el centrado flex de Bootstrap estrelle los títulos contra el navbar sticky */
     #pin-wrapper .scroll-section {
         padding-top: 120px !important;
         justify-content: flex-start !important;
@@ -1119,7 +1113,7 @@ footer .a.btn.btn-link{ font-size: 0.8rem; }
    == 3. SISTEMA DE ADAPTACIÓN VERTICAL (Portátiles / Ventanas Bajas)      ==
    ========================================================================== */
 @media (min-width: 1024px) and (max-height: 860px) {
-    /* SOLUCIÓN AL CORTE: Permitimos que la sección crezca si el contenido lo exige */
+
     .scroll-section#donation {
         height: auto !important;
         min-height: 100vh !important;
@@ -1136,18 +1130,18 @@ footer .a.btn.btn-link{ font-size: 0.8rem; }
     }
 
     #donation .row {
-        gap: 2rem !important; /* Estrechamos la separación lateral para ganar espacio */
+        gap: 2rem !important;
     }
 
     /* ==========================================
        IZQUIERDA: CYBER PANEL RESPONSIVO
        ========================================== */
     #donation .donation-left {
-        padding: 1.5rem !important; /* Menos padding interno para que no asfixie al texto */
+        padding: 1.5rem !important;
     }
 
     #donation .donation-left .text-white.h5 {
-        font-size: 1rem !important; /* Texto de apoyo superior más compacto */
+        font-size: 1rem !important;
         margin-bottom: 1rem !important;
     }
 
@@ -1164,15 +1158,15 @@ footer .a.btn.btn-link{ font-size: 0.8rem; }
     }
 
     #donation .bg-dark {
-        height: 0.8rem !important; /* Barra de progreso ligeramente más delgada */
+        height: 0.8rem !important;
     }
 
     #donation .cyber-panel .d-flex.text-white-50.mt-2 span {
-        font-size: 0.75rem !important; /* Números de escala (0€, 5k, etc.) más pequeños */
+        font-size: 0.75rem !important;
     }
 
     #donation .donation-left .display-6 {
-        font-size: 1.8rem !important; /* El contador de "64 personas" se escala */
+        font-size: 1.8rem !important;
     }
 
     #donation .donation-left .btn {
@@ -1256,8 +1250,6 @@ footer .a.btn.btn-link{ font-size: 0.8rem; }
         min-height: unset !important;
         display: block !important;
         padding: 4rem 15px !important;
-        /* ELIMINA O COMENTA ESTA LÍNEA SI LA TIENES: */
-        /* overflow: hidden !important; */
     }
 
     #pin-wrapper > section {
@@ -1337,7 +1329,7 @@ footer .a.btn.btn-link{ font-size: 0.8rem; }
     }
 
     #donation .row {
-        flex-direction: column !important; /* Fuerza el apilamiento vertical */
+        flex-direction: column !important;
         align-items: center !important;
     }
 
@@ -1367,15 +1359,12 @@ footer .a.btn.btn-link{ font-size: 0.8rem; }
     overflow-x: auto !important;
     overflow-y: hidden !important;
 
-    /* Alineación estricta a la izquierda en smartphones, tablets, laptops y televisores */
     justify-content: flex-start !important;
 
     border-bottom: 2px solid rgba(235, 0, 194, 0.3) !important;
     scrollbar-width: thin;
-    -webkit-overflow-scrolling: touch; /* Inercia táctil ultrasuave */
+    -webkit-overflow-scrolling: touch;
 }
-
-/* Evita que las celdas se colapsen o reduzcan su tamaño de forma rígida en PC */
 #game-info .nav-tabs .nav-item {
     flex: 0 0 auto !important;
 }
@@ -1387,7 +1376,6 @@ footer .a.btn.btn-link{ font-size: 0.8rem; }
     font-size: 0.95rem !important;
 }
 
-/* Diseño unificado del riel de scroll cyberpunk */
 #game-info .nav-tabs::-webkit-scrollbar {
     height: 4px !important;
 }
