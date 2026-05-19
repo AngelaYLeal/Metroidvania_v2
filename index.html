@@ -70,62 +70,45 @@
         <!-- ================= HERO ================= -->
         <section id="hero" class="scroll-section">
             <div class="container-fluid h-100">
-                <div class="row h-100">
+                <div class="row h-100 align-items-center">
 
-                    <!-- TEXTO IZQUIERDA -->
-                    <div class=" text-izq col-12 col-lg-12 col-xl-6 d-flex flex-column justify-content-center align-items-center text-white">
-
-                        <div class=" hero-text logo-wrapper font-original display-3 text-center">
+                    <div class="text-izq col-12 col-lg-8 d-flex flex-column justify-content-center align-items-center text-white px-5">
+                        <div class="hero-text logo-wrapper font-original display-1 text-center">
                             <p>Cybernetik Einherjar</p>
                         </div>
 
                         <h1 class="lema text-center font">¡Hackea tu paso a la salida!</h1>
-                        <h5 class="description text-center">Ayuda a Aron a salir de la Base Nyr y descubre su pasado en este Metroidvania de exploración y misterio, derrota a tus enemigos robot hackeándolos y descubriendo mas sobre ellos.</h5>
+                        <h5 class="description text-center  mx-5">Ayuda a Aron a salir de la Base Nyr y descubre su pasado en este Metroidvania de exploración y misterio...</h5>
 
-                        <!-- COUNTDOWN -->
                         <div class="countdown-section mt-5">
                             <h4 id="clock-tittle" class="text-white text-center fw-bold">Sincronización final en:</h4>
                             <div id="countdown" class="d-flex justify-content-center align-items-center mt-3">
-                                <div class="time-node text-center">
-                                    <span id="days" class="d-block fw-bold">00</span>
-                                    <div class="small">Días</div>
-                                </div>
+                                <div class="time-node text-center"><span id="days" class="d-block fw-bold">00</span><div class="small">Días</div></div>
                                 <span class="separator fw-bold align-self-start mt-2">:</span>
-                                <div class="time-node text-center">
-                                    <span id="hours" class="d-block fw-bold">00</span>
-                                    <div class="small">Horas</div>
-                                </div>
+                                <div class="time-node text-center"><span id="hours" class="d-block fw-bold">00</span><div class="small">Horas</div></div>
                                 <span class="separator fw-bold align-self-start mt-2">:</span>
-                                <div class="time-node text-center">
-                                    <span id="minutes" class="d-block fw-bold">00</span>
-                                    <div class="small">Min</div>
-                                </div>
+                                <div class="time-node text-center"><span id="minutes" class="d-block fw-bold">00</span><div class="small">Min</div></div>
                                 <span class="separator fw-bold align-self-start mt-2">:</span>
-                                <div class="time-node text-center">
-                                    <span id="seconds" class="d-block fw-bold">00</span>
-                                    <div class="small">Seg</div>
-                                </div>
+                                <div class="time-node text-center"><span id="seconds" class="d-block fw-bold">00</span><div class="small">Seg</div></div>
                             </div>
                         </div>
+                    </div>
 
+                    <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center position-relative hero-aron-target h-100">
                     </div>
 
                 </div>
             </div>
 
-            <!-- SAMUS -->
-            <img id="personaje-flotante" src="assets/img/samus_img/AronCompleto.png" alt="Samus">
+            <img id="personaje-flotante" src="assets/img/galeria/AronCompleto.png" alt="Aron">
         </section>
 
 
         <!-- ================= CTA  ================= -->
-        <section id="cta-video" class="scroll-section container-fluid d-flex align-items-center justify-content-end">
+        <section id="cta-video" class="scroll-section container-fluid">
+            <div class="row h-100 align-items-center">
 
-            <div class="col-12 col-lg-10 col-xl-5 me-xl-5 d-flex flex-column justify-content-center margin-top">
-
-                <div class="text-white mb-4">
-                    <h2 class="display-4  font-original ">Sobrevive. Hackea. Evoluciona.</h2>
-                    <p class="fs-4">Cyberpunk + combate rítmico.</p>
+                <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center position-relative cta-aron-target h-100">
                 </div>
 
                 <div  id="video">
@@ -207,7 +190,7 @@
 
                 <!-- TÍTULO de apoyo -->
                 <div class=" text-center my-5">
-                    <h2 class=" display-5 font-original">SISTEMA DE APOYO</h2>
+                    <h2 class=" display-4 font-original">SISTEMA DE APOYO</h2>
                 </div>
 
                 <div class="row w-100 justify-content-center align-items-center px-lg-5 gx-2">
@@ -380,7 +363,7 @@
             <div class="container h-100 d-flex flex-column justify-content-center">
                 <!-- TÍTULO DE SECCIÓN -->
                 <div class=" text-center mt-5 mb-3">
-                        <h2 class=" display-5 font-original">Información acerca del juego</h2>
+                        <h2 class=" display-4 font-original">Información acerca del juego</h2>
                 </div>
 
                 <div class="game-info-wrapper container h-100 d-flex align-items-center justify-content-center mb-5">
@@ -388,7 +371,7 @@
                     <div class="col-12 col-lg-10 col-xl-8 mb-5">
                         
                         <!-- TABS-navs -->
-                        <ul class="nav nav-tabs justify-content-center justify-content-md-start" id="gameTabs" role="tablist">
+                        <ul class="nav nav-tabs flex-nowrap" id="gameTabs" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="mapa-tab" data-bs-toggle="tab" data-bs-target="#mapa" type="button" role="tab" aria-controls="mapa" aria-selected="true">Mapa</button>
                             </li>
@@ -536,7 +519,7 @@
 
                 <!-- Encabezado de Agradecimiento -->
                 <div class="text-center mt-lg-5 mb-5 wow fadeIn">
-                    <h2 class="font-original fw-bold text-uppercase display-5">Muchas gracias por leernos</h2>
+                    <h2 class="font-original fw-bold text-uppercase display-4">Muchas gracias por leernos</h2>
                     <p class="lead font-monospace text-info">
                         Vuestro apoyo es la energía que mantiene vivo este proyecto.
                     </p>

@@ -364,8 +364,8 @@ u {
     font-family: 'Metroidvenia', monospace;
 }
 .scroll-section {
-    min-height: 100vh;
-    height: auto;
+    height: 100vh;
+    width: 100vw;
 }
 
 .hero-text {
@@ -393,7 +393,6 @@ u {
     left: 0;
     width: 100%;
     backface-visibility: hidden;
-    display: flex;
     align-items: center;
 }
 
@@ -618,7 +617,7 @@ u {
     background: rgba(163, 163, 163, 0.1);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(50px);
-    padding: 50px;
+    padding:5%;
     border: 1px solid white;
     border-radius: 15px;
 
@@ -762,12 +761,24 @@ u {
     width: 100%;
     min-height: 100vh;
     display: flex;
+    flex-direction: column; /* CAMBIO: Cambiado a column para que el título respete el flujo superior */
     align-items: center;
     justify-content: center;
-    padding: 2rem 1rem;
+    padding: 120px 1rem 2rem 1rem; /* CAMBIO: Subimos el padding top de 2rem a 120px como escudo base contra el navbar */
+    box-sizing: border-box;
+}
+
+/* Parche elástico directo: si la pantalla es de tipo laptop compacta, modificamos el comportamiento flex */
+@media (min-width: 1024px) and (max-height: 860px) {
+    #game-info {
+        justify-content: flex-start !important; /* Desactiva el centrado vertical agresivo que escondía el título */
+        padding-top: 100px !important;         /* Deja el espacio exacto para el navbar en laptops */
+        height: auto !important;               /* Evita congelar la pantalla si el contenido de las pestañas es largo */
+    }
 }
 
 .game-info-wrapper {
+    width: 100%; /* CAMBIO: Asegura adaptabilidad en anchos laptop */
     max-width: 1600px;
     margin: 0 auto;
 }
@@ -805,14 +816,14 @@ u {
     backdrop-filter: blur(12px);
     border-top: 1px solid rgba(235, 0, 194);
     border-bottom: 1px solid rgba(235, 0, 194);
-    max-height: 70vh;
+    max-height: 55vh; /* CAMBIO: Bajado de 70vh a 55vh en pantallas estándar para garantizar que el título quepa en laptops sin scroll general */
     overflow-y: auto;
 }
+
 .img-opacity{
     opacity: 1;
     pointer-events: none;
 }
-
 
 .game-info-content::-webkit-scrollbar {
     background-color: transparent;
@@ -823,7 +834,6 @@ u {
     background: transparent;
     border-radius: 12px;
     margin: 0;
-
 }
 
 /* Personalizar el thumb  */
@@ -832,11 +842,9 @@ u {
     border-radius: 12px;
 }
 
-
 #gameTabsContent::-webkit-scrollbar-thumb:hover {
     background: rgba(204, 198, 198, 0.81);
 }
-
 
 .game-info-content h2 {
     color: white;
@@ -845,7 +853,6 @@ u {
     border-left: 4px solid var(--neon-pink);
     padding-left: 15px;
 }
-
 
 .game-info-content p {
     line-height: 1.6;
@@ -856,7 +863,6 @@ u {
 .game-info-content ul {
     font-weight: 400;
 }
-
 /* ================ AGRADECIMIENTOS Y FEEDBACK ================== */
 
 #comments{
@@ -1025,133 +1031,425 @@ footer .a.btn.btn-link{ font-size: 0.8rem; }
 
 
 
-
 /* ADAPTIVE*/
 
-@media (max-width: 1999px) {
+/* ==========================================================================
+   == 1. REGLAS EXCLUSIVAS PARA ORDENADORES DESKTOP (Ancho >= 1024px)       ==
+   ========================================================================== */
+@media (min-width: 1024px) {
+    #pin-wrapper {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .scroll-section {
+        height: 100vh;
+        width: 100vw;
+    }
+
+    /* Modificación de opacidad/brillo para Aron en entornos de escritorio */
     #personaje-flotante {
-        filter: brightness(0.6) !important;
-        
+        position: absolute;
+        top: 75%;
+        left: 0;
+        right: auto;
+        width: auto;
+        pointer-events: none;
+        will-change: transform, opacity;
+        filter: brightness(0.8) !important;
         transition: filter 0.3s ease;
+    }
+
+    /* Forzar a las columnas objetivo a ocupar todo el espacio vertical */
+    .hero-aron-target,
+    .cta-aron-target {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Eje central flex para columna de vídeo */
+    #cta-video .col-lg-8 {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding-left: 3% !important;
+        padding-right: 3% !important;
+        height: 100vh;
+    }
+
+    #cta-video #cta-block {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 1.5rem;
+    }
+
+    #cta-video .neon-wrapper {
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 800px !important;
+    }
+
+    #cta-video .neon-wrapper img,
+    #cta-video #video-player {
+        width: 100% !important;
+        display: block !important;
+        margin: 0 auto !important;
     }
 }
 
- @media (max-width: 1023.98px) {
-     .text-izq {
-         margin-left: 0 !important;
-         width: 100% !important;
-         max-width: 100% !important;
-     }
+/* ==========================================================================
+   == 2. PARCHE CRÍTICO PARA LAPTOP L (Ancho >= 1440px)                     ==
+   ========================================================================== */
+@media (min-width: 1440px) {
+    /* Evita que el centrado flex de Bootstrap estrelle los títulos contra el navbar sticky */
+    #pin-wrapper .scroll-section {
+        padding-top: 120px !important;
+        justify-content: flex-start !important;
+    }
 
-     body {
-         background-image: url('../assets/img/bg/wallpapersden.com_planet-in-space-4k_4200x2280.jpg');
-         background-size: cover;
-         background-position: center;
-         background-repeat: no-repeat;
-         background-attachment: fixed;
+    #hero, #cta-video {
+        padding-top: 0 !important;
+        justify-content: center !important;
+    }
 
-     }
+    #game-info .container,
+    #comments .container {
+        margin-top: 2rem !important;
+    }
+}
 
-     .nav-tabs {
-         flex-wrap: nowrap !important;
-         overflow-x: auto;
-         overflow-y: hidden;
-         white-space: nowrap;
-     }
+/* ==========================================================================
+   == 3. SISTEMA DE ADAPTACIÓN VERTICAL (Portátiles / Ventanas Bajas)      ==
+   ========================================================================== */
+@media (min-width: 1024px) and (max-height: 860px) {
+    /* SOLUCIÓN AL CORTE: Permitimos que la sección crezca si el contenido lo exige */
+    .scroll-section#donation {
+        height: auto !important;
+        min-height: 100vh !important;
+        padding-top: 90px !important;
+        padding-bottom: 50px !important;
+        box-sizing: border-box;
+    }
+
+    /* Reducción proporcional de títulos principales */
+    #donation h2.display-5 {
+        font-size: 2.2rem !important;
+        margin-top: 1rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    #donation .row {
+        gap: 2rem !important; /* Estrechamos la separación lateral para ganar espacio */
+    }
+
+    /* ==========================================
+       IZQUIERDA: CYBER PANEL RESPONSIVO
+       ========================================== */
+    #donation .donation-left {
+        padding: 1.5rem !important; /* Menos padding interno para que no asfixie al texto */
+    }
+
+    #donation .donation-left .text-white.h5 {
+        font-size: 1rem !important; /* Texto de apoyo superior más compacto */
+        margin-bottom: 1rem !important;
+    }
+
+    #donation .cyber-panel {
+        padding: 1rem !important;
+    }
+
+    #donation .cyber-panel .text-uppercase {
+        font-size: 0.75rem !important;
+    }
+
+    #donation .text-neon-pink {
+        font-size: 1.2rem !important;
+    }
+
+    #donation .bg-dark {
+        height: 0.8rem !important; /* Barra de progreso ligeramente más delgada */
+    }
+
+    #donation .cyber-panel .d-flex.text-white-50.mt-2 span {
+        font-size: 0.75rem !important; /* Números de escala (0€, 5k, etc.) más pequeños */
+    }
+
+    #donation .donation-left .display-6 {
+        font-size: 1.8rem !important; /* El contador de "64 personas" se escala */
+    }
+
+    #donation .donation-left .btn {
+        padding-top: 0.8rem !important;
+        padding-bottom: 0.8rem !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* ==========================================
+       DERECHA: TARJETAS Y CONTENIDO (ANTI-CORTE)
+       ========================================== */
+    /* Swiper ahora se adapta al contenido, no al revés */
+    #donation .swiper {
+        max-height: none !important;
+        height: 100% !important;
+    }
+
+    #donation .card-cyberpunk {
+        padding: 1rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+    }
+
+    /* Escalado dinámico para las badges */
+    #donation .rank-icon-container {
+        padding: 0.5rem !important;
+    }
 
 
-     .nav-tabs::-webkit-scrollbar {
-         height: 4px;
-     }
-     .nav-tabs::-webkit-scrollbar-thumb {
-         background: #00ffcc;
-     }
+    /* Reajuste de tipografías internas para evitar desbordes */
+    #donation .card-cyberpunk h2 {
+        font-size: 1rem !important;
+        margin-bottom: 0.2rem !important;
+    }
+    #donation .card-cyberpunk h4 {
+        font-size: 1.3rem !important;
+        margin-bottom: 0.4rem !important;
+    }
 
-     /* Samus  */
-     #personaje-flotante {
-         position: absolute; /* O fixed si quieres que te siga, pero absolute es mejor para el Hero */
-         top: 10%;           /* Ajusta según donde quieras que asome la cabeza */
-         left: 50%;          /* Centrado horizontal */
-         transform: translateX(-50%);
-         height: 120vh;      /* Un poco más pequeño que el 160vh para que no rompa el layout */
-         width: auto;
-         right: auto;        /* Reseteamos el -40% previo */
-         z-index: -1;        /* Detrás del texto */
-         pointer-events: none;
-         filter: brightness(40%); /* Un poco más oscuro para que el texto sea legible */
-         opacity: 1 !important;
-         visibility: visible !important;
-     }
+    /* Párrafo elástico: Mengua el tamaño de letra y el interlineado */
+    #donation .card-text {
+        font-size: 0.78rem !important;
+        line-height: 1.25 !important;
+        margin-bottom: 0.5rem !important;
+    }
 
+    /* Bloque inferior de la fecha de entrega */
+    #donation .card-body .mt-3 {
+        margin-top: 0.4rem !important;
+        padding: 0.4rem !important;
+    }
+    #donation .card-body .mt-3 small {
+        font-size: 0.7rem !important;
+    }
 
+    /* Cinta de "MÁS POPULAR" reajustada para que no tape el texto */
+    #donation .popular-ribbon {
+        top: 20px !important;
+        right: -40px !important;
+        font-size: 0.55rem !important;
+        padding: 3px 40px !important;
+    }
+}
+/* ==========================================================================
+   == 4. REGLAS ADAPTATIVAS: MÓVILES Y TABLETS (Ancho < 1024px)             ==
+   ========================================================================== */
+@media (max-width: 1023.98px) {
     #pin-wrapper {
         height: auto !important;
         perspective: none !important;
         overflow: visible !important;
     }
 
+    #hero,
+    #cta-video,
+    #pin-wrapper > section {
+        background: transparent !important;
+        position: relative !important;
+        height: auto !important;
+        min-height: unset !important;
+        display: block !important;
+        padding: 4rem 15px !important;
+        /* ELIMINA O COMENTA ESTA LÍNEA SI LA TIENES: */
+        /* overflow: hidden !important; */
+    }
 
     #pin-wrapper > section {
-        position: relative !important;
-        width: 100% !important;
-        height: auto !important;
         opacity: 1 !important;
         transform: none !important;
         pointer-events: auto !important;
-        margin-bottom: 2rem;
     }
 
-     #cta-video {
-         position: relative !important;
-         top: auto !important;
-         left: auto !important;
-         transform: none !important;
-         opacity: 1 !important;
-         height: auto !important;
-         min-height: 50vh;
-         margin: 20px 0;
-         visibility: visible !important;
-         pointer-events: auto !important;
-     }
+    #hero {
+        padding-top: 100px !important;
+        padding-bottom: 6rem !important;
+        overflow: visible !important;
+    }
+    #personaje-flotante {
+        object-fit: cover !important;
+        object-position: center top !important;
+        height: 100vh !important;
+        filter: brightness(0.8) !important;
+    }
+    .text-izq {
+        margin-left: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        z-index: 10 !important;
+        text-align: center !important;
+        padding: 0 15px !important;
+    }
 
+    #cta-video {
+        margin-top: 0 !important;
+        padding-top: 160px !important;
+        z-index: 5 !important;
+    }
 
-     /* El video se adapta al ancho de la pantalla */
-     #video-player {
-         width: 100% !important;
-         height: auto !important;
-         aspect-ratio: 16 / 9;
-         max-height: none !important;
-     }
-/
-    #cta-video, #donation, #game-info, #comments, #core-loop {
+    .texto-cta {
+        background: linear-gradient(to bottom, transparent 0%, #000000 50%, transparent 100%) !important;
+
+    }
+
+    #cta-video .col-12,
+    #cta-video #video {
+        position: relative !important;
+        z-index: 10 !important;
+    }
+
+    /* Capas traseras y backgrounds opacos */
+    #core-loop,
+    #donation,
+    #game-info,
+    #comments {
         visibility: visible !important;
         top: auto !important;
         left: auto !important;
-        justify-content: center !important;
+        position: relative !important;
+        z-index: 20 !important;
+        background-color: #000000 !important;
+        background-image: url("../assets/img/bg/background-vignette-large-up.1a45baa6.jpg") !important;
+        background-size: cover !important;
     }
 
-    #game-info {
-        max-height: none !important;
-        margin-top: 0 !important;
+    .hero-aron-target,
+    .cta-aron-target {
+        display: none !important;
+    }
+
+    #video {
+        width: 100% !important;
+        max-width: 600px !important;
+        margin: 0 auto !important;
+    }
+
+    #video-player,
+    .neon-wrapper {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 16 / 9;
+    }
+
+    #donation .row {
+        flex-direction: column !important; /* Fuerza el apilamiento vertical */
+        align-items: center !important;
+    }
+
+    #donation .donation-left,
+    #donation .donation-right {
+        width: 100% !important;
+        max-width: 550px !important;
+        margin-bottom: 2.5rem !important;
+    }
+
+    #donation .donation-right {
+        margin-bottom: 0 !important;
+    }
+
+    #reservation {
+        padding-right: 3rem !important;
+        padding-left: 3rem !important;
     }
 }
 
-@media (max-width: 575.98px) {
+/* ==========================================================================
+   == 5. REGLA GLOBAL REFORZADA: PESTAÑAS ALINEADAS A LA IZQUIERDA SIEMPRE ==
+   ========================================================================== */
+#game-info .nav-tabs {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
 
-    .donation-left .text-white.small.fw-bold.text-uppercase {
-        font-size: 0.65rem !important; /* Más pequeño que el 'small' estándar */
-    }
+    /* Alineación estricta a la izquierda en smartphones, tablets, laptops y televisores */
+    justify-content: flex-start !important;
 
-    .donation-left .text-neon-pink.fw-bold {
-        font-size: 0.9rem;
-    }
-
-
-    .donation-left .text-white-50.mt-2.small span {
-        font-size: 0.6rem;
-    }
+    border-bottom: 2px solid rgba(235, 0, 194, 0.3) !important;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch; /* Inercia táctil ultrasuave */
 }
 
+/* Evita que las celdas se colapsen o reduzcan su tamaño de forma rígida en PC */
+#game-info .nav-tabs .nav-item {
+    flex: 0 0 auto !important;
+}
+
+#game-info .nav-tabs .nav-link {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    padding: 0.6rem 1.4rem !important;
+    font-size: 0.95rem !important;
+}
+
+/* Diseño unificado del riel de scroll cyberpunk */
+#game-info .nav-tabs::-webkit-scrollbar {
+    height: 4px !important;
+}
+
+#game-info .nav-tabs::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2) !important;
+}
+
+#game-info .nav-tabs::-webkit-scrollbar-thumb {
+    background: #00ffcc !important;
+    border-radius: 2px !important;
+}
+
+/* ==========================================================================
+   == 6. AJUSTE DE SEGURIDAD PARA MÓVILES ULTRA PEQUEÑOS (Mobile S <= 360px) ==
+   ========================================================================== */
+@media (max-width: 360px) {
+    #donation {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+
+    #donation .cyber-panel {
+        padding: 0.75rem 0.5rem !important;
+    }
+
+    #donation .cyber-panel .d-flex.justify-content-between.align-items-end {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.25rem;
+    }
+
+    #donation .cyber-panel .text-uppercase {
+        font-size: 0.75rem !important;
+    }
+
+    #donation .text-neon-pink {
+        font-size: 1.1rem !important;
+    }
+
+    #donation .cyber-panel .text-white-50.small {
+        font-size: 0.7rem !important;
+    }
+
+    #donation .display-6 {
+        font-size: 1.8rem !important;
+    }
+}
 /* Scrollbar personalizada */
 ::-webkit-scrollbar {
     width: 8px;
