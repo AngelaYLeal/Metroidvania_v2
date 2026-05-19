@@ -159,78 +159,78 @@
 }
 
 
-/* --- REPRODUCTORES DE AUDIO CYBERPUNK --- */
-.cyber-timeline {
+/* ==================== TÍTULO DIAGRAMA DE FLUJO ========================== */
+h4.flujo {
+    /* Fondo que se desvanece de izquierda a derecha simulando una barra de carga/datos */
+    background: linear-gradient(90deg, rgba(0, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0) 100%);
+
+    /* Borde lateral grueso rosa neón */
+    border-left: 4px solid #00ffff;
+
+
+    padding-left: 15px !important;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
     width: 100%;
-    height: 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    cursor: pointer;
+}
+
+/* ==================== GALERÍA SWIPER CUSTOM ========================== */
+.gallery-swiper {
+    width: 100%;
+    height: 600px;
+    background: #000;
+}
+
+.gallery-swiper .swiper-slide {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.cyber-progress {
+.gallery-swiper .swiper-slide img {
+    width: 100%;
     height: 100%;
-    width: 0%; /* Crecerá con JS */
-    border-radius: 6px;
-    pointer-events: none;
-    transition: width 0.1s linear;
+    object-fit: cover;
+    filter: brightness(0.7) contrast(1.1);
+    transition: transform 8s linear; /* Zoom sutil constante */
 }
 
-/* Tema Cyan (Pista 1) */
-.cyan-theme .cyber-progress {
-    background: #00ffff;
-    box-shadow: 0 0 10px #00ffff;
+.gallery-swiper .swiper-slide-active img {
+    transform: scale(1.1);
 }
 
-/* Tema Rosa (Pista 2) */
-.pink-theme .cyber-progress {
-    background: #ff00ff;
-    box-shadow: 0 0 10px #ff00ff;
-}
-
-.cyber-time {
-    color: #a0a0a0;
-    font-size: 0.85rem;
-    font-family: monospace;
-}
-.cyber-timeline {
-    position: relative;
-    overflow: visible !important;
-}
-
-.hover-time {
+.slide-caption {
     position: absolute;
-    top: -30px;
-    left: 0;
-    transform: translateX(-50%);
-    background: none;
-    color:#00ffff !important;
-    padding: 4px 8px;
-    font-size: 12px;
-    font-family: 'Courier New', Courier, monospace;
+    bottom: 40px;
+    left: 40px;
+    background: rgba(0, 0, 0, 0.8);
+    border-left: 4px solid #00ffff;
+    color: #fff;
+    padding: 10px 20px;
+    font-family: 'Metroidvenia Simple', sans-serif;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    z-index: 10;
     pointer-events: none;
-    display: none;
-
-    z-index: 9999;
-    white-space: nowrap;
-
+    text-transform: uppercase;
 }
 
 
-.cyber-timeline:hover .hover-time {
-    display: block !important;
+/* Flechas de Navegación */
+.gallery-nav {
+    color: #00ffff !important;
+    transform: scale(0.7);
 }
 
-.pink-theme .hover-time {
-    color: #ff00ff !important;
-    font-size: 12px;
-    font-weight: 600;
-    font-family: 'Courier New', Courier, monospace;
-
+@media (max-width: 991px) {
+    .gallery-swiper { height: 400px; }
+    .slide-caption { left: 20px; font-size: 0.7rem; }
 }
+
+
 .text-neon-pink { color: #ff00ff; }
 .text-neon-cyan { color: #00ffff !important; }
 
