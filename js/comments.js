@@ -12,7 +12,7 @@ const BADGE_IMAGES = {
     "Apoyo Altruista": "assets/img/badges/apoyo.png"
 };
 
-window.onload = async () => {
+document.addEventListener("DOMContentLoaded", async () => {
     try {
         currentUser = await checkSession();
     } catch (error) {
@@ -23,7 +23,7 @@ window.onload = async () => {
     gestionarInterfazUsuario();
     await cargarComentarios();
     inicializarEventosComentarios();
-};
+});
 
 function gestionarInterfazUsuario() {
     const actionsNav = document.getElementById('nav-user-actions');
