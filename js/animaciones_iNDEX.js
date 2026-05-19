@@ -38,11 +38,11 @@ mm.add("(min-width: 1024px)", () => {
     gsap.set("#core-loop", { y: "100%", opacity: 0 });
     gsap.set("#core-loop .col-lg-4", { opacity: 0, scale: 0.8 });
 
-    // Posicionamos el pivote de Aron exactamente centrado en su coordenada de anclaje
+    //  el pivote de Aron exactamente centrado en su coordenada de anclaje
     gsap.set("#personaje-flotante", {
         x: getHeroX,
-        xPercent: -50,  // Centra horizontalmente respecto a su propio eje
-        yPercent: -50,  // Centra verticalmente respecto a su propio eje
+        xPercent: -50,
+        yPercent: -50,
         opacity: 1
     });
 
