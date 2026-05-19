@@ -6,15 +6,20 @@
     <meta name="description" content="Simulacion de web de crowfounding" />
     <meta name="author" content="Angela Leal" />
     <title>Cybernetik Einherjar</title>
+
+    <link rel="icon" type="image/svg+xml" href="assets/img/logos/Logo_sin_fondo.png" />
+
     <script src="https://kit.fontawesome.com/818fee26fe.js" crossorigin="anonymous"></script>
+
     <!-- SDK DE SUPABASE -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script src="js/database.js"></script>
     <script src="js/navbar.js" ></script>
 
     <!-- VIDEOJS -->
     <script type="module" src="https://cdn.jsdelivr.net/npm/@videojs/html/cdn/video.js"></script>
-    <link rel="icon" type="image/svg+xml" href="assets/img/logos/Logo_sin_fondo.png" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@videojs/html/cdn/video-minimal.js"></script>
 
     <link href="css/styles.css" rel="stylesheet" />
     <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
@@ -113,13 +118,17 @@
                 <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center position-relative cta-aron-target h-100">
                 </div>
 
-                <div  id="video">
-                    <video-player>
-                        <video-skin>
-                            <video src="assets/videos/MetroidVideo.mp4" poster="assets/videos/miniatura.jpg" playsinline></video>
-                        </video-skin>
-                    </video-player>
+                <div class="texto-cta col-12 col-lg-8 d-flex flex-column align-items-center justify-content-center margin-top">
+                    <div class="text-white mb-4 text-center text-lg-start">
+                        <h2 class="display-4 font-original">Sobrevive. Hackea. Evoluciona.</h2>
+                        <p class="fs-4">Cyberpunk + combate rítmico.</p>
+                    </div>
+
+                    <div id="video" class="w-75 pb-5 mb-3">
+                        <div id="dynamic-video-container" ></div>
+                    </div>
                 </div>
+
 
             </div>
         </section>
@@ -663,7 +672,7 @@
 
 
     <!-- MIS SCRIPTS -->
-
+    <script src="js/index-videojs.js" defer></script>
     <script src="js/barra_de_progreso.js"></script>
     <script src="js/clock_counter.js"></script>
     <script src="js/animaciones_iNDEX.js"></script>
