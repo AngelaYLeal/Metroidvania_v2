@@ -153,5 +153,79 @@
 .border-dashed{
     border:dashed;
 }
+
+
+/* ==================== TÍTULO DIAGRAMA DE FLUJO ========================== */
+h4.flujo {
+    /* Fondo que se desvanece de izquierda a derecha simulando una barra de carga/datos */
+    background: linear-gradient(90deg, rgba(0, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0) 100%);
+
+    /* Borde lateral grueso rosa neón */
+    border-left: 4px solid #00ffff;
+
+
+    padding-left: 15px !important;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+    width: 100%;
+}
+
+/* ==================== GALERÍA SWIPER CUSTOM ========================== */
+.gallery-swiper {
+    width: 100%;
+    height: 600px;
+    background: #000;
+}
+
+.gallery-swiper .swiper-slide {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.gallery-swiper .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7) contrast(1.1);
+    transition: transform 8s linear; /* Zoom sutil constante */
+}
+
+.gallery-swiper .swiper-slide-active img {
+    transform: scale(1.1);
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    background: rgba(0, 0, 0, 0.8);
+    border-left: 4px solid #00ffff;
+    color: #fff;
+    padding: 10px 20px;
+    font-family: 'Metroidvenia Simple', sans-serif;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    z-index: 10;
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+
+/* Flechas de Navegación */
+.gallery-nav {
+    color: #00ffff !important;
+    transform: scale(0.7);
+}
+
+@media (max-width: 991px) {
+    .gallery-swiper { height: 400px; }
+    .slide-caption { left: 20px; font-size: 0.7rem; }
+}
+
+
 .text-neon-pink { color: #ff00ff; }
 .text-neon-cyan { color: #00ffff !important; }
