@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cybernetik Einherjar</title>
+  <meta name="description" content="Simulacion de web de crowfounding" />
+  <meta name="author" content="Angela Leal" />
+  <title>Login</title>
   <script src="https://kit.fontawesome.com/818fee26fe.js" crossorigin="anonymous"></script>
 
   <!-- SDK DE SUPABASE -->
@@ -77,25 +79,31 @@
           </div>
           <div class="card-body p-4 p-md-5">
 
-            <div class="mb-3">
-              <label class="text-white small text-uppercase mb-1">Correo</label>
-              <div class="input-group">
-                <span class="input-group-text bg-dark border text-white"><i class="fa-solid fa-envelope"></i></span>
-                <input type="email" id="email" class="form-control bg-dark text-white border" placeholder="usuario@cybernetik.com">
-              </div>
-            </div>
+            <!-- NUEVO: Formulario contenedor para capturar el botón Enter -->
+            <form id="loginForm">
 
-            <div class="mb-4">
-              <label class="text-white small text-uppercase mb-1">Contraseña</label>
-              <div class="input-group">
-                <span class="input-group-text bg-dark border text-white"><i class="fa-solid fa-key"></i></span>
-                <input type="password" id="password" class="form-control bg-dark text-white border" placeholder="••••••••">
+              <div class="mb-3">
+                <label class="text-white small text-uppercase mb-1">Correo</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-dark border text-white"><i class="fa-solid fa-envelope"></i></span>
+                  <input type="email" id="email" class="form-control bg-dark text-white border" placeholder="usuario@cybernetik.com" required>
+                </div>
               </div>
-            </div>
 
-            <button onclick="iniciarSesion()" class="btn btn-outline-info w-100 py-3 fw-bold text-uppercase">
-              <i class="fa-solid fa-right-to-bracket me-2"></i>Verificar Identidad
-            </button>
+              <div class="mb-4">
+                <label class="text-white small text-uppercase mb-1">Contraseña</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-dark border text-white"><i class="fa-solid fa-key"></i></span>
+                  <input type="password" id="password" class="form-control bg-dark text-white border" placeholder="••••••••" required>
+                </div>
+              </div>
+
+              <!-- CAMBIO: Se eliminó el onclick y se añadió type="submit" -->
+              <button type="submit" class="btn btn-outline-info w-100 py-3 fw-bold text-uppercase">
+                <i class="fa-solid fa-right-to-bracket me-2"></i>Verificar Identidad
+              </button>
+
+            </form>
 
             <div class="text-center mt-4">
               <span class="text-secondary small">¿No tienes un perfil creado?</span>
@@ -167,47 +175,7 @@
 </footer>
 
 
-<script>
-  window.onload = async () => {
-    const user = await checkSession();
-    if (user) {
-      window.location.href = 'profile.html';
-    }
-  };
-  async function iniciarSesion() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const btn = document.querySelector('button[onclick="iniciarSesion()"]');
-
-    if (!email || !password) {
-      alert("Por favor, introduce tus credenciales de acceso.");
-      return;
-    }
-
-
-    btn.disabled = true;
-    btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin me-2"></i>Accediendo...';
-
-    try {
-
-      const { data, error } = await supabaseClient.auth.signInWithPassword({
-        email,
-        password
-      });
-
-      if (error) throw error;
-
-      if (data.user) {
-        console.log("Sesión iniciada para:", data.user.email);
-        window.location.href = 'profile.html';
-      }
-    } catch (error) {
-      alert("Acceso denegado: " + error.message);
-      btn.disabled = false;
-      btn.innerHTML = 'Acceder';
-    }
-  }
-</script>
+<script src="js/login.js" defer> </script>
 <!-- ================= JS ================= -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- MIS SCRIPTS -->
