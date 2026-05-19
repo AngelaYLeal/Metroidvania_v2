@@ -189,30 +189,27 @@
 
 /* --- SISTEMA ANTI-DESBORDE (1265px - 992px) --- */
 @media (max-width: 1265px) and (min-width: 992px) {
-    /* 1. Reducimos el logo para ganar espacio */
+
     .navbar-brand img {
         height: 35px !important;
     }
 
-    /* 2. Reducimos el espacio entre enlaces del centro */
     .navbar-nav .nav-link {
         padding: 8px 8px !important;
         font-size: 0.75rem !important;
     }
 
-    /* 3. Compactamos el botón Reservar */
     #reservar {
         padding: 6px 12px !important;
         font-size: 0.75rem !important;
-        margin-left: 5px !important;
     }
 
-    /* 4. Escondemos el texto de LOGIN y SIGN UP pero dejamos el icono */
+
     .nav-text-hide {
         display: none;
     }
 
-    /* 5. Creamos el marco para el icono de usuario genérico */
+
     .user-icon-frame {
         width: 35px;
         height: 35px;
@@ -241,7 +238,6 @@ body {
     box-shadow: 0 0 10px rgba(13, 202, 240, 0.4);
     border-radius: 5px;
     padding: 8px 20px !important;
-    margin-left: 10px;
 }
 
 #reservar:hover {
@@ -257,7 +253,6 @@ body {
     height: 42px;
     border-radius: 50%;
     border: 2px solid #0dcaf0;
-    margin-left: 15px;
     padding: 0;
     background: #575757;
     overflow: hidden;

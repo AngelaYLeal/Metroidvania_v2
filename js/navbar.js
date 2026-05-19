@@ -9,7 +9,7 @@ async function actualizarNavbar(user) {
             .eq('id', user.id)
             .single();
 
-        const imgPath = perfil?.avatar_url ? perfil.avatar_url : 'assets/img/icons/no_img.jpg';
+        const imgPath = perfil?.avatar_url ? perfil.avatar_url : 'assets/img/icons/no_img.png';
 
         navRight.innerHTML = `
             <li class="nav-item">
@@ -23,13 +23,13 @@ async function actualizarNavbar(user) {
                 </a>
             </li>
             <li class="nav-item">
-                <button onclick="ejecutarLogout()" class="btn btn-link nav-link text-danger ms-2">
+                <button onclick="ejecutarLogout()" class="btn btn-link nav-link text-danger">
                     <i class="fa-solid fa-power-off"></i>
                 </button>
             </li>
         `;
     } else {
-        // CAMBIO AQUÍ: Usamos iconos + texto con clase ocultable
+        // Usamos iconos + texto con clase ocultable
         navRight.innerHTML = `
             <li class="nav-item">
                 <a class="nav-link text-white" href="log_in.html">
