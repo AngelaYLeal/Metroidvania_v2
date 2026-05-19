@@ -21,7 +21,7 @@ function inicializarVideoHome() {
             container.innerHTML = `
         <video-player>
           <video-minimal-skin>
-            <video src="./assets/videos/MetroidVideo.mp4" poster="./assets/videos/miniatura.jpg" playsinline></video>
+            <video src="./assets/videos/trailer.mp4" poster="./assets/videos/miniatura.png" playsinline></video>
           </video-minimal-skin>
         </video-player>
       `;
@@ -30,7 +30,7 @@ function inicializarVideoHome() {
             container.innerHTML = `
         <video-player>
           <video-skin>
-            <video src="./assets/videos/MetroidVideo.mp4" poster="./assets/videos/miniatura.jpg" playsinline></video>
+            <video src="./assets/videos/trailer.mp4" poster="./assets/videos/miniatura.png" playsinline></video>
           </video-skin>
         </video-player>
       `;
