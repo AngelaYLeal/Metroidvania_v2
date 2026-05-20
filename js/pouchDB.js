@@ -103,13 +103,16 @@ async function inicializarBunker() {
 
             // SOLO reiniciamos si realmente logramos inyectar datos
             if (datosInyectados) {
-                console.log("✅ Datos base cargados. Reiniciando búnker...");
-                setTimeout(() => location.reload(), 500);
+                console.log("✅ Datos base cargados en el búnker.");
+                // Despachamos un evento en lugar de recargar la página
+                document.dispatchEvent(new Event('bunkerListo'));
             } else {
-                console.warn("⚠️ ALERTA: Base de datos vacía, pero no se encontraron las variables INITIAL_* (o están vacías). Se cancela el reinicio para evitar bucle infinito.");
+                console.warn("⚠️ ALERTA: Base de datos vacía, pero no se encontraron las variables INITIAL_*.");
             }
         } else {
             console.log("%c ACCESO AL BÚNKER CONCEDIDO ", "color: #00ffff; background: #000; font-weight: bold; border: 1px solid #00ffff; padding: 5px;");
+            // Lanzamos el evento también si la base de datos ya tenía información
+            document.dispatchEvent(new Event('bunkerListo'));
         }
     } catch (err) {
         console.error("Error en el protocolo de inicialización:", err);
