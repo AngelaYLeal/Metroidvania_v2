@@ -1539,7 +1539,7 @@ footer .a.btn.btn-link{ font-size: 0.8rem; }
     margin-bottom: 10px;
     font-family: sans-serif;
     display: -webkit-box;
-    -webkit-line-clamp: 5; /* Evita desbordes limitando el texto a 5 líneas */
+    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -1557,11 +1557,11 @@ footer .a.btn.btn-link{ font-size: 0.8rem; }
 }
 
 .instagrid-frame {
-    background-color: #2b2d31; /* Un gris oscuro/medio muy limpio (estilo Discord/Gaming) */
-    border: 2px solid #007bff;  /* Borde azul primario de Bootstrap */
-    box-shadow: 0 0 15px rgba(0, 123, 255, 0.3); /* Brillo azul sutil para mantener la estética */
-    border-radius: 8px;        /* Bordes ligeramente redondeados para mejor acabado */
-    padding-left: 10px;        /* Ajuste de padding interno para que las tarjetas no peguen al borde */
+    background-color: #2b2d31; 
+    border: 2px solid #007bff;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.3);
+    border-radius: 8px;
+    padding-left: 10px;
     padding-right: 10px;
 }
 
