@@ -80,22 +80,34 @@ async function inicializarBunker() {
 
         if (infoCom.doc_count === 0 || infoPer.doc_count === 0 || infoDon.doc_count === 0) {
             console.log("Inyectando registros históricos...");
+            let datosInyectados = false; // Seguro contra bucles infinitos
 
-            if (typeof INITIAL_COMMENTS !== 'undefined') await dbComentarios.bulkDocs(INITIAL_COMMENTS);
+            if (typeof INITIAL_COMMENTS !== 'undefined' && INITIAL_COMMENTS.length > 0) {
+                await dbComentarios.bulkDocs(INITIAL_COMMENTS);
+                datosInyectados = true;
+            }
 
-            // MAPEO PARA ASIGNAR CONTRASEÑAS DINÁMICAS (Nombre + 123 en minúsculas)
-            if (typeof INITIAL_PROFILES !== 'undefined') {
+            if (typeof INITIAL_PROFILES !== 'undefined' && INITIAL_PROFILES.length > 0) {
                 const perfilesConPassword = INITIAL_PROFILES.map(perfil => ({
                     ...perfil,
                     password: perfil.username.trim().toLowerCase() + "123"
                 }));
                 await dbPerfiles.bulkDocs(perfilesConPassword);
+                datosInyectados = true;
             }
 
-            if (typeof INITIAL_DONATIONS !== 'undefined') await dbDonaciones.bulkDocs(INITIAL_DONATIONS);
+            if (typeof INITIAL_DONATIONS !== 'undefined' && INITIAL_DONATIONS.length > 0) {
+                await dbDonaciones.bulkDocs(INITIAL_DONATIONS);
+                datosInyectados = true;
+            }
 
-            console.log("✅ Datos base cargados sin correos. Reiniciando búnker...");
-            setTimeout(() => location.reload(), 500);
+            // SOLO reiniciamos si realmente logramos inyectar datos
+            if (datosInyectados) {
+                console.log("✅ Datos base cargados. Reiniciando búnker...");
+                setTimeout(() => location.reload(), 500);
+            } else {
+                console.warn("⚠️ ALERTA: Base de datos vacía, pero no se encontraron las variables INITIAL_* (o están vacías). Se cancela el reinicio para evitar bucle infinito.");
+            }
         } else {
             console.log("%c ACCESO AL BÚNKER CONCEDIDO ", "color: #00ffff; background: #000; font-weight: bold; border: 1px solid #00ffff; padding: 5px;");
         }

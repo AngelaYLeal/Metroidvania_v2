@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Metroidvenia';
-    src: url('/assets/fonts/metroidvenia.otf') format('opentype');
+    src: url('../assets/fonts/metroidvenia.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
     font-family: 'Metroidvenia Simple';
-    src: url('/assets/fonts/metroidvenia-normal.ttf') format('truetype');
+    src: url('../assets/fonts/metroidvenia-normal.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
     font-family: 'Doctor Glitch';
-    src: url('/assets/fonts/doctor_glitch.otf') format('opentype');
+    src: url('../assets/fonts/doctor_glitch.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
     font-family: 'Zekton';
-    src: url('/assets/fonts/zekton-regular.otf') format('truetype');
+    src: url('../assets/fonts/zekton-regular.otf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -74,16 +74,58 @@
 .btn-outline-basic:hover{
     background-color:  #ff00ff;
 }
-.progress-bar{
-    width: 65%;
+.cyber-timeline {
+    position: relative;
+    height: 14px;
+    background-color: #222;
+    border: 1px solid #555;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+
+.cyber-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    pointer-events: none;
+}
+
+.cyan-theme .cyber-progress {
+    background-color: #00ffff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+.pink-theme .cyber-progress {
+    background-color: #ff00ff;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+.hover-time {
+    position: absolute;
+    top: -30px;
+    transform: translateX(-50%);
+    background: #000;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.cyber-timeline:hover .hover-time {
+    opacity: 1;
 }
 
 .card:hover {
-    background-color: #111 !important; /* El color que pediste */
+    background-color: #111 !important;
     transform: translateY(-5px);
 }
-
-
 
 .badge {
     top: 10px;
