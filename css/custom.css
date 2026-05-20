@@ -1474,3 +1474,95 @@ footer .a.btn.btn-link{ font-size: 0.8rem; }
 }
 
 
+/* Cabecera de Instagram reactiva */
+.insta-header-link {
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+.insta-header-link:hover {
+    filter: drop-shadow(0 0 8px rgba(0, 123, 255, 0.6));
+    opacity: 0.9;
+}
+.insta-header-link:hover h3 {
+    color: #00ffff !important;
+}
+
+/* Tarjetas y efectos hover */
+.insta-card {
+    display: block;
+    text-decoration: none;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.insta-card:hover {
+    border-color: #00ffff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+.insta-img-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+.insta-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.insta-card:hover .insta-img {
+    transform: scale(1.08);
+}
+.insta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+}
+.insta-card:hover .insta-overlay {
+    opacity: 1;
+}
+.insta-text {
+    color: #e0e0e0;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    font-family: sans-serif;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Evita desbordes limitando el texto a 5 líneas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.insta-link-btn {
+    color: #00ffff;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-bottom: 1px dashed #00ffff;
+    padding-bottom: 2px;
+}
+.insta-card:hover .insta-link-btn {
+    color: #fff;
+    border-color: #fff;
+}
+
+.instagrid-frame {
+    background-color: #2b2d31; /* Un gris oscuro/medio muy limpio (estilo Discord/Gaming) */
+    border: 2px solid #007bff;  /* Borde azul primario de Bootstrap */
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.3); /* Brillo azul sutil para mantener la estética */
+    border-radius: 8px;        /* Bordes ligeramente redondeados para mejor acabado */
+    padding-left: 10px;        /* Ajuste de padding interno para que las tarjetas no peguen al borde */
+    padding-right: 10px;
+}
+
+

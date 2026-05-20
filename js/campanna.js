@@ -141,7 +141,7 @@ function inicializarReproductoresAudio() {
         container: '#waveform-1',
         waveColor: '#4a4a4a',
         progressColor: '#0dcaf0',
-        url: 'assets/audio/cybernetik_awakening.mp3',
+        url: 'assets/audio/ost_theme.mp3',
         height: 50,
         responsive: true
     });
@@ -150,7 +150,7 @@ function inicializarReproductoresAudio() {
         container: '#waveform-2',
         waveColor: '#4a4a4a',
         progressColor: '#d63384',
-        url: 'assets/audio/neon_blood.mp3',
+        url: 'assets/audio/ost_theme2.mp3',
         height: 50,
         responsive: true
     });
